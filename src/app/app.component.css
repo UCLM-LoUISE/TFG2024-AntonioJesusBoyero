@@ -1,0 +1,9 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  /* Organiza los elementos en una columna */
+  min-height: 100vh;
+  /* Altura mínima igual al alto de la ventana */
+}
+
+

@@ -1,0 +1,25 @@
+<div class="margen">
+  <form (ngSubmit)="onFormSubmit()" #shapeForm="ngForm">
+    <label for="shapeType">Selecciona la figura:</label>
+    <select id="shapeType" name="shapeType" [(ngModel)]="selectedShape" required>
+      <option value="marker">Marker</option>
+      <option value="polygon">Polygon</option>
+      <option value="circle">Circle</option>
+    </select>
+
+    <div *ngIf="selectedShape !== 'marker'">
+      <label for="points">Coordenadas (lat, lng):</label>
+      <input id="points" name="points" [(ngModel)]="points" placeholder="Ej. 38.9944, -1.8585" required>
+    </div>
+
+    <div *ngIf="selectedShape === 'circle'">
+      <label for="radius">Radio:</label>
+      <input id="radius" name="radius" [(ngModel)]="radio" placeholder="Ej. 150" required>
+    </div>
+
+    <button type="submit">Añadir Figura</button>
+  </form>
+</div>
+<div class="contenedor-flex">
+  <div id="map"></div>
+</div>

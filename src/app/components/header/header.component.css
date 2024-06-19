@@ -1,0 +1,53 @@
+.navbar {
+  background-color: #89ed79;
+  width: 100%;
+}
+
+.header-content {
+  width: 20%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.img {
+  height: 50px;
+  cursor: pointer;
+}
+
+.title {
+  width: 60%;
+  text-align: center;
+}
+
+
+.opciones {
+  width: 20%;
+  text-align: right;
+  cursor: pointer;
+}
+
+.btn-secondary.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-weight: bold;
+  /* Negrita */
+  font-size: 1.2rem;
+  /* Tamaño de fuente más grande */
+}
+
+.dropdown-menu {
+  background-color: #ffffff;
+  left: 50%;
+  /* Centramos el menú */
+  transform: translateX(-70%);
+  /* Ajustamos su posición */
+}
+
+.dropdown-item {
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: #ddd;
+}
