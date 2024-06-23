@@ -9,49 +9,25 @@ import * as L from 'leaflet';
 })
 export class PlanSessionComponent implements OnInit {
 
-  sessionForm!: FormGroup;
-
-  private map!: L.Map;
-  private centroid: L.LatLngExpression = [39.8282, -98.5795]; // Centro de EEUU
-
+  planSessionForm!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.sessionForm = this.fb.group({
-      studyType: ['', Validators.required],
-      studyName: ['', Validators.required],
-      studyDate: ['', Validators.required],
-      studyArea: ['', Validators.required]
+    this.planSessionForm = this.fb.group({
+      sessionName: ['', Validators.required],
+      sessionDate: ['', Validators.required],
+      duration: ['', [Validators.required, Validators.min(1)]],
+      studyType: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
-    if (this.sessionForm.valid) {
-      console.log(this.sessionForm.value);
+    if (this.planSessionForm.valid) {
+      console.log(this.planSessionForm.value);
+      // Aquí puedes añadir la lógica para manejar la planificación de la sesión
+      this.planSessionForm.reset();
     }
-  }
-
-
-
-  private initMap(): void {
-    this.map = L.map('map', {
-      center: this.centroid,
-      zoom: 5
-    });
-
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-
-    tiles.addTo(this.map);
-
-    this.map.on('click', (e: L.LeafletMouseEvent) => {
-      const latlng = e.latlng;
-      this.sessionForm.controls['studyArea'].setValue(`${latlng.lat}, ${latlng.lng}`);
-      L.marker([latlng.lat, latlng.lng]).addTo(this.map);
-    });
   }
 
 

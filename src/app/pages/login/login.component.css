@@ -1,23 +1,12 @@
-
 .card {
   border: none;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: #dcdcdc; /* Color de fondo gris claro para el contenedor */
   border-radius: 20px;
-  padding: 20px; /* Reducir el padding del contenedor */
 }
 
 .card-title {
-  margin-bottom: 15px; /* Reducir el margen inferior del título */
-}
-
-.form-group {
-  margin-bottom: 10px; /* Reducir el margen inferior de los grupos de formularios */
-}
-
-.form-control {
-  padding: 5px 10px; /* Reducir el padding de los campos del formulario */
-  width: 100%; /* Asegurar que el ancho sea del 100% */
+  margin-bottom: 20px;
 }
 
 .btn-primary {
@@ -40,3 +29,4 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+

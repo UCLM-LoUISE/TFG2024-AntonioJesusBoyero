@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlanSessionComponent } from './components/plan-session/plan-session.component';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { HomePage } from './components/home/home.page';
-import { RegisterComponent } from './components/register/register.component';
-import { MainPage } from './components/main/main.page';
+import { LoginComponent } from './pages/login/login.component';
+import { HomePage } from './pages/home/home.page';
+import { RegisterComponent } from './pages/register/register.component';
+import { MainPage } from './pages/main/main.page';
 import { LeafletComponent } from './components/leaflet/leaflet.component';
 import { HeaderComponent } from './components/header/header.component';
 

@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  public static Instance: AppComponent
+
+  constructor() { AppComponent.Instance = this }
+
   title = 'TFG';
 
 }
