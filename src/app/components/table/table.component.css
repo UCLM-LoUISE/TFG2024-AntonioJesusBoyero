@@ -1,0 +1,45 @@
+.tabla {
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.clickable-icon {
+  font-size: 1.5em; /* Ajusta el tamaño del icono */
+  cursor: pointer; /* Cambia el cursor a pointer para indicar que es clicable */
+  margin: 0 5px; /* Añade un poco de margen entre los iconos */
+}
+
+.clickable-icon:hover {
+  color: #007bff; /* Cambia el color del icono al pasar el ratón por encima (opcional) */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
+import { BackService } from 'src/app/service/back.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   progressValue: number = 0;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private service: BackService) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -38,12 +39,31 @@ export class RegisterComponent implements OnInit {
     if (controls['terms'].valid) this.progressValue += 20;
   }
 
-  onSubmit(): void {
+  // onSubmit(): void {
+  //   if (this.registerForm.valid) {
+  //     console.log(this.registerForm.value);
+  //     this.registerForm.reset();
+  //     this.progressValue = 0;
+  //   }
+  // }
+
+
+  onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      this.registerForm.reset();
-      this.progressValue = 0;
+      this.service.registrarUsuario(this.registerForm.value).subscribe({
+        next: (response) => {
+          console.log('Usuario registrado con éxito', response);
+        },
+        error: (error) => {
+          console.error('Error al registrar el usuario', error);
+        },
+        complete: () => {
+          console.log('Registro de usuario completado');
+        }
+      });
     }
+    this.registerForm.reset();
   }
+
 
 }

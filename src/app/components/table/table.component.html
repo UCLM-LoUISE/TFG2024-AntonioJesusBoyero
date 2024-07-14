@@ -1,0 +1,50 @@
+<div class="tabla">
+
+  <app-table-title></app-table-title>
+
+  <table class="table table-hover table-ellipsis">
+    <thead>
+      <tr class="table-info">
+        <th *ngFor="let header of tableHeaders">{{ header.label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="!loading; else loadingTemplate">
+        <tr *ngFor="let row of displayedData">
+          <td *ngFor="let header of tableHeaders" [attr.title]="row[header.key]" [ngClass]="{'text-center': header.key === 'view' || header.key === 'edit' || header.key === 'delete'}">
+            <ng-container [ngSwitch]="header.key">
+              <span *ngSwitchCase="'view'">
+                <i class="bi bi-eye clickable-icon" (click)="onView(row['id'])"></i>
+              </span>
+              <span *ngSwitchCase="'edit'">
+                <i class="bi bi-pencil clickable-icon" (click)="onEdit(row['id'])"></i>
+              </span>
+              <span *ngSwitchCase="'delete'">
+                <i class="bi bi-trash clickable-icon" (click)="onDelete(row['id'])"></i>
+              </span>
+              <span *ngSwitchDefault>{{ row[header.key] }}</span>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <ng-template #loadingTemplate>
+    <tr>
+      <td colspan="7">
+        <div class="spinner-container">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <div class="pagination-controls">
+    <button class="btn btn-outline-primary" (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button class="btn btn-outline-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>

@@ -12,6 +12,11 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HomePage } from './pages/home/home.page';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainPage } from './pages/main/main.page';
+import { HttpClientModule } from '@angular/common/http';
+import { EstudiosComponent } from './pages/estudios/estudios.component';
+import { TableComponent } from './components/table/table.component';
+import { TableTitleComponent } from './components/table-title/table-title.component';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +29,16 @@ import { MainPage } from './pages/main/main.page';
     HomePage,
     RegisterComponent,
     MainPage,
+    EstudiosComponent,
+    TableComponent,
+    TableTitleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
