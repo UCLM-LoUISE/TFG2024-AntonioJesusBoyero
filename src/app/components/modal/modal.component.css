@@ -1,0 +1,79 @@
+.modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  /* Ancho máximo del modal */
+  width: 100%;
+  text-align: center;
+}
+
+.error-message {
+  color: #f00;
+  font-size: 24px;
+  /* Tamaño del texto del mensaje de error */
+
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.red-icon {
+  color: red;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Modifica estas clases para ajustar la posición y el tamaño del botón, mensaje e icono */
+.large-font {
+  font-size: 1.5em;
+  text-align: center; /* Añade centrado al mensaje */
+  margin-top: 10px; /* Ajusta la distancia entre el botón y el mensaje */
+}
+
+.large-icon {
+  font-size: 2em; /* Aumenta el tamaño del icono según tus preferencias */
+}
+
+.modal-content {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.icon-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* Ajusta la posición superior del botón */
+  right: 10px;
+  font-size: 1.5em; /* Aumenta el tamaño del botón según tus preferencias */
+  cursor: pointer;
+}
+

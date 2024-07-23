@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EstudiosComponent } from './pages/estudios/estudios.component';
 import { TableComponent } from './components/table/table.component';
 import { TableTitleComponent } from './components/table-title/table-title.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TableTitleComponent } from './components/table-title/table-title.compon
     EstudiosComponent,
     TableComponent,
     TableTitleComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,51 +1,69 @@
-<div class="plan-session-background">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card mt-5">
-          <div class="card-body">
-            <h3 class="card-title text-center">Planificar Sesión de Campo</h3>
-            <form [formGroup]="planSessionForm" (ngSubmit)="onSubmit()">
-              <div class="form-group mb-3">
-                <label for="sessionName">Nombre de la Sesión</label>
-                <input type="text" id="sessionName" formControlName="sessionName" class="form-control" placeholder="Ingresa el nombre de la sesión">
-                <div *ngIf="planSessionForm.controls['sessionName'].invalid && planSessionForm.controls['sessionName'].touched" class="text-danger">
-                  Por favor, ingresa el nombre de la sesión.
-                </div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="sessionDate">Fecha de la Sesión</label>
-                <input type="date" id="sessionDate" formControlName="sessionDate" class="form-control">
-                <div *ngIf="planSessionForm.controls['sessionDate'].invalid && planSessionForm.controls['sessionDate'].touched" class="text-danger">
-                  Por favor, ingresa la fecha de la sesión.
-                </div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="duration">Duración Estimada (horas)</label>
-                <input type="number" id="duration" formControlName="duration" class="form-control" placeholder="Ingresa la duración estimada en horas">
-                <div *ngIf="planSessionForm.controls['duration'].invalid && planSessionForm.controls['duration'].touched" class="text-danger">
-                  Por favor, ingresa la duración estimada de la sesión (mínimo 1 hora).
-                </div>
-              </div>
-              <div class="form-group mb-3">
-                <label for="studyType">Tipo de Estudio</label>
-                <select id="studyType" formControlName="studyType" class="form-control">
-                  <option value="">Selecciona el tipo de estudio</option>
-                  <option value="type1">Tipo de Estudio 1</option>
-                  <option value="type2">Tipo de Estudio 2</option>
-                  <option value="type3">Tipo de Estudio 3</option>
-                </select>
-                <div *ngIf="planSessionForm.controls['studyType'].invalid && planSessionForm.controls['studyType'].touched" class="text-danger">
-                  Por favor, selecciona el tipo de estudio.
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary" routerLink="/LeafletComponent">Siguiente</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+<div class="container mt-4" [formGroup]="sessionForm">
+  <div class="title">
+    <h3>Crear nueva sesión</h3>
+  </div>
+
+  <div class="primera_fila">
+    <div style="width: 20%;">
+      <label for="sessionName">Nombre</label>
+      <input type="text" class="form-control" id="sessionName" formControlName="sessionName"
+        placeholder="Ingresa el nombre">
+    </div>
+    <div style="width: 20%;">
+      <label for="startDate">Fecha de Inicio</label>
+      <input type="date" class="form-control" id="startDate" formControlName="startDate">
+    </div>
+    <div style="width: 20%;">
+      <label for="endDate">Fecha de Fin</label>
+      <input type="date" class="form-control" id="endDate" formControlName="endDate">
     </div>
   </div>
+
+
+  <div class="segunda_fila">
+    <div style="width: 20%;">
+      <label for="sessionType">Tipo de Sesión</label>
+      <select class="form-control" id="sessionType" formControlName="sessionType">
+        <option value="">Selecciona el tipo de sesión</option>
+        <option value="Recogida">Recogida</option>
+        <option value="Plantación">Plantación</option>
+        <option value="Revisión">Revisión</option>
+      </select>
+    </div>
+    <div style="width: 20%;">
+      <label for="duration">Duración Estimada (horas)</label>
+      <input type="number" class="form-control" id="duration" formControlName="duration"
+        placeholder="Ingresa la duración estimada en horas">
+    </div>
+    <div style="width: 20%;">
+      <label for="province">Provincia</label>
+      <select class="form-control" id="province" formControlName="province">
+        <option value="">Selecciona la provincia</option>
+        <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="tercera_fila">
+    <div style="width: 60%;">
+      <label for="notes">Notas Adicionales</label>
+      <textarea class="form-control" id="notes" formControlName="notes"
+        placeholder="Ingresa cualquier información adicional relevante"></textarea>
+    </div>
+  </div>
+
+  <div class="boton_fila text-end">
+    <button type="button" class="btn btn-primary mt-3" (click)="onSubmit()"
+      routerLink="/LeafletComponent" [disabled]="!sessionForm.valid">Siguiente</button>
+  </div>
+</div>
+
+
+<div *ngIf="selectZone">
+  <app-leaflet></app-leaflet>
+</div>
+
+
+<div *ngIf="showModal">
+  <app-modal (closeModalEvent)="this.showModal = false"></app-modal>
 </div>

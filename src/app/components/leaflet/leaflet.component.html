@@ -1,4 +1,35 @@
-
 <div class="contenedor-flex">
+  <div class="form-container">
+    <div class="controls">
+
+      <div class="control-group">
+        <label for="figureType">Tipo de Figura</label>
+        <select id="figureType" [(ngModel)]="selectedFigureType">
+          <option value="circle">Círculo</option>
+          <option value="polygon">Libre</option>
+        </select>
+      </div>
+
+      <div class="line"></div>
+
+      <div *ngIf="selectedFigureType === 'circle'" class="control-group">
+        <label for="centerCoords">Coordenada Central</label>
+        <input id="centerCoords" type="text" [(ngModel)]="centerCoords" placeholder="Ej: 40.4168, -3.7038">
+      </div>
+
+      <div class="line"></div>
+
+      <div *ngIf="selectedFigureType === 'circle'" class="control-group">
+        <label for="radius">Radio (metros)</label>
+        <input id="radius" type="number" [(ngModel)]="radius">
+      </div>
+    </div>
+    <div class="boton_fila text-end">
+      <button type="button" class="btn btn-primary mt-3"  [disabled]="!formValid()" (click)="addCircleToMap()">Añadir al mapa</button>
+    </div>
+  </div>
+</div>
+
+<div class="contenedor-flex" style="margin-top: 20px;">
   <div id="map"></div>
 </div>

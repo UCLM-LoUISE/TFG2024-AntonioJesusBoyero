@@ -1,42 +1,32 @@
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-.card {
-  border: none;
+.container {
+  width: 90%;
+  padding: 20px;
+  height: auto;
+  margin: 0 auto;
+  border: 3px solid seagreen;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: #dcdcdc; /* Color de fondo gris claro para el contenedor */
   border-radius: 20px;
-  padding: 20px; /* Reducir el padding del contenedor */
 }
 
-.card-title {
-  margin-bottom: 15px; /* Reducir el margen inferior del título */
+.primera_fila, .segunda_fila, .tercera_fila {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
-.form-group {
-  margin-bottom: 10px; /* Reducir el margen inferior de los grupos de formularios */
+.boton_fila {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.form-control {
-  padding: 5px 10px; /* Reducir el padding de los campos del formulario */
-  width: 100%; /* Asegurar que el ancho sea del 100% */
-}
-
-.btn-primary {
-  background-color: #191b19;
-  border: none;
-  transition: transform 0.2s, background-color 0.2s; /* Añadir transición para el color de fondo también */
-}
-
-.btn-primary:hover:not(:disabled) {
-  transform: scale(1.05); /* Aumentar el tamaño en un 5% */
-}
-
-.btn-primary:active,
-.btn-primary:focus {
-  background-color: #191b19; /* Mantener el mismo color cuando se presiona */
-  box-shadow: none; /* Eliminar la sombra del foco */
-}
-
-.btn-primary:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { LeafletMouseEvent } from 'leaflet';
+import { provincesCoordinates } from '../plan-session/config/provincias';
 
 @Component({
   selector: 'app-leaflet',
@@ -9,27 +10,40 @@ import { LeafletMouseEvent } from 'leaflet';
 })
 export class LeafletComponent implements OnInit {
 
-  selectedShape: string = 'marker';
-  points: string = '';
-  radio: number = 0;
-  drawnItems: L.FeatureGroup = L.featureGroup();
+  // Coordenadas de Madrid, usadas por defecto
+  defaultCoords: [number, number] = provincesCoordinates["Madrid"];
 
-  // capas para los mapas
+  // Atributos para pintar circulo
+  selectedFigureType: string = 'circle';
+  centerCoords: string = '';
+  radius: number = 0;
+
+
+  // capas para los mapas, mirar el más adecuado para regiones de campo
   layerSat: string = 'https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=5bZ97ZcuK0747A5ZdRdM'
   layerOpen: string = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+
+  map!: L.Map;
 
   constructor() { }
 
   ngOnInit(): void {
-    const map = this.initializeMap();
-    this.addTileLayer(map);
-    this.addPolygon(map);
-    this.setupClickEvent(map);
+    this.map = this.initializeMap();
+    this.addTileLayer(this.map);
+    this.setupClickEvent(this.map);
   }
 
-  private initializeMap(): L.Map {
-    return L.map('map').setView([38.9944, -1.8585], 13);
+  private initializeMap(coords?: any): L.Map {
+    // if (coords != undefined){
+    //   return L.map('map').setView(coords, 13);
+    // }else{
+    //   return L.map('map').setView(this.defaultCoords, 13);
+    // }
+
+    return L.map('map').setView(this.defaultCoords, 13);
+
   }
+
 
   private addTileLayer(map: L.Map): void {
     L.tileLayer(this.layerOpen, {
@@ -40,23 +54,26 @@ export class LeafletComponent implements OnInit {
 
   private setupClickEvent(map: L.Map): void {
     map.on('click', (e: LeafletMouseEvent) => {
-      alert("You clicked the map at " + e.latlng);
+      // alert("You clicked the map at " + e.latlng);
+      console.log("You clicked the map at " + e.latlng);
+
     });
   }
 
-  private addPolygon(map: L.Map): void {
-    const polygon = L.polygon([
-      [38.997024, -1.856819],
-      [38.996824, -1.855704],
-      [38.99594, -1.855918],
-      [38.995928, -1.856642]
-    ], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5
-    }).addTo(map);
 
-    polygon.bindPopup('Este es tu poligono').openPopup();
+  addCircleToMap() {
+    const [lat, lng] = this.centerCoords.split(',').map(coord => parseFloat(coord.trim()));
+    const circle = L.circle([lat, lng], { radius: this.radius }).addTo(this.map);
+    this.map.setView([lat, lng], 13); // Centrar el mapa en el círculo añadido
+  }
+
+  formValid() {
+    if (this.selectedFigureType === 'circle') {
+      return this.centerCoords && this.radius > 0;
+    } else {
+      // Implement validation logic for polygon
+      return false;
+    }
   }
 
 

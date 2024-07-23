@@ -1,17 +1,83 @@
 #map {
-  height: 400px;
-  width: 700px;
+  height: 500px;
+  width: 80%;
   border: 2px solid #000;
 }
 
-.margen{
+.margen {
   margin-bottom: 50px;
 }
 
 .contenedor-flex {
+  width: 100%;
   margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.boton_fila {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-container {
+  width: 80%;
+  margin-bottom: 20px;
+  /* padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9; */
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 10px;
+  position: relative;
+}
+
+
+
+.controls label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.controls input,
+.controls select {
+  padding: 5px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.line{
+  height: 60px;
+  border: 1px solid ;
+}
