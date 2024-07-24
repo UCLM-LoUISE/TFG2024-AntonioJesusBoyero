@@ -1,0 +1,7 @@
+<div *ngIf="!formularioCompleto; else planSessionTemplate">
+  <app-plan-session></app-plan-session>
+</div>
+
+<ng-template #planSessionTemplate>
+  <app-leaflet></app-leaflet>
+</ng-template>

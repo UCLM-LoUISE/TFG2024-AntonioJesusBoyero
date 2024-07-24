@@ -16,6 +16,16 @@
   align-items: center;
 }
 
+.contenedor_mapa {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 35px;
+}
+
 .boton_fila {
   display: flex;
   justify-content: center;

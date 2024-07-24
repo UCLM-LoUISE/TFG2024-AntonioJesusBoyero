@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { provincesCoordinates, provincias } from './config/provincias';
+import { NuevoEstudioPage } from 'src/app/pages/nuevo-estudio/page/nuevo-estudio.page';
 
 @Component({
   selector: 'app-plan-session',
@@ -42,10 +43,15 @@ export class PlanSessionComponent {
 
   onSubmit(): void {
     if (this.sessionForm.valid) {
-      console.log(this.sessionForm.value);
-      this.selectedProvince = this.sessionForm.value.province;
-      this.initialCoordinates = this.getCoordenadasProvincia(this.selectedProvince);
-      console.log(this.initialCoordinates);
+      NuevoEstudioPage.Instance.setFormularioCompleto(true);
+      NuevoEstudioPage.Instance.setInfoEstudio(this.sessionForm.value)
+
+      // console.log(this.sessionForm.value);
+
+      // Esto sera la inicilizacion del mapa dependiendo de la provincia que seleccionemos
+      // this.selectedProvince = this.sessionForm.value.province;
+      // this.initialCoordinates = this.getCoordenadasProvincia(this.selectedProvince);
+      // console.log(this.initialCoordinates);
       this.selectZone = true;
     } else {
       // this.showModal = true;

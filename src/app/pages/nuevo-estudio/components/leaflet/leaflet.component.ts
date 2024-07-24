@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { provincesCoordinates } from '../plan-session/config/provincias';
+import { Circulo } from '../../interface/circulo';
+import { FiguraTipo } from '../../enum/figuras';
+import { NuevoEstudioPage } from '../../page/nuevo-estudio.page';
 
 @Component({
   selector: 'app-leaflet',
@@ -12,17 +15,14 @@ export class LeafletComponent implements OnInit {
 
   // Coordenadas de Madrid, usadas por defecto
   defaultCoords: [number, number] = provincesCoordinates["Madrid"];
-
   // Atributos para pintar circulo
   selectedFigureType: string = 'circle';
   centerCoords: string = '';
   radius: number = 0;
-
-
+  circulos: Circulo[] = [];
   // capas para los mapas, mirar el más adecuado para regiones de campo
   layerSat: string = 'https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=5bZ97ZcuK0747A5ZdRdM'
   layerOpen: string = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
-
   map!: L.Map;
 
   constructor() { }
@@ -34,6 +34,8 @@ export class LeafletComponent implements OnInit {
   }
 
   private initializeMap(coords?: any): L.Map {
+    // AQUI TENDREMOS QUE CONFIGURAR QUE EL MAPA SE CENTRE CUANDO EL USUARIO EN EL ANTERIOR PASO SELECCIONE LA PROVINCIA
+
     // if (coords != undefined){
     //   return L.map('map').setView(coords, 13);
     // }else{
@@ -63,8 +65,17 @@ export class LeafletComponent implements OnInit {
 
   addCircleToMap() {
     const [lat, lng] = this.centerCoords.split(',').map(coord => parseFloat(coord.trim()));
-    const circle = L.circle([lat, lng], { radius: this.radius }).addTo(this.map);
+    L.circle([lat, lng], { radius: this.radius }).addTo(this.map);
     this.map.setView([lat, lng], 13); // Centrar el mapa en el círculo añadido
+    // Crear el objeto círculo y añadirlo a la lista
+    const nuevoCirculo: Circulo = {
+      tipo: FiguraTipo.Circulo,
+      coordenadas: [lat, lng],
+      radio: this.radius
+    };
+    this.circulos.push(nuevoCirculo);
+    console.log(this.circulos);
+
   }
 
   formValid() {
@@ -74,6 +85,12 @@ export class LeafletComponent implements OnInit {
       // Implement validation logic for polygon
       return false;
     }
+  }
+
+
+  onSubmit(): void {
+    NuevoEstudioPage.Instance.setZonasEstudio(this.circulos)
+    NuevoEstudioPage.Instance.enviarEstudioToBack()
   }
 
 

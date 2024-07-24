@@ -25,11 +25,14 @@
       </div>
     </div>
     <div class="boton_fila text-end">
-      <button type="button" class="btn btn-primary mt-3"  [disabled]="!formValid()" (click)="addCircleToMap()">Añadir al mapa</button>
+      <button type="button" class="btn btn-primary mt-3" [disabled]="!formValid()" (click)="addCircleToMap()">Añadir al
+        mapa</button>
     </div>
   </div>
 </div>
 
-<div class="contenedor-flex" style="margin-top: 20px;">
+<div class="contenedor_mapa">
   <div id="map"></div>
+  <div style="margin-top: 25px;">
+    <button type="button" class="btn btn-primary" routerLink="/main" (click)="onSubmit()">Enviar</button>  </div>
 </div>
