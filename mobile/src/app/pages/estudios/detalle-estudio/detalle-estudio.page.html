@@ -1,0 +1,163 @@
+<ion-header class="header-moderno">
+  <ion-toolbar class="toolbar-moderno">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="" class="menu-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-moderno">Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" [fullscreen]="true" id="main-content">
+  <!-- Navegación superior con títulos -->
+  <div class="section-header">
+    <div class="section-nav">
+      <div class="nav-item" (click)="seccion = 'tareas'" [class.active]="seccion === 'tareas'">
+        <ion-icon name="list-outline"></ion-icon>
+        <span>Tareas</span>
+      </div>
+      <div class="nav-item" (click)="seccion = 'info'" [class.active]="seccion === 'info'">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <span>Info</span>
+      </div>
+      <div class="nav-item" (click)="seccion = 'zonas'" [class.active]="seccion === 'zonas'">
+        <ion-icon name="map-outline"></ion-icon>
+        <span>Zonas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido dinámico -->
+  <div class="content-wrapper">
+    <div class="slide-content" *ngIf="seccion === 'tareas'">
+      <div class="tareas-section" *ngIf="tareas.length > 0; else sinTareas">
+        <ion-card class="task-card" *ngFor="let tarea of tareas">
+          <ion-card-header>
+            <ion-card-title class="task-title">{{ tarea.nombreTarea }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="task-info">
+              <div class="info-row">
+                <ion-icon name="pricetag-outline"></ion-icon>
+                <span><strong>Tipo:</strong> {{ tarea.tipoTarea | formatearTipoTarea }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="location-outline"></ion-icon>
+                <span><strong>Zona:</strong> {{ tarea.zona }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span><strong>Fecha:</strong> {{ tarea.fecha | date:'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="info-row" *ngIf="tarea.notas">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span><strong>Notas:</strong> {{ tarea.notas }}</span>
+              </div>
+            </div>
+
+            <div class="task-actions">
+              <ion-button [disabled]="!puedoDescargarTarea" fill="outline" color="danger" (click)="descargarTarea(tarea)">
+                <ion-icon slot="start" name="download-outline"></ion-icon>
+                Descargar
+              </ion-button>
+
+              <ion-button fill="solid" color="success" (click)="empezarTarea(tarea)">
+                <ion-icon slot="start" name="play-circle-outline"></ion-icon>
+                Empezar
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <ng-template #sinTareas>
+        <div class="empty-state">
+          <ion-icon name="clipboard-outline" class="empty-icon"></ion-icon>
+          <h3>No hay tareas asignadas</h3>
+          <p>No tienes tareas asignadas en este estudio.</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="slide-content" *ngIf="seccion === 'info'">
+      <div class="info-section" *ngIf="estudio?.data?.NuevoEstudioFormData as info">
+
+        <div class="info-header">
+          <h2 class="study-name">{{ info.nombre }}</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-icon">
+              <ion-icon name="flag-outline"></ion-icon>
+            </div>
+            <div class="info-details">
+              <p class="info-label">Estado</p>
+              <p class="info-value">{{ info.estado }}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="info-details">
+              <p class="info-label">Fecha de inicio</p>
+              <p class="info-value">{{ info.fechaInicio | date:'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="info-details">
+              <p class="info-label">Fecha de fin</p>
+              <p class="info-value">{{ info.fechaFin ? (info.fechaFin | date:'dd/MM/yyyy') : 'No definida' }}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="info-details">
+              <p class="info-label">Provincia</p>
+              <p class="info-value">{{ info.provincia }}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <ion-icon name="business-outline"></ion-icon>
+            </div>
+            <div class="info-details">
+              <p class="info-label">Población</p>
+              <p class="info-value">{{ info.poblacion }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notes-section" *ngIf="info.notes">
+          <div class="notes-header">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <h3>Notas</h3>
+          </div>
+          <p class="notes-content">{{ info.notes }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-content" *ngIf="seccion === 'zonas'">
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicadores de navegación (dots) -->
+  <div class="dots-indicator">
+    <span class="dot" [class.active]="seccion === 'tareas'" (click)="seccion = 'tareas'"></span>
+    <span class="dot" [class.active]="seccion === 'info'" (click)="seccion = 'info'"></span>
+    <span class="dot" [class.active]="seccion === 'zonas'" (click)="seccion = 'zonas'"></span>
+  </div>
+</ion-content>

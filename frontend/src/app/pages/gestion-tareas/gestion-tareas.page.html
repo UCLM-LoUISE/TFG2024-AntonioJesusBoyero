@@ -1,0 +1,30 @@
+<div *ngIf="hayTareas">
+  <div class="separacion"></div>
+
+  <div class="page_container">
+
+    <div class="header-container">
+      <div class="new-task-container">
+        <span class="new-task-link" (click)="openModeCreateTaskLink()">Nueva tarea</span>
+      </div>
+    </div>
+
+    <app-title [titulo]="'TAREAS MUESTREOS'" [nombreEstudio]="nombreEstudio"></app-title>
+
+    <app-table-main [tableHeaders]="taskTableHeaders" [tableData]="taskTableData" [tableType]="tipoTabla"
+      [rowsPerPage]="5" style="text-align: center;"></app-table-main>
+
+    <div class="button_container" style="margin-top: 30px; margin-bottom: 30px">
+      <button class="btn btn-primary" (click)="submit()">
+        <span *ngIf="!cargando">Enviar estudio</span>
+        <span *ngIf="cargando">
+          <i class="spinner-border spinner-border-sm"></i> Enviando...
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-modal-crear-tareas (confirmAction)="closeModal()"></app-modal-crear-tareas>
+
+<app-modal-v2 [tipoModal]="eliminar"></app-modal-v2>

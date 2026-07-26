@@ -1,0 +1,131 @@
+/* Contenedor principal del calendario */
+.calendar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  /* Fuente Roboto para todo el modal */
+
+  /* overflow: hidden;
+  position: relative; */
+}
+
+/* .calendar-slider {
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-left {
+  transform: translateX(100%);
+}
+
+.slide-right {
+  transform: translateX(-100%);
+} */
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Botones para cambiar de mes */
+.calendar-button {
+  font-size: 50px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 12px;
+  margin: 0 20px;
+  color: #333;
+}
+
+.calendar-button:hover {
+  color: #f50808;
+  /* Cambiar color al pasar el ratón */
+}
+
+/* Contenido del calendario */
+.calendar-content {
+  width: 80%;
+  /* Reducir ancho al 80% */
+  text-align: center;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-header i {
+  font-size: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.calendar-header i:hover {
+  transform: scale(1.2);
+  /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+
+.calendar {
+  width: 100%;
+  /* Ocupa el 100% del contenedor */
+  border-collapse: collapse;
+}
+
+.calendar th,
+.calendar td {
+  width: 14.28%;
+  /* 100% / 7 días */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.calendar td {
+  cursor: pointer;
+}
+
+.calendar td:hover {
+  background-color: #f50808;
+  color: #fff;
+}
+
+
+.calendar td.has-studies {
+  background-color: #c0f6a7;
+  /* Color de fondo para días con estudios */
+  position: relative;
+}
+
+.calendar td.has-studies:hover {
+  background-color: #c3e6cb;
+  /* Cambia el color al pasar el ratón */
+}
+
+.calendar .study-count {
+  display: block;
+  font-size: 0.8rem;
+  color: #007bff;
+  margin-top: 5px;
+}
+
+input[type="month"] {
+  text-transform: uppercase;
+}
+
+.input-large {
+  width: 250px;
+  font-size: 16px;
+}
+
+
+

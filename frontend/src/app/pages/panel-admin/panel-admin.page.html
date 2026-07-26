@@ -1,0 +1,26 @@
+<div class="admin-wrapper" *ngIf="!loading; else blanco">
+  <!-- Título -->
+  <div class="page-title">
+    <h1>Panel de administración</h1>
+  </div>
+
+  <!-- Toggle Usuarios / Grupos -->
+  <div class="segment-wrapper">
+    <div class="segment">
+      <button class="seg-btn" [class.active]="vista === 'usuarios'" (click)="cambiarVista('usuarios')">Usuarios</button>
+      <button class="seg-btn" [class.active]="vista === 'grupos'" (click)="cambiarVista('grupos')">Grupos</button>
+    </div>
+  </div>
+
+  <div [@fadeInOut] *ngIf="vista==='usuarios'">
+    <app-admin-usuarios></app-admin-usuarios>
+  </div>
+  <div [@fadeInOut] *ngIf="vista==='grupos'">
+    <app-admin-grupos></app-admin-grupos>
+  </div>
+</div>
+
+<ng-template #blanco>
+  <!-- Pantalla en blanco (o spinner si prefieres) -->
+  <div style="min-height:40vh"></div>
+</ng-template>

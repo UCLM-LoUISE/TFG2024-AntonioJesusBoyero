@@ -1,0 +1,10 @@
+
+
+<div>
+  <app-header *ngIf="shouldDisplayLayout()"></app-header>
+  <main [ngClass]="[shouldDisplayLayout() ? 'default-padding' : 'login-padding', adminBg ? 'admin-bg' : '']">
+    <router-outlet></router-outlet>
+    <app-inactivity-modal></app-inactivity-modal>
+  </main>
+  <app-footer *ngIf="shouldDisplayLayout()"></app-footer>
+</div>

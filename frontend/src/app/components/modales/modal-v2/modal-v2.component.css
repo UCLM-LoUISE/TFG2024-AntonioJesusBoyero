@@ -1,0 +1,15 @@
+.size{
+  font-size: 22px;
+}
+
+.modal-content {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.btn-close {
+  width: 20px; /* Ancho más pequeño */
+  height: 20px; /* Alto más pequeño */
+  padding: 0; /* Sin padding */
+  margin-right: 5px; /* Ajuste del margen derecho */
+}

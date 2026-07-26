@@ -1,0 +1,83 @@
+/* ============================== ESTUDIOS ============================== */
+
+.container {
+  --background: var(--app-bg);
+  background:
+    radial-gradient(120% 55% at 50% -10%, rgba(var(--brand-rgb), 0.10) 0%, rgba(var(--brand-rgb), 0) 60%),
+    var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.75rem 1.5rem 1.5rem;
+}
+
+.header_h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--brand-strong);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  padding: 0.5rem 1.25rem 2rem;
+}
+
+/* Enlaces convertidos en tarjetas-acción */
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+  padding: 1.15rem 1.3rem;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.link ion-icon {
+  font-size: 1.5rem;
+  color: #fff;
+  background: var(--grad-brand);
+  border-radius: var(--r-sm);
+  padding: 0.55rem;
+  box-shadow: var(--shadow-brand);
+}
+
+.link:active {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(var(--brand-rgb), 0.35);
+}
+
+/* Selector de filtro (si se usa) */
+.filter-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+ion-select { width: 150px; }

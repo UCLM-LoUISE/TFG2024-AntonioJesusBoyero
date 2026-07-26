@@ -1,0 +1,60 @@
+<div class="modal fade bd-example-modal-lg" id="configuracionEstudio" tabindex="-1" role="dialog"
+  aria-labelledby="myLargeModalLabel">
+
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: solid 2px;">
+        <h5 class="modal-title text-center" id="exampleModalLabel">CONFIGURACIÓN
+          <i class="bi bi-info-circle info-icon" data-bs-toggle="tooltip" data-bs-placement="right"
+            title="En esta pantalla puedes gestionar los permisos de acceso al estudio, permitiendo que otros usuarios puedan visualizar o modificar los datos."></i>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body size">
+
+        <!-- Contenedor para alinear el buscador y la lista -->
+        <div class="form-group d-flex align-items-center position-relative search-container">
+          <label class="col-form-label me-2">Añadir</label>
+
+          <!-- Input de búsqueda con menor tamaño -->
+          <input type="text" class="form-control form-control-sm search-input" placeholder="Buscar..."
+            [(ngModel)]="filtro">
+
+          <!-- Lista de sugerencias alineada a la derecha -->
+          <div *ngIf="trabajadoresFiltrados.length > 0" class="search-suggestions">
+            <ul class="list-group">
+              <li *ngFor="let trabajador of trabajadoresFiltrados" class="list-group-item small-text"
+                (click)="addTrabajador(trabajador)">
+                {{ trabajador.nombreCompleto }} ({{ trabajador.email }})
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <!-- Lista de trabajadores asignados -->
+        <div class="selected-workers mt-3">
+          <span *ngFor="let trabajador of trabajadoresSeleccionados" class="selected-worker">
+            {{ trabajador.nombreCompleto }}
+            <button *ngIf="trabajador.email !== usuarioCreador.email" type="button" class="btn btn-danger btn-sm"
+              (click)="removeTrabajador(trabajador.email)">
+              <i class="bi bi-x"></i>
+            </button>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="modal-footer" style="border-top: solid 2px;">
+        <button type="button" class="btn btn-primary" (click)="addTrabajadores()" [disabled]="cargandoGuardado">
+          <span *ngIf="!cargandoGuardado">Guardar</span>
+          <span *ngIf="cargandoGuardado">
+            <i class="spinner-border spinner-border-sm"></i> Guardando...
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

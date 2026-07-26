@@ -1,0 +1,30 @@
+h3,
+a {
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title_page {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.tittle_content {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.nombre_estudio {
+  color: #007bff; /* Azul similar al de Bootstrap */
+  font-weight: bold; /* Opcional: para darle más peso */
+}

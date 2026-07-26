@@ -1,0 +1,28 @@
+<div class="calendar-container " [ngClass]="{'fade-out': isTransitioning}">
+  <!-- <div class="calendar-container calendar-slider" [ngClass]="{'slide-left': isSliding === 'next', 'slide-right': isSliding === 'prev'}"> -->
+  <button class="calendar-button" (click)="changeMonth('prev')">&#60;</button>
+
+  <div class="calendar-content">
+
+    <div class="calendar-header">
+      <span>{{ currentMonthName | uppercase }} {{ currentYear }}</span>
+    </div>
+
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th *ngFor="let day of weekDays">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of weeks">
+          <td *ngFor="let day of week" [ngClass]="{'has-studies': day.count > 0}" (click)="selectDay(day.day)">
+            <span *ngIf="day.day">{{ day.day }}</span>
+            <small *ngIf="day.count > 0" class="study-count">{{ day.count }}</small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="calendar-button" (click)="changeMonth('next')">&#62;</button>
+</div>

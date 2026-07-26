@@ -1,0 +1,17 @@
+<div class="modal fade" id="inactivityModal" tabindex="-1" aria-labelledby="inactivityModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content inactivity-modal">
+      <div class="modal-header">
+        <h5 class="modal-title inactivity-title" id="inactivityModalLabel">Control de inactividad</h5>
+      </div>
+      <div class="modal-body inactivity-message">
+        Tu sesión está a punto de cerrarse.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg inactivity-buttons" (click)="onConfirm()">Estoy aquí</button>
+        <button type="button" class="btn btn-danger btn-lg inactivity-buttons" (click)="onCancel()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+.tabla {
+  padding: 20px;
+  width: 94%; /* Ocupa el 80% del ancho de la pantalla */
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.clickable-icon {
+  font-size: 1.5em; /* Ajusta el tamaño del icono */
+  cursor: pointer; /* Cambia el cursor a pointer para indicar que es clicable */
+  margin: 0 5px; /* Añade un poco de margen entre los iconos */
+}
+
+.clickable-icon:hover {
+  color: #007bff; /* Cambia el color del icono al pasar el ratón por encima (opcional) */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Cambia el color de fondo cuando pasas el ratón sobre una fila */
+}
+
+.size {
+  font-size: 16px;
+}
+
+.modal-content {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-muted {
+  font-style: italic;
+  font-family: "Roboto", sans-serif;
+  color: #dc3545 !important;
+
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.disabled-icon {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+

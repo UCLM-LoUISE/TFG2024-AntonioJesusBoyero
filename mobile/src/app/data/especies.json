@@ -1,0 +1,1682 @@
+{
+  "ES-CS": {
+    "provinceName": "Castellón",
+    "species": [
+      {
+        "scientificName": "Taxus baccata L.",
+        "vernacularNameEs": "Tejo",
+        "taxonKey": 5284517,
+        "occurrenceCount": 278
+      },
+      {
+        "scientificName": "Rubia peregrina L.",
+        "vernacularNameEs": "Rubia silvestre o Rubia brava",
+        "taxonKey": 2892347,
+        "occurrenceCount": 154
+      },
+      {
+        "scientificName": "Ceterach officinarum Willd.",
+        "vernacularNameEs": "Doradilla",
+        "taxonKey": 5275006,
+        "occurrenceCount": 139
+      },
+      {
+        "scientificName": "Asplenium trichomanes subsp. quadrivalens D.E.Mey.",
+        "vernacularNameEs": "Culantrillo menudo",
+        "taxonKey": 7610857,
+        "occurrenceCount": 135
+      },
+      {
+        "scientificName": "Equisetum ramosissimum Desf.",
+        "vernacularNameEs": "Cola de caballo o Pinillo",
+        "taxonKey": 2687940,
+        "occurrenceCount": 129
+      }
+    ]
+  },
+  "ES-T": {
+    "provinceName": "Tarragona",
+    "species": [
+      {
+        "scientificName": "Rubia peregrina L.",
+        "vernacularNameEs": "Wild Madder",
+        "taxonKey": 2892347,
+        "occurrenceCount": 304
+      },
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 293
+      },
+      {
+        "scientificName": "Sonchus tenerrimus L.",
+        "vernacularNameEs": "Slender sowthistle",
+        "taxonKey": 3105768,
+        "occurrenceCount": 269
+      },
+      {
+        "scientificName": "Asparagus acutifolius L.",
+        "vernacularNameEs": "Wild Asparagus",
+        "taxonKey": 2768995,
+        "occurrenceCount": 224
+      },
+      {
+        "scientificName": "Smilax aspera L.",
+        "vernacularNameEs": "Common Smilax",
+        "taxonKey": 5295044,
+        "occurrenceCount": 224
+      }
+    ]
+  },
+  "ES-LE": {
+    "provinceName": "León",
+    "species": [
+      {
+        "scientificName": "Genista florida L.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347816,
+        "occurrenceCount": 470
+      },
+      {
+        "scientificName": "Calluna vulgaris (L.) Hull",
+        "vernacularNameEs": "Heather",
+        "taxonKey": 2882482,
+        "occurrenceCount": 328
+      },
+      {
+        "scientificName": "Avenula sulcata (J.Gay ex Boiss.) Dumort.",
+        "vernacularNameEs": "",
+        "taxonKey": 4148038,
+        "occurrenceCount": 324
+      },
+      {
+        "scientificName": "Vaccinium myrtillus L.",
+        "vernacularNameEs": "Bilberry",
+        "taxonKey": 2882833,
+        "occurrenceCount": 308
+      },
+      {
+        "scientificName": "Quercus pyrenaica Willd.",
+        "vernacularNameEs": "Pyrenean Oak",
+        "taxonKey": 2878826,
+        "occurrenceCount": 302
+      }
+    ]
+  },
+  "ES-OR": {
+    "provinceName": "Ourense",
+    "species": [
+      {
+        "scientificName": "Erica arborea L.",
+        "vernacularNameEs": "Tree Heath",
+        "taxonKey": 5333410,
+        "occurrenceCount": 95
+      },
+      {
+        "scientificName": "Arbutus unedo L.",
+        "vernacularNameEs": "Strawberry-tree",
+        "taxonKey": 2882803,
+        "occurrenceCount": 87
+      },
+      {
+        "scientificName": "Erica cinerea L.",
+        "vernacularNameEs": "Scotch heath",
+        "taxonKey": 5333411,
+        "occurrenceCount": 75
+      },
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 71
+      },
+      {
+        "scientificName": "Teucrium scorodonia L.",
+        "vernacularNameEs": "Woodland germander",
+        "taxonKey": 2926901,
+        "occurrenceCount": 64
+      }
+    ]
+  },
+  "ES-LU": {
+    "provinceName": "Lugo",
+    "species": [
+      {
+        "scientificName": "Quercus robur L.",
+        "vernacularNameEs": "English oak",
+        "taxonKey": 2878688,
+        "occurrenceCount": 232
+      },
+      {
+        "scientificName": "Pteridium aquilinum (L.) Kuhn",
+        "vernacularNameEs": "Bracken",
+        "taxonKey": 5275012,
+        "occurrenceCount": 231
+      },
+      {
+        "scientificName": "Lonicera periclymenum L.",
+        "vernacularNameEs": "European honeysuckle",
+        "taxonKey": 5334277,
+        "occurrenceCount": 220
+      },
+      {
+        "scientificName": "Corylus avellana L.",
+        "vernacularNameEs": "Common filbert",
+        "taxonKey": 2875979,
+        "occurrenceCount": 217
+      },
+      {
+        "scientificName": "Ilex aquifolium L.",
+        "vernacularNameEs": "English holly",
+        "taxonKey": 5414222,
+        "occurrenceCount": 214
+      }
+    ]
+  },
+  "ES-PO": {
+    "provinceName": "Pontevedra",
+    "species": [
+      {
+        "scientificName": "Pteridium aquilinum (L.) Kuhn",
+        "vernacularNameEs": "Bracken",
+        "taxonKey": 5275012,
+        "occurrenceCount": 198
+      },
+      {
+        "scientificName": "Quercus robur L.",
+        "vernacularNameEs": "English oak",
+        "taxonKey": 2878688,
+        "occurrenceCount": 167
+      },
+      {
+        "scientificName": "Hypochaeris radicata L.",
+        "vernacularNameEs": "Hairy cat's ear",
+        "taxonKey": 3093702,
+        "occurrenceCount": 145
+      },
+      {
+        "scientificName": "Ulex europaeus L.",
+        "vernacularNameEs": "Common gorse",
+        "taxonKey": 2951984,
+        "occurrenceCount": 135
+      },
+      {
+        "scientificName": "Plantago lanceolata L.",
+        "vernacularNameEs": "Narrowleaf plantain",
+        "taxonKey": 8208358,
+        "occurrenceCount": 133
+      }
+    ]
+  },
+  "ES-C": {
+    "provinceName": "A Coruña",
+    "species": [
+      {
+        "scientificName": "Pteridium aquilinum (L.) Kuhn",
+        "vernacularNameEs": "Bracken",
+        "taxonKey": 5275012,
+        "occurrenceCount": 123
+      },
+      {
+        "scientificName": "Quercus robur L.",
+        "vernacularNameEs": "English oak",
+        "taxonKey": 2878688,
+        "occurrenceCount": 119
+      },
+      {
+        "scientificName": "Lonicera periclymenum L.",
+        "vernacularNameEs": "European honeysuckle",
+        "taxonKey": 5334277,
+        "occurrenceCount": 96
+      },
+      {
+        "scientificName": "Laurus nobilis L.",
+        "vernacularNameEs": "Bay",
+        "taxonKey": 3034015,
+        "occurrenceCount": 90
+      },
+      {
+        "scientificName": "Teucrium scorodonia L.",
+        "vernacularNameEs": "Woodland germander",
+        "taxonKey": 2926901,
+        "occurrenceCount": 85
+      }
+    ]
+  },
+  "ES-O": {
+    "provinceName": "Asturias",
+    "species": [
+      {
+        "scientificName": "Fagus sylvatica L.",
+        "vernacularNameEs": "European beech",
+        "taxonKey": 2882316,
+        "occurrenceCount": 246
+      },
+      {
+        "scientificName": "Calluna vulgaris (L.) Hull",
+        "vernacularNameEs": "Heather",
+        "taxonKey": 2882482,
+        "occurrenceCount": 228
+      },
+      {
+        "scientificName": "Erica arborea L.",
+        "vernacularNameEs": "Tree Heath",
+        "taxonKey": 5333410,
+        "occurrenceCount": 201
+      },
+      {
+        "scientificName": "Vaccinium myrtillus L.",
+        "vernacularNameEs": "Bilberry",
+        "taxonKey": 2882833,
+        "occurrenceCount": 198
+      },
+      {
+        "scientificName": "Festuca rubra L.",
+        "vernacularNameEs": "Red fescue",
+        "taxonKey": 2704922,
+        "occurrenceCount": 197
+      }
+    ]
+  },
+  "ES-S": {
+    "provinceName": "Cantabria",
+    "species": [
+      {
+        "scientificName": "Erica vagans L.",
+        "vernacularNameEs": "Cornish heath",
+        "taxonKey": 5333408,
+        "occurrenceCount": 236
+      },
+      {
+        "scientificName": "Genista hispanica subsp. occidentalis Rouy",
+        "vernacularNameEs": "",
+        "taxonKey": 5347764,
+        "occurrenceCount": 185
+      },
+      {
+        "scientificName": "Calluna vulgaris (L.) Hull",
+        "vernacularNameEs": "Heather",
+        "taxonKey": 2882482,
+        "occurrenceCount": 172
+      },
+      {
+        "scientificName": "Fagus sylvatica L.",
+        "vernacularNameEs": "European beech",
+        "taxonKey": 2882316,
+        "occurrenceCount": 164
+      },
+      {
+        "scientificName": "Corylus avellana L.",
+        "vernacularNameEs": "Common filbert",
+        "taxonKey": 2875979,
+        "occurrenceCount": 162
+      }
+    ]
+  },
+  "ES-BI": {
+    "provinceName": "Bizkaia",
+    "species": [
+      {
+        "scientificName": "Stegnogramma pozoi (Lag.) K.Iwats.",
+        "vernacularNameEs": "",
+        "taxonKey": 9021300,
+        "occurrenceCount": 190
+      },
+      {
+        "scientificName": "Woodwardia radicans (L.) Sm.",
+        "vernacularNameEs": "Rooting chainfern",
+        "taxonKey": 5275359,
+        "occurrenceCount": 123
+      },
+      {
+        "scientificName": "Cortaderia selloana (Schult. & Schult.f.) Asch. & Graebn.",
+        "vernacularNameEs": "Pampas-grass",
+        "taxonKey": 2704523,
+        "occurrenceCount": 86
+      },
+      {
+        "scientificName": "Paspalum dilatatum Poir.",
+        "vernacularNameEs": "Dallisgrass",
+        "taxonKey": 2705565,
+        "occurrenceCount": 66
+      },
+      {
+        "scientificName": "Robinia pseudoacacia L.",
+        "vernacularNameEs": "Black locust",
+        "taxonKey": 5352251,
+        "occurrenceCount": 62
+      }
+    ]
+  },
+  "ES-VI": {
+    "provinceName": "Álava",
+    "species": [
+      {
+        "scientificName": "Narcissus minor var. minimus (Haw.) Pugsley",
+        "vernacularNameEs": "",
+        "taxonKey": 2858413,
+        "occurrenceCount": 132
+      },
+      {
+        "scientificName": "Asplenium trichomanes subsp. pachyrachis (Christ) Lovis & Reichst.",
+        "vernacularNameEs": "Lobed maidenhair spleenwort",
+        "taxonKey": 7422046,
+        "occurrenceCount": 95
+      },
+      {
+        "scientificName": "Genista teretifolia Willk.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347581,
+        "occurrenceCount": 78
+      },
+      {
+        "scientificName": "Narcissus pseudonarcissus subsp. pseudonarcissus",
+        "vernacularNameEs": "Daffodil",
+        "taxonKey": 7227584,
+        "occurrenceCount": 73
+      },
+      {
+        "scientificName": "Arbutus unedo L.",
+        "vernacularNameEs": "Strawberry-tree",
+        "taxonKey": 2882803,
+        "occurrenceCount": 53
+      }
+    ]
+  },
+  "ES-SS": {
+    "provinceName": "Gipuzkoa",
+    "species": [
+      {
+        "scientificName": "Rubus ulmifolius Schott",
+        "vernacularNameEs": "Elmleaf blackberry",
+        "taxonKey": 2996929,
+        "occurrenceCount": 58
+      },
+      {
+        "scientificName": "Stegnogramma pozoi (Lag.) K.Iwats.",
+        "vernacularNameEs": "",
+        "taxonKey": 9021300,
+        "occurrenceCount": 46
+      },
+      {
+        "scientificName": "Leucanthemum ircutianum subsp. crassifolium (Lange) Vogt",
+        "vernacularNameEs": "",
+        "taxonKey": 5703268,
+        "occurrenceCount": 44
+      },
+      {
+        "scientificName": "Pteridium aquilinum (L.) Kuhn",
+        "vernacularNameEs": "Bracken",
+        "taxonKey": 5275012,
+        "occurrenceCount": 44
+      },
+      {
+        "scientificName": "Polystichum setiferum (Forssk.) T.Moore ex Woyn.",
+        "vernacularNameEs": "Soft shield fern",
+        "taxonKey": 4044517,
+        "occurrenceCount": 44
+      }
+    ]
+  },
+  "ES-BA": {
+    "provinceName": "Badajoz",
+    "species": [
+      {
+        "scientificName": "Orchis morio L.",
+        "vernacularNameEs": "green-wing orchid",
+        "taxonKey": 2808566,
+        "occurrenceCount": 147
+      },
+      {
+        "scientificName": "Ophrys tenthredinifera Willd.",
+        "vernacularNameEs": "Sawfly Orchid",
+        "taxonKey": 2793126,
+        "occurrenceCount": 81
+      },
+      {
+        "scientificName": "Thymus mastichina (L.) L.",
+        "vernacularNameEs": "Spanish marjoram",
+        "taxonKey": 7307002,
+        "occurrenceCount": 74
+      },
+      {
+        "scientificName": "Serapias lingua L.",
+        "vernacularNameEs": "Tongue-orchid",
+        "taxonKey": 5314814,
+        "occurrenceCount": 74
+      },
+      {
+        "scientificName": "Ophrys speculum Link",
+        "vernacularNameEs": "",
+        "taxonKey": 2792665,
+        "occurrenceCount": 61
+      }
+    ]
+  },
+  "ES-HU": {
+    "provinceName": "Huesca",
+    "species": [
+      {
+        "scientificName": "Poa alpina L.",
+        "vernacularNameEs": "Alpine Meadow-grass",
+        "taxonKey": 2704234,
+        "occurrenceCount": 459
+      },
+      {
+        "scientificName": "Festuca gautieri (Hack.) K.Richt.",
+        "vernacularNameEs": "Spiky Fescue",
+        "taxonKey": 4123970,
+        "occurrenceCount": 447
+      },
+      {
+        "scientificName": "Helictotrichon sedenense (Clarion ex DC.) Holub",
+        "vernacularNameEs": "",
+        "taxonKey": 4152058,
+        "occurrenceCount": 373
+      },
+      {
+        "scientificName": "Agrostis capillaris L.",
+        "vernacularNameEs": "Colonial bentgrass",
+        "taxonKey": 2706490,
+        "occurrenceCount": 362
+      },
+      {
+        "scientificName": "Festuca nigrescens Lam.",
+        "vernacularNameEs": "Chewing's Fescue",
+        "taxonKey": 4119612,
+        "occurrenceCount": 360
+      }
+    ]
+  },
+  "ES-L": {
+    "provinceName": "Lleida",
+    "species": [
+      {
+        "scientificName": "Buxus sempervirens L.",
+        "vernacularNameEs": "Common box",
+        "taxonKey": 2984671,
+        "occurrenceCount": 139
+      },
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347727,
+        "occurrenceCount": 136
+      },
+      {
+        "scientificName": "Plantago lanceolata L.",
+        "vernacularNameEs": "Narrowleaf plantain",
+        "taxonKey": 8208358,
+        "occurrenceCount": 128
+      },
+      {
+        "scientificName": "Centaurea emigrantis Bubani",
+        "vernacularNameEs": "",
+        "taxonKey": 3128766,
+        "occurrenceCount": 120
+      },
+      {
+        "scientificName": "Koeleria vallesiana (Honck.) Gaudin",
+        "vernacularNameEs": "Somerset Hair-grass",
+        "taxonKey": 7600601,
+        "occurrenceCount": 117
+      }
+    ]
+  },
+  "ES-GR": {
+    "provinceName": "Granada",
+    "species": [
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 198
+      },
+      {
+        "scientificName": "Ptilostemon hispanicus (Lam.) Greuter",
+        "vernacularNameEs": "",
+        "taxonKey": 3096840,
+        "occurrenceCount": 196
+      },
+      {
+        "scientificName": "Centaurea granatensis Boiss. ex DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 3129053,
+        "occurrenceCount": 163
+      },
+      {
+        "scientificName": "Genista cinerea (Vill.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347718,
+        "occurrenceCount": 156
+      },
+      {
+        "scientificName": "Rosmarinus officinalis L.",
+        "vernacularNameEs": "Rosemary",
+        "taxonKey": 2926634,
+        "occurrenceCount": 148
+      }
+    ]
+  },
+  "ES-H": {
+    "provinceName": "Huelva",
+    "species": [
+      {
+        "scientificName": "Bolboschoenus maritimus (L.) Palla",
+        "vernacularNameEs": "Sea club rush",
+        "taxonKey": 2718307,
+        "occurrenceCount": 459
+      },
+      {
+        "scientificName": "Arthrocnemum macrostachyum (Moric.) Moric.",
+        "vernacularNameEs": "glaucous glasswort",
+        "taxonKey": 7469527,
+        "occurrenceCount": 343
+      },
+      {
+        "scientificName": "Suaeda vera Forssk. ex J.F.Gmel.",
+        "vernacularNameEs": "Shrubby Seablite",
+        "taxonKey": 6035538,
+        "occurrenceCount": 236
+      },
+      {
+        "scientificName": "Coronopus squamatus (Forssk.) Asch.",
+        "vernacularNameEs": "Swine-cress",
+        "taxonKey": 5376633,
+        "occurrenceCount": 223
+      },
+      {
+        "scientificName": "Cistus ladanifer L.",
+        "vernacularNameEs": "Common gum cistus",
+        "taxonKey": 6437976,
+        "occurrenceCount": 219
+      }
+    ]
+  },
+  "ES-A": {
+    "provinceName": "Alicante",
+    "species": [
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 312
+      },
+      {
+        "scientificName": "Helichrysum stoechas (L.) Moench",
+        "vernacularNameEs": "goldilocks",
+        "taxonKey": 3131494,
+        "occurrenceCount": 296
+      },
+      {
+        "scientificName": "Sedum sediforme (Jacq.) Pau",
+        "vernacularNameEs": "Pale Stonecrop",
+        "taxonKey": 5688347,
+        "occurrenceCount": 262
+      },
+      {
+        "scientificName": "Eryngium campestre L.",
+        "vernacularNameEs": "Field Eryngo",
+        "taxonKey": 3034426,
+        "occurrenceCount": 257
+      },
+      {
+        "scientificName": "Teucrium homotrichum (Font Quer) Rivas Mart.",
+        "vernacularNameEs": "",
+        "taxonKey": 3896237,
+        "occurrenceCount": 245
+      }
+    ]
+  },
+  "ES-IB": {
+    "provinceName": "Illes Balears",
+    "species": [
+      {
+        "scientificName": "Bellium bellidioides L.",
+        "vernacularNameEs": "False Daisy",
+        "taxonKey": 7879148,
+        "occurrenceCount": 384
+      },
+      {
+        "scientificName": "Helichrysum stoechas (L.) Moench",
+        "vernacularNameEs": "goldilocks",
+        "taxonKey": 3131494,
+        "occurrenceCount": 228
+      },
+      {
+        "scientificName": "Pinus halepensis Mill.",
+        "vernacularNameEs": "Aleppo pine",
+        "taxonKey": 5285604,
+        "occurrenceCount": 209
+      },
+      {
+        "scientificName": "Pistacia lentiscus L.",
+        "vernacularNameEs": "Mastic Tree",
+        "taxonKey": 3190583,
+        "occurrenceCount": 162
+      },
+      {
+        "scientificName": "Anagallis arvensis L.",
+        "vernacularNameEs": "Blue-scarlet pimpernel",
+        "taxonKey": 3169305,
+        "occurrenceCount": 148
+      }
+    ]
+  },
+  "ES-SE": {
+    "provinceName": "Sevilla",
+    "species": [
+      {
+        "scientificName": "Trifolium tomentosum L.",
+        "vernacularNameEs": "Woolly Clover",
+        "taxonKey": 5359510,
+        "occurrenceCount": 79
+      },
+      {
+        "scientificName": "Ceterach officinarum subsp. officinarum",
+        "vernacularNameEs": "",
+        "taxonKey": 7606521,
+        "occurrenceCount": 75
+      },
+      {
+        "scientificName": "Allium roseum L.",
+        "vernacularNameEs": "Rosy Garlic",
+        "taxonKey": 2855893,
+        "occurrenceCount": 75
+      },
+      {
+        "scientificName": "Thymus mastichina subsp. mastichina",
+        "vernacularNameEs": "",
+        "taxonKey": 7307003,
+        "occurrenceCount": 56
+      },
+      {
+        "scientificName": "Reichardia intermedia (Sch.Bip.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 5385654,
+        "occurrenceCount": 50
+      }
+    ]
+  },
+  "ES-CR": {
+    "provinceName": "Ciudad Real",
+    "species": [
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 101
+      },
+      {
+        "scientificName": "Phillyrea angustifolia L.",
+        "vernacularNameEs": "",
+        "taxonKey": 7325947,
+        "occurrenceCount": 93
+      },
+      {
+        "scientificName": "Erodium cicutarium (L.) L'Hér.",
+        "vernacularNameEs": "Alfilaria",
+        "taxonKey": 9485490,
+        "occurrenceCount": 91
+      },
+      {
+        "scientificName": "Thymus mastichina subsp. mastichina",
+        "vernacularNameEs": "",
+        "taxonKey": 7307003,
+        "occurrenceCount": 88
+      },
+      {
+        "scientificName": "Arbutus unedo L.",
+        "vernacularNameEs": "Strawberry-tree",
+        "taxonKey": 2882803,
+        "occurrenceCount": 83
+      }
+    ]
+  },
+  "ES-M": {
+    "provinceName": "Madrid",
+    "species": [
+      {
+        "scientificName": "Agrostis castellana Boiss. & Reut.",
+        "vernacularNameEs": "Highland Bent",
+        "taxonKey": 2706501,
+        "occurrenceCount": 588
+      },
+      {
+        "scientificName": "Genista florida L.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347816,
+        "occurrenceCount": 373
+      },
+      {
+        "scientificName": "Quercus pyrenaica Willd.",
+        "vernacularNameEs": "Pyrenean Oak",
+        "taxonKey": 2878826,
+        "occurrenceCount": 370
+      },
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 324
+      },
+      {
+        "scientificName": "Ranunculus penicillatus (Dumort.) Bab.",
+        "vernacularNameEs": "Stream Water-crowfoot",
+        "taxonKey": 7278019,
+        "occurrenceCount": 314
+      }
+    ]
+  },
+  "ES-J": {
+    "provinceName": "Jaén",
+    "species": [
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 155
+      },
+      {
+        "scientificName": "Genista pseudopilosa Coss.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347803,
+        "occurrenceCount": 130
+      },
+      {
+        "scientificName": "Thymus orospedanus Villar",
+        "vernacularNameEs": "",
+        "taxonKey": 7664292,
+        "occurrenceCount": 129
+      },
+      {
+        "scientificName": "Ceterach officinarum subsp. officinarum",
+        "vernacularNameEs": "",
+        "taxonKey": 7606521,
+        "occurrenceCount": 111
+      },
+      {
+        "scientificName": "Viola cazorlensis Gand.",
+        "vernacularNameEs": "",
+        "taxonKey": 5663812,
+        "occurrenceCount": 111
+      }
+    ]
+  },
+  "ES-V": {
+    "provinceName": "Valencia",
+    "species": [
+      {
+        "scientificName": "Rosmarinus officinalis L.",
+        "vernacularNameEs": "Rosemary",
+        "taxonKey": 2926634,
+        "occurrenceCount": 183
+      },
+      {
+        "scientificName": "Thymus piperella L.",
+        "vernacularNameEs": "",
+        "taxonKey": 8354272,
+        "occurrenceCount": 175
+      },
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 163
+      },
+      {
+        "scientificName": "Adiantum capillus-veneris L.",
+        "vernacularNameEs": "Maidenhair Fern",
+        "taxonKey": 2651816,
+        "occurrenceCount": 148
+      },
+      {
+        "scientificName": "Erica multiflora L.",
+        "vernacularNameEs": "",
+        "taxonKey": 7373031,
+        "occurrenceCount": 145
+      }
+    ]
+  },
+  "ES-TE": {
+    "provinceName": "Teruel",
+    "species": [
+      {
+        "scientificName": "Eryngium campestre L.",
+        "vernacularNameEs": "Field Eryngo",
+        "taxonKey": 3034426,
+        "occurrenceCount": 229
+      },
+      {
+        "scientificName": "Helleborus foetidus L.",
+        "vernacularNameEs": "Setterwort",
+        "taxonKey": 6375040,
+        "occurrenceCount": 222
+      },
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347727,
+        "occurrenceCount": 190
+      },
+      {
+        "scientificName": "Teucrium chamaedrys L.",
+        "vernacularNameEs": "Wall Germander",
+        "taxonKey": 6411747,
+        "occurrenceCount": 186
+      },
+      {
+        "scientificName": "Medicago sativa L.",
+        "vernacularNameEs": "Alfalfa",
+        "taxonKey": 9151957,
+        "occurrenceCount": 177
+      }
+    ]
+  },
+  "ES-SA": {
+    "provinceName": "Salamanca",
+    "species": [
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 147
+      },
+      {
+        "scientificName": "Thymus mastichina (L.) L.",
+        "vernacularNameEs": "Spanish marjoram",
+        "taxonKey": 7307002,
+        "occurrenceCount": 101
+      },
+      {
+        "scientificName": "Quercus pyrenaica Willd.",
+        "vernacularNameEs": "Pyrenean Oak",
+        "taxonKey": 2878826,
+        "occurrenceCount": 97
+      },
+      {
+        "scientificName": "Agrostis castellana Boiss. & Reut.",
+        "vernacularNameEs": "Highland Bent",
+        "taxonKey": 2706501,
+        "occurrenceCount": 96
+      },
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 94
+      }
+    ]
+  },
+  "ES-NA": {
+    "provinceName": "Navarra",
+    "species": [
+      {
+        "scientificName": "Agrostis stolonifera L.",
+        "vernacularNameEs": "Creeping bentgrass",
+        "taxonKey": 2706435,
+        "occurrenceCount": 245
+      },
+      {
+        "scientificName": "Prunus spinosa L.",
+        "vernacularNameEs": "Blackthorn",
+        "taxonKey": 3023221,
+        "occurrenceCount": 216
+      },
+      {
+        "scientificName": "Genista hispanica subsp. occidentalis Rouy",
+        "vernacularNameEs": "",
+        "taxonKey": 5347764,
+        "occurrenceCount": 199
+      },
+      {
+        "scientificName": "Phragmites australis (Cav.) Trin. ex Steud.",
+        "vernacularNameEs": "Common reed",
+        "taxonKey": 5290149,
+        "occurrenceCount": 184
+      },
+      {
+        "scientificName": "Lythrum salicaria L.",
+        "vernacularNameEs": "Purple loosestrife",
+        "taxonKey": 3188736,
+        "occurrenceCount": 182
+      }
+    ]
+  },
+  "ES-CA": {
+    "provinceName": "Cádiz",
+    "species": [
+      {
+        "scientificName": "Smilax aspera L.",
+        "vernacularNameEs": "Common Smilax",
+        "taxonKey": 5295044,
+        "occurrenceCount": 145
+      },
+      {
+        "scientificName": "Pistacia lentiscus L.",
+        "vernacularNameEs": "Mastic Tree",
+        "taxonKey": 3190583,
+        "occurrenceCount": 143
+      },
+      {
+        "scientificName": "Asplenium onopteris L.",
+        "vernacularNameEs": "Irish Spleenwort",
+        "taxonKey": 4258713,
+        "occurrenceCount": 139
+      },
+      {
+        "scientificName": "Rubia peregrina L.",
+        "vernacularNameEs": "Wild Madder",
+        "taxonKey": 2892347,
+        "occurrenceCount": 131
+      },
+      {
+        "scientificName": "Cistus salviifolius L.",
+        "vernacularNameEs": "Salvia cistus",
+        "taxonKey": 2874027,
+        "occurrenceCount": 119
+      }
+    ]
+  },
+  "ES-BU": {
+    "provinceName": "Burgos",
+    "species": [
+      {
+        "scientificName": "Juniperus communis L.",
+        "vernacularNameEs": "Common Juniper",
+        "taxonKey": 2684709,
+        "occurrenceCount": 705
+      },
+      {
+        "scientificName": "Asplenium trichomanes subsp. pachyrachis (Christ) Lovis & Reichst.",
+        "vernacularNameEs": "Lobed maidenhair spleenwort",
+        "taxonKey": 7422046,
+        "occurrenceCount": 651
+      },
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347727,
+        "occurrenceCount": 524
+      },
+      {
+        "scientificName": "Teucrium chamaedrys L.",
+        "vernacularNameEs": "Wall Germander",
+        "taxonKey": 6411747,
+        "occurrenceCount": 497
+      },
+      {
+        "scientificName": "Festuca hystrix Boiss.",
+        "vernacularNameEs": "",
+        "taxonKey": 4122688,
+        "occurrenceCount": 464
+      }
+    ]
+  },
+  "ES-CO": {
+    "provinceName": "Córdoba",
+    "species": [
+      {
+        "scientificName": "Thymus mastichina subsp. mastichina",
+        "vernacularNameEs": "",
+        "taxonKey": 7307003,
+        "occurrenceCount": 103
+      },
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 72
+      },
+      {
+        "scientificName": "Ceterach officinarum subsp. officinarum",
+        "vernacularNameEs": "",
+        "taxonKey": 7606521,
+        "occurrenceCount": 60
+      },
+      {
+        "scientificName": "Centaurea calcitrapa L.",
+        "vernacularNameEs": "Red Star-thistle",
+        "taxonKey": 3128483,
+        "occurrenceCount": 58
+      },
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 58
+      }
+    ]
+  },
+  "ES-MA": {
+    "provinceName": "Málaga",
+    "species": [
+      {
+        "scientificName": "Phlomis purpurea L.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307046,
+        "occurrenceCount": 264
+      },
+      {
+        "scientificName": "Thymus baeticus Boiss. ex Lacaita",
+        "vernacularNameEs": "Spanish Lemon Thyme",
+        "taxonKey": 8363061,
+        "occurrenceCount": 228
+      },
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 202
+      },
+      {
+        "scientificName": "Daphne gnidium L.",
+        "vernacularNameEs": "",
+        "taxonKey": 7311306,
+        "occurrenceCount": 178
+      },
+      {
+        "scientificName": "Cistus albidus L.",
+        "vernacularNameEs": "Grey-leaved Cistus",
+        "taxonKey": 7331435,
+        "occurrenceCount": 176
+      }
+    ]
+  },
+  "ES-AL": {
+    "provinceName": "Almería",
+    "species": [
+      {
+        "scientificName": "Helianthemum almeriense Pau",
+        "vernacularNameEs": "",
+        "taxonKey": 7331316,
+        "occurrenceCount": 191
+      },
+      {
+        "scientificName": "Thymus hyemalis Lange",
+        "vernacularNameEs": "",
+        "taxonKey": 7307272,
+        "occurrenceCount": 147
+      },
+      {
+        "scientificName": "Genista ramosissima (Desf.) Poir.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347699,
+        "occurrenceCount": 142
+      },
+      {
+        "scientificName": "Asphodelus tenuifolius Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 2778358,
+        "occurrenceCount": 109
+      },
+      {
+        "scientificName": "Reichardia tingitana (L.) Roth",
+        "vernacularNameEs": "False sowthistle",
+        "taxonKey": 5385648,
+        "occurrenceCount": 92
+      }
+    ]
+  },
+  "ES-TO": {
+    "provinceName": "Toledo",
+    "species": [
+      {
+        "scientificName": "Retama sphaerocarpa (L.) Boiss.",
+        "vernacularNameEs": "",
+        "taxonKey": 2965093,
+        "occurrenceCount": 50
+      },
+      {
+        "scientificName": "Centaurea hyssopifolia Vahl",
+        "vernacularNameEs": "",
+        "taxonKey": 3127628,
+        "occurrenceCount": 49
+      },
+      {
+        "scientificName": "Daphne gnidium L.",
+        "vernacularNameEs": "",
+        "taxonKey": 7311306,
+        "occurrenceCount": 49
+      },
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 46
+      },
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 46
+      }
+    ]
+  },
+  "ES-MU": {
+    "provinceName": "Murcia",
+    "species": [
+      {
+        "scientificName": "Pinus halepensis Mill.",
+        "vernacularNameEs": "Aleppo pine",
+        "taxonKey": 5285604,
+        "occurrenceCount": 159
+      },
+      {
+        "scientificName": "Thymus membranaceus Boiss.",
+        "vernacularNameEs": "",
+        "taxonKey": 7306992,
+        "occurrenceCount": 100
+      },
+      {
+        "scientificName": "Cosentinia vellea (Aiton) Tod.",
+        "vernacularNameEs": "",
+        "taxonKey": 7335582,
+        "occurrenceCount": 97
+      },
+      {
+        "scientificName": "Genista cinerea (Vill.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347718,
+        "occurrenceCount": 85
+      },
+      {
+        "scientificName": "Gladiolus communis L.",
+        "vernacularNameEs": "Eastern Gladiolus",
+        "taxonKey": 2750096,
+        "occurrenceCount": 77
+      }
+    ]
+  },
+  "ES-B": {
+    "provinceName": "Barcelona",
+    "species": [
+      {
+        "scientificName": "Stachys officinalis (L.) Trevis.",
+        "vernacularNameEs": "Common hedgenettle",
+        "taxonKey": 2927279,
+        "occurrenceCount": 177
+      },
+      {
+        "scientificName": "Arbutus unedo L.",
+        "vernacularNameEs": "Strawberry-tree",
+        "taxonKey": 2882803,
+        "occurrenceCount": 153
+      },
+      {
+        "scientificName": "Narcissus assoanus Dufour ex Schult. & Schult.f.",
+        "vernacularNameEs": "Rushleaf Jonquil",
+        "taxonKey": 2859233,
+        "occurrenceCount": 127
+      },
+      {
+        "scientificName": "Quercus ilex L.",
+        "vernacularNameEs": "Evergreen Oak",
+        "taxonKey": 2879098,
+        "occurrenceCount": 119
+      },
+      {
+        "scientificName": "Rubia peregrina L.",
+        "vernacularNameEs": "Wild Madder",
+        "taxonKey": 2892347,
+        "occurrenceCount": 115
+      }
+    ]
+  },
+  "ES-CU": {
+    "provinceName": "Cuenca",
+    "species": [
+      {
+        "scientificName": "Rosmarinus officinalis L.",
+        "vernacularNameEs": "Rosemary",
+        "taxonKey": 2926634,
+        "occurrenceCount": 105
+      },
+      {
+        "scientificName": "Ophrys sphegodes Mill.",
+        "vernacularNameEs": "Early Spider-Orchid",
+        "taxonKey": 2793334,
+        "occurrenceCount": 99
+      },
+      {
+        "scientificName": "Thymus vulgaris L.",
+        "vernacularNameEs": "Garden Thyme",
+        "taxonKey": 5341442,
+        "occurrenceCount": 98
+      },
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347727,
+        "occurrenceCount": 79
+      },
+      {
+        "scientificName": "Orchis mascula (L.) L.",
+        "vernacularNameEs": "Early-purple Orchid",
+        "taxonKey": 2849427,
+        "occurrenceCount": 73
+      }
+    ]
+  },
+  "ES-VA": {
+    "provinceName": "Valladolid",
+    "species": [
+      {
+        "scientificName": "Plantago lanceolata L.",
+        "vernacularNameEs": "Narrowleaf plantain",
+        "taxonKey": 8208358,
+        "occurrenceCount": 49
+      },
+      {
+        "scientificName": "Anacyclus clavatus (Desf.) Pers.",
+        "vernacularNameEs": "Whitebuttons",
+        "taxonKey": 3148589,
+        "occurrenceCount": 49
+      },
+      {
+        "scientificName": "Setaria viridis (L.) P.Beauv.",
+        "vernacularNameEs": "Green Bristle-grass",
+        "taxonKey": 5289684,
+        "occurrenceCount": 47
+      },
+      {
+        "scientificName": "Papaver rhoeas L.",
+        "vernacularNameEs": "Common Poppy",
+        "taxonKey": 2888443,
+        "occurrenceCount": 44
+      },
+      {
+        "scientificName": "Lactuca serriola L.",
+        "vernacularNameEs": "Prickly Lettuce",
+        "taxonKey": 3140490,
+        "occurrenceCount": 44
+      }
+    ]
+  },
+  "ES-GI": {
+    "provinceName": "Girona",
+    "species": [
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "",
+        "taxonKey": 5676053,
+        "occurrenceCount": 438
+      },
+      {
+        "scientificName": "Dactylis glomerata subsp. hispanica (Roth) Nyman",
+        "vernacularNameEs": "",
+        "taxonKey": 4932234,
+        "occurrenceCount": 377
+      },
+      {
+        "scientificName": "Plantago lanceolata L.",
+        "vernacularNameEs": "Narrowleaf plantain",
+        "taxonKey": 8208358,
+        "occurrenceCount": 354
+      },
+      {
+        "scientificName": "Sedum sediforme (Jacq.) Pau",
+        "vernacularNameEs": "Pale Stonecrop",
+        "taxonKey": 5688347,
+        "occurrenceCount": 321
+      },
+      {
+        "scientificName": "Asparagus acutifolius L.",
+        "vernacularNameEs": "Wild Asparagus",
+        "taxonKey": 2768995,
+        "occurrenceCount": 317
+      }
+    ]
+  },
+  "ES-CC": {
+    "provinceName": "Cáceres",
+    "species": [
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 152
+      },
+      {
+        "scientificName": "Genista florida L.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347816,
+        "occurrenceCount": 101
+      },
+      {
+        "scientificName": "Cistus ladanifer L.",
+        "vernacularNameEs": "Common gum cistus",
+        "taxonKey": 6437976,
+        "occurrenceCount": 99
+      },
+      {
+        "scientificName": "Thymus mastichina (L.) L.",
+        "vernacularNameEs": "Spanish marjoram",
+        "taxonKey": 7307002,
+        "occurrenceCount": 97
+      },
+      {
+        "scientificName": "Pteridium aquilinum (L.) Kuhn",
+        "vernacularNameEs": "Bracken",
+        "taxonKey": 5275012,
+        "occurrenceCount": 95
+      }
+    ]
+  },
+  "ES-P": {
+    "provinceName": "Palencia",
+    "species": [
+      {
+        "scientificName": "Calluna vulgaris (L.) Hull",
+        "vernacularNameEs": "Heather",
+        "taxonKey": 2882482,
+        "occurrenceCount": 149
+      },
+      {
+        "scientificName": "Agrostis capillaris L.",
+        "vernacularNameEs": "Colonial bentgrass",
+        "taxonKey": 2706490,
+        "occurrenceCount": 145
+      },
+      {
+        "scientificName": "Saxifraga canaliculata Boiss. & Reut. ex Engl.",
+        "vernacularNameEs": "",
+        "taxonKey": 3755135,
+        "occurrenceCount": 142
+      },
+      {
+        "scientificName": "Genista florida L.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347816,
+        "occurrenceCount": 140
+      },
+      {
+        "scientificName": "Quercus pyrenaica Willd.",
+        "vernacularNameEs": "Pyrenean Oak",
+        "taxonKey": 2878826,
+        "occurrenceCount": 127
+      }
+    ]
+  },
+  "ES-LO": {
+    "provinceName": "La Rioja",
+    "species": [
+      {
+        "scientificName": "Urtica dioica L.",
+        "vernacularNameEs": "Stinging nettle",
+        "taxonKey": 7960979,
+        "occurrenceCount": 106
+      },
+      {
+        "scientificName": "Ophrys sphegodes Mill.",
+        "vernacularNameEs": "Early Spider-Orchid",
+        "taxonKey": 2793334,
+        "occurrenceCount": 82
+      },
+      {
+        "scientificName": "Anacamptis pyramidalis (L.) Rich.",
+        "vernacularNameEs": "Pyramidal Orchid",
+        "taxonKey": 2808330,
+        "occurrenceCount": 80
+      },
+      {
+        "scientificName": "Saxifraga losae Sennen",
+        "vernacularNameEs": "",
+        "taxonKey": 7339366,
+        "occurrenceCount": 79
+      },
+      {
+        "scientificName": "Holcus lanatus L.",
+        "vernacularNameEs": "Common velvetgrass",
+        "taxonKey": 2706164,
+        "occurrenceCount": 77
+      }
+    ]
+  },
+  "ES-ZA": {
+    "provinceName": "Zamora",
+    "species": [
+      {
+        "scientificName": "Lavandula pedunculata (Mill.) Cav.",
+        "vernacularNameEs": "",
+        "taxonKey": 7307760,
+        "occurrenceCount": 117
+      },
+      {
+        "scientificName": "Genista hystrix Lange",
+        "vernacularNameEs": "",
+        "taxonKey": 5347662,
+        "occurrenceCount": 82
+      },
+      {
+        "scientificName": "Genista florida L.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347816,
+        "occurrenceCount": 77
+      },
+      {
+        "scientificName": "Quercus pyrenaica Willd.",
+        "vernacularNameEs": "Pyrenean Oak",
+        "taxonKey": 2878826,
+        "occurrenceCount": 74
+      },
+      {
+        "scientificName": "Halimium umbellatum subsp. viscosum (Willk.) O.Bolòs & Vigo",
+        "vernacularNameEs": "",
+        "taxonKey": 3595820,
+        "occurrenceCount": 73
+      }
+    ]
+  },
+  "ES-GU": {
+    "provinceName": "Guadalajara",
+    "species": [
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "",
+        "taxonKey": 5347727,
+        "occurrenceCount": 152
+      },
+      {
+        "scientificName": "Crataegus monogyna Jacq.",
+        "vernacularNameEs": "Oneseed hawthorn",
+        "taxonKey": 9220780,
+        "occurrenceCount": 148
+      },
+      {
+        "scientificName": "Rubus ulmifolius Schott",
+        "vernacularNameEs": "Elmleaf blackberry",
+        "taxonKey": 2996929,
+        "occurrenceCount": 139
+      },
+      {
+        "scientificName": "Holcus lanatus L.",
+        "vernacularNameEs": "Common velvetgrass",
+        "taxonKey": 2706164,
+        "occurrenceCount": 123
+      },
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 122
+      }
+    ]
+  },
+  "ES-AB": {
+    "provinceName": "Albacete",
+    "species": [
+      {
+        "scientificName": "Rubus ulmifolius Schott",
+        "vernacularNameEs": "Zarzamora",
+        "taxonKey": 2996929,
+        "occurrenceCount": 173
+      },
+      {
+        "scientificName": "Brachypodium retusum (Pers.) P.Beauv.",
+        "vernacularNameEs": "Lastón",
+        "taxonKey": 5676053,
+        "occurrenceCount": 154
+      },
+      {
+        "scientificName": "Thymus vulgaris subsp. vulgaris",
+        "vernacularNameEs": "Tomillo",
+        "taxonKey": 7306529,
+        "occurrenceCount": 153
+      },
+      {
+        "scientificName": "Genista scorpius (L.) DC.",
+        "vernacularNameEs": "Aliaga",
+        "taxonKey": 5347727,
+        "occurrenceCount": 131
+      },
+      {
+        "scientificName": "Scirpoides holoschoenus (L.) Soják",
+        "vernacularNameEs": "Junco",
+        "taxonKey": 2718201,
+        "occurrenceCount": 128
+      }
+    ]
+  },
+  "ES-Z": {
+    "provinceName": "Zaragoza",
+    "species": [
+      {
+        "scientificName": "Helianthemum squamatum (L.) Dum.Cours.",
+        "vernacularNameEs": "",
+        "taxonKey": 7951870,
+        "occurrenceCount": 118
+      },
+      {
+        "scientificName": "Saxifraga moncayensis D.A.Webb",
+        "vernacularNameEs": "",
+        "taxonKey": 7339635,
+        "occurrenceCount": 116
+      },
+      {
+        "scientificName": "Asphodelus fistulosus L.",
+        "vernacularNameEs": "Onionweed",
+        "taxonKey": 2778437,
+        "occurrenceCount": 90
+      },
+      {
+        "scientificName": "Ephedra major Host",
+        "vernacularNameEs": "Hum",
+        "taxonKey": 2653428,
+        "occurrenceCount": 90
+      },
+      {
+        "scientificName": "Centaurea pinnata Pau ex Vicioso",
+        "vernacularNameEs": "",
+        "taxonKey": 3127672,
+        "occurrenceCount": 86
+      }
+    ]
+  },
+  "ES-SO": {
+    "provinceName": "Soria",
+    "species": [
+      {
+        "scientificName": "Calluna vulgaris (L.) Hull",
+        "vernacularNameEs": "Heather",
+        "taxonKey": 2882482,
+        "occurrenceCount": 69
+      },
+      {
+        "scientificName": "Juniperus thurifera L.",
+        "vernacularNameEs": "Spanish juniper",
+        "taxonKey": 2684528,
+        "occurrenceCount": 67
+      },
+      {
+        "scientificName": "Pinus sylvestris L.",
+        "vernacularNameEs": "Scots Pine",
+        "taxonKey": 5285637,
+        "occurrenceCount": 66
+      },
+      {
+        "scientificName": "Genista pumila subsp. rigidissima (Vierh.) Talavera & L.Sáez",
+        "vernacularNameEs": "",
+        "taxonKey": 5626958,
+        "occurrenceCount": 63
+      },
+      {
+        "scientificName": "Myrica gale L.",
+        "vernacularNameEs": "Bog-myrtle",
+        "taxonKey": 5414202,
+        "occurrenceCount": 60
+      }
+    ]
+  },
+  "ES-SG": {
+    "provinceName": "Segovia",
+    "species": [
+      {
+        "scientificName": "Quercus ilex subsp. ballota (Desf.) Samp.",
+        "vernacularNameEs": "",
+        "taxonKey": 8180660,
+        "occurrenceCount": 166
+      },
+      {
+        "scientificName": "Vitis vinifera var. vinifera",
+        "vernacularNameEs": "",
+        "taxonKey": 7293735,
+        "occurrenceCount": 159
+      },
+      {
+        "scientificName": "Pinus pinaster Aiton",
+        "vernacularNameEs": "Maritime Pine",
+        "taxonKey": 5285565,
+        "occurrenceCount": 136
+      },
+      {
+        "scientificName": "Genista cinerascens Lange",
+        "vernacularNameEs": "",
+        "taxonKey": 5347822,
+        "occurrenceCount": 102
+      },
+      {
+        "scientificName": "Scirpoides holoschoenus (L.) Soják",
+        "vernacularNameEs": "Roundhead bulrush",
+        "taxonKey": 2718201,
+        "occurrenceCount": 99
+      }
+    ]
+  },
+  "ES-AV": {
+    "provinceName": "Ávila",
+    "species": [
+      {
+        "scientificName": "Agrostis castellana Boiss. & Reut.",
+        "vernacularNameEs": "Highland Bent",
+        "taxonKey": 2706501,
+        "occurrenceCount": 286
+      },
+      {
+        "scientificName": "Agrostis delicatula Pourr. ex Lapeyr.",
+        "vernacularNameEs": "",
+        "taxonKey": 4124133,
+        "occurrenceCount": 237
+      },
+      {
+        "scientificName": "Festuca elegans Boiss.",
+        "vernacularNameEs": "",
+        "taxonKey": 4124641,
+        "occurrenceCount": 194
+      },
+      {
+        "scientificName": "Corynephorus canescens (L.) P.Beauv.",
+        "vernacularNameEs": "Gray clubawn grass",
+        "taxonKey": 5290194,
+        "occurrenceCount": 191
+      },
+      {
+        "scientificName": "Rumex acetosella subsp. angiocarpus (Murb.) Murb.",
+        "vernacularNameEs": "",
+        "taxonKey": 9630289,
+        "occurrenceCount": 187
+      }
+    ]
+  }
+}

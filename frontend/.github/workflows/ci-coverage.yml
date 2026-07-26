@@ -1,0 +1,48 @@
+name: CI/CD Pipeline with Coverage Validation
+
+on:
+  push:
+    branches:
+      - master # Ejecuta el flujo solo en la rama master
+
+jobs:
+  test-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Configuración de Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Instalación de dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Ejecutar tests con cobertura (sin bloquear)
+      - name: Run tests with coverage
+        run: |
+          npx ng test --code-coverage --watch=false --browsers=ChromeHeadless || echo "Tests failed, continuing deployment"
+
+      # 5. Registrar cobertura (pero no bloquear)
+      - name: Log coverage percentage
+        run: |
+          COVERAGE=$(grep -Po 'All files.*?\K\d+\.\d+' ./coverage/coverage-summary.txt | head -1 || echo "0")
+          THRESHOLD=10
+          echo "Coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
+            echo "⚠️ Warning: Coverage $COVERAGE% is below the threshold of $THRESHOLD% (but proceeding with deployment)"
+          else
+            echo "✅ Coverage $COVERAGE% meets the threshold of $THRESHOLD%"
+          fi
+
+      # 6. Desplegar en Vercel (independientemente de la cobertura)
+      - name: Deploy to Vercel
+        run: |
+          npm install -g vercel
+          vercel --token=${{ secrets.VERCEL_TOKEN }} --prod --yes

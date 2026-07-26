@@ -1,0 +1,36 @@
+name: CI
+
+# Puerta de calidad para desplegar a producción: las PRs hacia master
+# deben pasar la suite de tests con una cobertura mínima del 60%
+# (umbral definido en karma.conf.js). Vercel despliega master al
+# fusionar, por lo que este check actúa como gate del despliegue.
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [development]
+
+jobs:
+  test:
+    name: Tests unitarios + cobertura (mín. 60%)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar tests con cobertura
+        run: npm run test:ci
+
+      - name: Resumen de cobertura
+        if: always()
+        run: |
+          if [ -f coverage/tfg/coverage-summary.json ]; then
+            node -e "const t=require('./coverage/tfg/coverage-summary.json').total; for (const k of ['statements','branches','functions','lines']) console.log(k+': '+t[k].pct+'%');"
+          fi

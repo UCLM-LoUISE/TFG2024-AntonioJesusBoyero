@@ -1,0 +1,9 @@
+/* ============================== AJUSTES ============================== */
+
+.container {
+  --background: var(--app-bg);
+  background: var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

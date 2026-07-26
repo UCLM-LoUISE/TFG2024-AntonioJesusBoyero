@@ -1,0 +1,67 @@
+.container-fluid {
+  margin-top: 10px;
+}
+
+.card {
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #e6e5e5;
+
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.col-md-auto {
+  min-width: 150px; /* Evita que los elementos sean demasiado pequeños */
+  flex-grow: 1; /* Hace que todos ocupen el mismo espacio */
+}
+
+.small {
+  font-size: 12px;
+}
+
+.form-control-sm {
+  font-size: 12px;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card label {
+  font-family: 'Roboto', sans-serif;
+  font-size:  14px;
+  font-weight: bold;
+
+}
+
+button:enabled:hover {
+  transform: scale(1.1); /* Aumenta el tamaño cuando se pasa el ratón */
+  background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón */
+  color: #fff; /* Cambia el color del texto */
+  border-color: #004085; /* Cambia el color del borde */
+}
+
+button {
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Suave transición */
+}
+
+.invalid {
+  border-color: #dc3545;
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.textsize{
+  font-size: 14px;
+}
+

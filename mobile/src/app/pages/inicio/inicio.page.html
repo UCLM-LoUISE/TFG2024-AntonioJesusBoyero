@@ -1,0 +1,76 @@
+<ion-header class="header-moderno">
+  <ion-toolbar class="toolbar-moderno">
+    <ion-buttons slot="start">
+      <ion-menu-button class="menu-btn"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title-moderno">TerrApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Menú lateral -->
+<ion-menu side="start" contentId="main-content" type="overlay">
+  <ion-header>
+    <ion-toolbar class="menu-toolbar">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item routerLink="/estudios" routerDirection="root" detail="false">
+          <ion-icon name="book" slot="start"></ion-icon>
+          <ion-label>Estudios</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="false">
+        <ion-item button (click)="cerrarSesion()" detail="false" class="logout-item">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label>Cerrar sesión</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content class="container" [fullscreen]="true" id="main-content">
+
+  <div class="welcome-section">
+    <h1 class="welcome-title">Bienvenido</h1>
+    <p class="welcome-subtitle">Gestiona tus estudios</p>
+  </div>
+
+  <div class="content">
+    <div class="card" *ngIf="estaAutenticado" routerLink="/estudios/ver" routerDirection="forward">
+      <div class="card-icon">
+        <ion-icon name="book"></ion-icon>
+      </div>
+      <div class="card-text">
+        <h3 class="card-title">Ver estudios</h3>
+        <p class="card-subtitle">Accede a tus proyectos</p>
+      </div>
+    </div>
+
+    <div class="card" routerLink="/estudios/cargar" routerDirection="forward">
+      <div class="card-icon">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </div>
+      <div class="card-text">
+        <h3 class="card-title">Cargar estudios</h3>
+        <p class="card-subtitle">Importa nuevos proyectos</p>
+      </div>
+    </div>
+
+    <div class="card" routerLink="/manual">
+      <div class="card-icon">
+        <ion-icon name="document-text"></ion-icon>
+      </div>
+      <div class="card-text">
+        <h3 class="card-title">Manual</h3>
+        <p class="card-subtitle">Guía de uso</p>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

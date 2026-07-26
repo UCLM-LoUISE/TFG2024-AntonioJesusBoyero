@@ -1,0 +1,32 @@
+Desarrollo del backend del tfg, development sera la rama donde desarrollaremos, la rama main será sobre la que volquemos los despliegues
+
+## Tests unitarios
+
+Los tests están hechos con Jest (framework de testing y cobertura) y Supertest (peticiones HTTP a las rutas Express).
+Los servicios externos (Firebase Admin: Firestore/Auth/Storage, y Resend) se sustituyen por mocks, por lo que los tests
+no necesitan credenciales ni conexión a internet.
+
+- Ejecutar los tests con cobertura: `npm test`
+- Ejecutar en modo watch: `npm run test:watch`
+
+La configuración (jest.config.js) exige una cobertura mínima del 60% en líneas, sentencias y funciones
+(50% en ramas); si la cobertura baja de esos umbrales, `npm test` falla.
+
+## CI/CD (GitHub Actions + Vercel)
+
+El workflow `.github/workflows/ci-cd.yml` tiene dos jobs:
+
+1. **test**: se ejecuta en cada push y pull request a `main`. Corre `npm test`, que falla si la
+   cobertura global baja del umbral definido en jest.config.js (60%). 
+2. **deploy**: solo se ejecuta en push a `main` y solo si el job de tests ha pasado. Despliega
+   a producción en Vercel con la CLI de Vercel.
+
+El auto-deploy de Vercel para `main` está desactivado en vercel.json (`git.deploymentEnabled`),
+de modo que producción solo se despliega a través del pipeline (previews de otras ramas siguen
+funcionando igual).
+
+Secrets necesarios en GitHub (Settings > Secrets and variables > Actions):
+
+- `VERCEL_TOKEN`: token personal creado en https://vercel.com/account/tokens
+- `VERCEL_ORG_ID` y `VERCEL_PROJECT_ID`: se obtienen ejecutando `npx vercel link` en local
+  (quedan en `.vercel/project.json`) o desde los ajustes del proyecto en Vercel.

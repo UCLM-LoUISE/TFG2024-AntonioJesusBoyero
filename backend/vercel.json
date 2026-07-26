@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "git": {
+    "deploymentEnabled": {
+      "main": false
+    }
+  },
+  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "index.js" }],
+  "crons": [{ "path": "/cron/daily-study-status", "schedule": "1 0 * * *" }]
+}

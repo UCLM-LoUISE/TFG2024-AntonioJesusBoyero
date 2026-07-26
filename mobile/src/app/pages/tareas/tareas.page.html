@@ -1,0 +1,167 @@
+<div class="pantalla-base" [class.oculto]="modalFormularioArboladoAbierto">
+
+  <ion-header class="header-moderno">
+    <ion-toolbar class="toolbar-moderno">
+      <ion-buttons slot="start">
+        <ion-button (click)="confirmarSalida()" class="btn-volver">
+          <ion-icon name="chevron-back" slot="start"></ion-icon>
+          Volver
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="modalInfoAbierto = true" class="btn-info">
+          <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="container" [fullscreen]="true" id="main-content">
+
+    <div class="barraIconos">
+      <button class="action-btn action-camera" (click)="abrirCamara()" title="Tomar foto">
+        <ion-icon name="camera"></ion-icon>
+        <span class="btn-label">Cámara</span>
+      </button>
+
+      <button class="action-btn action-mic" [class.recording]="isRecording" (click)="toggleGrabacion()"
+        [title]="isRecording ? 'Detener grabación' : 'Grabar audio'">
+        <ion-icon [name]="isRecording ? 'stop' : 'mic'"></ion-icon>
+        <span class="btn-label">{{ isRecording ? 'Grabando' : 'Audio' }}</span>
+      </button>
+
+      <button class="action-btn action-folder" [class.disabled]="audios.length === 0"
+        (click)="audios.length > 0 && abrirModalAudios()" [disabled]="audios.length === 0"
+        [title]="audios.length > 0 ? 'Ver audios grabados' : 'Sin audios'">
+        <ion-icon name="folder"></ion-icon>
+        <span class="btn-label">Audios ({{ audios.length }})</span>
+      </button>
+    </div>
+
+
+
+
+    <div class="map-wrapper">
+      <div id="map" class="map-container">
+        <!-- Brújula flotante mejorada -->
+        <div class="compass" id="brujula">
+          <div class="compass-card">
+            <!-- Puntos cardinales -->
+            <span class="cardinal cardinal-n">N</span>
+            <span class="cardinal cardinal-e">E</span>
+            <span class="cardinal cardinal-s">S</span>
+            <span class="cardinal cardinal-o">O</span>
+
+            <!-- Aguja -->
+            <img src="assets/icon/flecha-roja.png" id="flecha-direccion" class="compass-needle" alt="dirección" />
+
+            <!-- Texto de dirección actual -->
+            <!-- <span class="compass-text" id="brujula-leyenda">N</span> -->
+          </div>
+        </div>
+
+        <!-- Botón calcular transectos (solo tiene sentido en tareas de sotobosque) -->
+        <button *ngIf="esTareaSotobosque" class="transect-btn" id="boton-transectos" (click)="calcularTransectos()"
+          title="Calcular transectos" aria-label="Calcular transectos">
+          <ion-icon name="radio-button-on"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+
+
+
+    <div class="action-buttons">
+      <ion-button expand="block" (click)="guardarZonas()" class="btn-save">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Guardar
+      </ion-button>
+      <ion-button expand="block" (click)="datosFormulario()" class="btn-forms">
+        <ion-icon name="document-text" slot="start"></ion-icon>
+        Formularios
+      </ion-button>
+    </div>
+
+    <!-- Modales -->
+    <ion-modal [isOpen]="modalAbierto" (didDismiss)="modalAbierto = false">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Audios grabados</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modalAbierto = false">Cerrar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+          <ion-list>
+            <ion-item *ngFor="let audio of audios">
+              <ion-label>{{ audio.name }}</ion-label>
+              <ion-button slot="end" fill="clear" (click)="reproducirAudio(audio.path)" title="Reproducir">
+                <ion-icon slot="icon-only" name="play-circle-outline"></ion-icon>
+              </ion-button>
+              <ion-button slot="end" fill="clear" (click)="descargarAudio(audio)" title="Descargar">
+                <ion-icon slot="icon-only" name="download-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <ion-item lines="none">
+            <ion-button expand="block" color="success" (click)="descargarTodosLosAudios()">
+              📥 Descargar todos los audios
+            </ion-button>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-modal [isOpen]="modalInfoAbierto" (didDismiss)="modalInfoAbierto = false">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>📋 Detalles de la tarea</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modalInfoAbierto = false">Cerrar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+          <ion-list>
+            <ion-item>
+              <ion-label><strong>Nombre:</strong> {{ tarea?.nombreTarea }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><strong>Zona:</strong> {{ tarea?.zona }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><strong>Tipo:</strong> {{ tarea?.tipoTarea }}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><strong>Fecha:</strong> {{ tarea?.fecha }}</ion-label>
+            </ion-item>
+            <ion-item *ngIf="tarea?.notas">
+              <ion-label><strong>Notas:</strong> {{ tarea.notas }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  </ion-content>
+</div>
+
+
+
+<div class="pantalla-formulario" *ngIf="modalFormularioArboladoAbierto">
+  <app-arbolado-formulario (cerrarFormulario)="eventoFormularioArbolado.emit(null)"
+    (guardarFormulario)="eventoFormularioArbolado.emit($event)">
+  </app-arbolado-formulario>
+</div>
+
+<div class="pantalla-formulario" *ngIf="modalFormularioSotobosqueAbierto">
+  <app-sotobosque-formulario (cerrarFormulario)="eventoFormularioSotobosque.emit(null)"
+    (guardarFormulario)="eventoFormularioSotobosque.emit($event)">
+  </app-sotobosque-formulario>
+</div>

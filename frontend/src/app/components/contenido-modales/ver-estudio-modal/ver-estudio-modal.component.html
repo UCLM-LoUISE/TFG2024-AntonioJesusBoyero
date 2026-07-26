@@ -1,0 +1,246 @@
+<div class="modal fade" id="verEstudio" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content p-3">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-uppercase fw-bold w-100">{{ estudioData?.nombre || 'Estudio sin nombre' }}</h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+
+      <!-- Contenedor de pestañas centradas -->
+      <div class="tabs-container">
+        <div class="tabs">
+          <div class="tab-option" [class.active]="seccionActiva === 'info'" (click)="cambiarSeccion('info')">
+            Información
+          </div>
+          <div class="tab-option" [class.active]="seccionActiva === 'mapa'" (click)="cambiarSeccion('mapa')">
+            Zonas
+          </div>
+          <div class="tab-option" [class.active]="seccionActiva === 'tareas'" (click)="cambiarSeccion('tareas')">
+            Tareas
+          </div>
+          <div class="tab-indicator" [ngStyle]="{'left': indicadorPosicion + '%'}"></div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Sección Información -->
+        <div *ngIf="seccionActiva === 'info'">
+          <div class="row mb-3">
+            <div class="col-md-4"><strong>Estado:</strong> {{ estudioData?.estado }}</div>
+            <div class="col-md-4"><strong>Fecha de Inicio:</strong> {{ estudioData?.fechaInicio }}</div>
+            <div class="col-md-4"><strong>Fecha de Fin:</strong> {{ estudioData?.fechaFin || 'No definida' }}</div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-4"><strong>Provincia:</strong> {{ estudioData?.provincia }}</div>
+            <div class="col-md-4"><strong>Población:</strong> {{ estudioData?.poblacion }}</div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <strong>Notas:</strong>
+              <textarea class="form-control mt-1" rows="3" readonly>{{ estudioData?.notes }}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección Mapa -->
+        <div *ngIf="seccionActiva === 'mapa'">
+          <div class="mapa_container">
+            <div id="map" class="mapa"></div>
+          </div>
+        </div>
+
+        <!-- Sección Tareas -->
+        <div *ngIf="seccionActiva === 'tareas' && !modoSubirDatos">
+          <h6 class="fw-bold text-center">Tareas Asignadas</h6>
+          <div *ngIf="tareasAsignadas.length > 0; else noTareas">
+            <div class="task-card d-flex justify-content-between align-items-start"
+              *ngFor="let tarea of tareasAsignadas">
+              <div>
+                <p><strong>Tarea:</strong> {{ tarea.nombreTarea }}</p>
+                <p><strong>Zona:</strong> {{ tarea.zona }}</p>
+                <p><strong>Fecha:</strong> {{ tarea.fecha }}</p>
+                <p><strong>Notas:</strong> {{ tarea.notas }}</p>
+              </div>
+              <div class="upload-icon">
+                <i (click)="subirDatosTarea(tarea)" class="bi bi-upload" title="Subir datos"></i>
+              </div>
+            </div>
+          </div>
+          <ng-template #noTareas>
+            <p class="text-center text-muted">No tienes tareas asignadas en este estudio.</p>
+          </ng-template>
+        </div>
+
+
+        <div *ngIf="modoSubirDatos">
+
+          <h6 class="fw-bold text-center mb-3">
+            Subir datos tarea
+            <span *ngIf="tareaActual?.nombreTarea" class="text-primary">· {{ tareaActual.nombreTarea }}</span>
+          </h6>
+
+          <!-- 🆕 Selector de Momento (solo si la tarea tiene momentos) -->
+          <div *ngIf="tareaActual?.tieneMomentos" class="mb-3">
+            <label class="form-label fw-bold">Selecciona el momento:</label>
+            <select class="form-select" [(ngModel)]="momentoSeleccionado"
+                    (change)="onMomentoChange()"
+                    [disabled]="archivosSeleccionados.length > 0">
+              <option [value]="null" disabled>-- Selecciona un momento --</option>
+              <option *ngFor="let momento of momentosDisponibles" [value]="momento.nombre">
+                {{ momento.nombre }} - {{ momento.tieneArchivos ? '✓ Completado' : '○ Pendiente' }}
+              </option>
+            </select>
+            <small class="text-muted" *ngIf="!momentoSeleccionado">
+              Debes seleccionar un momento antes de subir archivos
+            </small>
+          </div>
+
+          <!-- Zona de subida -->
+          <div class="upload-dropzone"
+               [ngClass]="{
+                 'dragover': dragOver,
+                 'drop-error': errorArchivoDuplicado
+               }"
+               (dragover)="onDragOver($event)"
+               (drop)="onFileDrop($event)"
+               (dragleave)="onDragLeave($event)"
+               (click)="onDropzoneClick(fileInput)">
+
+            <p class="text-center" [class.text-danger]="errorArchivoDuplicado"
+              [class.text-muted]="!errorArchivoDuplicado">
+              <span *ngIf="tareaActual?.tieneMomentos && !momentoSeleccionado">
+                Arrastra archivos JSON aquí (el momento se detectará automáticamente)
+              </span>
+              <span *ngIf="!tareaActual?.tieneMomentos || momentoSeleccionado">
+                Arrastra archivos aquí o haz clic para seleccionarlos
+              </span>
+            </p>
+            <i class="bi bi-cloud-upload display-4 d-block text-center"
+               [class.text-danger]="errorArchivoDuplicado"
+               [class.text-primary]="!errorArchivoDuplicado"></i>
+
+            <input type="file" multiple hidden (change)="onFileSelect($event)" #fileInput>
+          </div>
+
+
+          <!-- Archivos multimedia referenciados en el JSON -->
+          <div *ngIf="archivosMultimediaPendientes.length > 0" class="mt-3 multimedia-pendiente-container">
+            <h6 class="fw-semibold mb-1">
+              <i class="bi bi-paperclip me-1"></i>
+              Archivos multimedia a adjuntar:
+            </h6>
+            <p class="text-muted small mb-2">El JSON hace referencia a estos archivos. Añádelos a la subida para completar el envío:</p>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let archivo of archivosMultimediaPendientes"
+                  class="list-group-item multimedia-item px-2 py-2"
+                  [ngClass]="estaMultimediaSeleccionada(archivo.nombre) ? 'multimedia-listo' : 'multimedia-pendiente'">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi fs-5"
+                       [ngClass]="archivo.tipo === 'audio' ? 'bi-music-note-beamed text-primary' : 'bi-image text-success'"></i>
+                    <div>
+                      <span class="fw-medium" style="font-size: 13px;">{{ archivo.nombre }}</span>
+                      <small class="d-block text-muted" *ngIf="archivo.entidadNombre">
+                        {{ archivo.entidadNombre }} &bull; {{ archivo.tipo }}
+                      </small>
+                    </div>
+                  </div>
+                  <span class="badge rounded-pill"
+                        [ngClass]="estaMultimediaSeleccionada(archivo.nombre) ? 'bg-success' : 'bg-warning text-dark'">
+                    <i class="bi me-1"
+                       [ngClass]="estaMultimediaSeleccionada(archivo.nombre) ? 'bi-check-lg' : 'bi-clock'"></i>
+                    {{ estaMultimediaSeleccionada(archivo.nombre) ? 'Listo' : 'Pendiente' }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+          <!-- Mostrar archivos ya subidos -->
+          <div *ngIf="archivosYaSubidos.length > 0" class="mt-4">
+            <h6 class="fw-semibold">Archivos ya subidos:</h6>
+            <ul class="list-group">
+              <li *ngFor="let archivo of archivosYaSubidos"
+                class="list-group-item d-flex justify-content-between align-items-center">
+
+                <div class="d-flex align-items-center">
+                  <a [href]="archivo.url" target="_blank" class="me-2">{{ archivo.nombre }}</a>
+                  <span class="badge bg-secondary">{{ archivo.tipo }}</span>
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+
+                  <!-- Confirmación inline de borrado -->
+                  <ng-container *ngIf="archivoAEliminar === archivo.nombre; else botonEliminar">
+                    <span class="text-danger fw-semibold" style="font-size: 13px;">¿Eliminar?</span>
+                    <button class="btn btn-sm btn-danger" (click)="eliminarArchivoSubido(archivo)">
+                      Sí
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" (click)="cancelarEliminarArchivo()">
+                      No
+                    </button>
+                  </ng-container>
+
+                  <ng-template #botonEliminar>
+                    <button *ngIf="archivo.subidoPor === userEmail" class="btn btn-sm btn-outline-danger"
+                      [disabled]="eliminandoArchivo === archivo.nombre" title="Eliminar archivo"
+                      (click)="pedirConfirmacionEliminar(archivo)">
+                      <span *ngIf="eliminandoArchivo === archivo.nombre"
+                        class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <i *ngIf="eliminandoArchivo !== archivo.nombre" class="bi bi-trash"></i>
+                    </button>
+                  </ng-template>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+
+
+
+          <div *ngIf="archivosSeleccionados.length > 0" class="mt-3">
+            <h6 class="fw-semibold">Archivos seleccionados:</h6>
+            <ul class="list-group">
+              <li *ngFor="let archivo of archivosSeleccionados; let i = index"
+                class="list-group-item d-flex justify-content-between align-items-center">
+                {{ archivo.name }}
+                <button class="btn btn-sm btn-outline-danger" (click)="eliminarArchivo(i)">
+                  <i class="bi bi-x-lg"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Alerta de error -->
+          <div *ngIf="mensajeError" class="alert alert-danger text-center py-2 mt-3" role="alert">
+            {{ mensajeError }}
+          </div>
+
+          <!-- Subida completada -->
+          <div *ngIf="subidaCompletada" class="alert alert-success text-center py-2 mt-3" role="alert">
+            <i class="bi bi-check-circle-fill me-1"></i>
+            Todos los archivos se han subido correctamente. Puedes cerrar esta ventana cuando quieras.
+          </div>
+
+          <div class="text-center mt-4">
+            <button class="btn btn-primary px-4"
+              [disabled]="archivosSeleccionados.length === 0 || subiendoArchivos"
+              (click)="confirmarSubida()">
+              <span *ngIf="subiendoArchivos" class="spinner-border spinner-border-sm me-2" role="status"
+                aria-hidden="true"></span>
+              <i *ngIf="!subiendoArchivos" class="bi bi-cloud-arrow-up me-2"></i>
+              {{ subiendoArchivos ? 'Subiendo archivos...' : 'Subir archivos' }}
+            </button>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

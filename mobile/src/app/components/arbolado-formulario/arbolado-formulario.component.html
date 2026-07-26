@@ -1,0 +1,90 @@
+<div class="pantalla-base">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Formulario Árbol</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrar()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="hayArboles" class="container" [fullscreen]="true" id="main-content">
+
+    <ion-item lines="none" class="select-arbol-item">
+      <ion-label position="floating">Árbol</ion-label>
+      <ion-select [(ngModel)]="arbolSeleccionado" placeholder="Seleccionar" interface="popover"
+        (ngModelChange)="cargarDatosArbolSeleccionado()">
+        <ion-select-option *ngFor="let arbol of arboles" [value]="arbol">
+          {{ arbol.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="acciones-entidad" *ngIf="arbolSeleccionado">
+      <ion-button fill="outline" color="danger" size="small" (click)="eliminarArbol()">
+        <ion-icon name="trash-outline" slot="start"></ion-icon>
+        Eliminar árbol
+      </ion-button>
+    </div>
+
+
+
+    <form [formGroup]="form">
+      <ion-list>
+
+        <!-- Especie con autocompletado -->
+        <app-species-picker formControlName="especie"></app-species-picker>
+
+        <ion-item>
+          <ion-label position="stacked">Diámetro normal (Dn) [cm]</ion-label>
+          <ion-input type="number" formControlName="dn"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Altura total (Ht) [m]</ion-label>
+          <ion-input type="number" formControlName="ht"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Altura copa seca (Hs) [m]</ion-label>
+          <ion-input type="number" formControlName="hs"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Altura copa viva (Hv) [m]</ion-label>
+          <ion-input type="number" formControlName="hv"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Diámetro copa 1 (Dc1) [m]</ion-label>
+          <ion-input type="number" formControlName="dc1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Diámetro copa 2 (Dc2) [m]</ion-label>
+          <ion-input type="number" formControlName="dc2"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Edad estimada</ion-label>
+          <ion-input formControlName="edad"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Notas / observaciones</ion-label>
+          <ion-textarea formControlName="notas"></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+    </form>
+  </ion-content>
+
+  <ion-content *ngIf="!hayArboles" class="container" [fullscreen]="true" id="main-content">
+    <ion-text color="warning">
+      <h2 class="ion-text-center">Atención</h2>
+      <p class="ion-text-center">Añade árboles a la tarea para rellenar formularios.</p>
+    </ion-text>
+  </ion-content>
+
+</div>

@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar-center">
+    <span class="app-name" (click)="goHome()">TerrApp</span>
+  </div>
+  <div class="navbar-right" (click)="toggleDropdown()">
+    <span class="user-greeting">{{userName}}</span>
+    <button class="dropdown-button">▼</button>
+    <div class="dropdown-menu" *ngIf="isDropdownVisible">
+      <button (click)="goToProfile()">Ver perfil</button>
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+  </div>
+</nav>

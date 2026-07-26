@@ -1,0 +1,122 @@
+:host {
+  --card-bg: #fff;
+  --aside-bg: #f2f3f5;
+  --border: #e3e6ea;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #0ec5f7;
+  --radius: 12px;
+  --shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+
+  font-family: 'Roboto', sans-serif;
+  color: var(--text);
+}
+
+/* Card base */
+.profile-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: var(--aside-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 4%;
+}
+
+/* Lateral */
+.profile-aside {
+  background: var(--aside-bg);
+  border-right: 1px solid var(--border);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    display: grid;
+    place-items: center;
+
+    img {
+      width: 100%;
+      height: 125%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      /* border: 4px solid var(--accent);
+      box-shadow: 0 0 10px var(--accent); */
+      background: #fff;
+    }
+  }
+
+  .role {
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+/* Principal */
+.profile-main {
+  padding: 32px clamp(20px, 4vw, 48px);
+  display: grid;
+  align-content: start;
+  gap: 18px;
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .name {
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2.5vw, 32px);
+
+    .info-item {
+      display: grid;
+      gap: 6px;
+
+      .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: .6px;
+        color: var(--muted);
+      }
+
+      .value {
+        font-size: clamp(16px, 2.2vw, 22px);
+        font-weight: 600;
+        word-break: break-word;
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .profile-card { grid-template-columns: 1fr; }
+
+  .profile-aside {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 24px 20px;
+
+    .role { font-size: 18px; }
+  }
+
+  .profile-main .info-row {
+    grid-template-columns: 1fr; /* apilar email, teléfono y fecha */
+  }
+}

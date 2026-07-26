@@ -1,0 +1,77 @@
+<ion-header class="header-moderno">
+  <ion-toolbar class="toolbar-moderno">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="" class="menu-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-moderno">VER ESTUDIOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" [fullscreen]="true" id="main-content">
+  <div *ngIf="!spinner" class="content-wrapper">
+    <!-- Sección de filtros -->
+    <div class="filter-section">
+      <h2 class="filter-title">
+        <ion-icon name="funnel-outline"></ion-icon>
+        Filtrar por mes
+      </h2>
+      <div class="filter-actions">
+        <div class="select-wrapper">
+          <ion-select [(ngModel)]="mesSeleccionado" (ionChange)="filtrarEstudios()" class="month-select">
+            <ion-select-option value="">Todos</ion-select-option>
+            <ion-select-option *ngFor="let mes of meses" [value]="mes.valor">
+              {{ mes.nombre }}
+            </ion-select-option>
+          </ion-select>
+          <!-- <ion-icon name="chevron-down" class="select-icon"></ion-icon> -->
+        </div>
+        <button class="sync-btn" [class.girando]="spinner" (click)="confirmarSincronizacion()"
+          title="Sincronizar con el servidor">
+          <ion-icon name="sync-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tarjetas de estudios -->
+    <div class="estudios-list">
+      <div *ngIf="estudiosFiltrados.length === 0" class="empty-state">
+        <ion-icon name="folder-open"></ion-icon>
+        <p class="empty-text">No hay estudios disponibles</p>
+      </div>
+
+      <div class="estudio-card" *ngFor="let estudio of estudiosFiltrados">
+        <div class="card-header-section">
+          <div class="estudio-info">
+            <h3 class="estudio-titulo">{{ estudio.data.NuevoEstudioFormData.nombre }}</h3>
+            <p class="estudio-fecha">
+              {{ estudio.data.NuevoEstudioFormData.fechaInicio | date:'dd/MM/yyyy' }}
+            </p>
+          </div>
+          <div class="card-actions">
+            <button class="action-btn view-btn" (click)="verDetalle(estudio)" title="Ver detalles">
+              <ion-icon name="eye"></ion-icon>
+            </button>
+            <button class="action-btn download-btn" (click)="descargarEstudio(estudio)" title="Descargar">
+              <ion-icon name="download"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-content-section">
+          <div class="info-row">
+            <span class="label">Provincia:</span>
+            <span class="value">{{ estudio.data.NuevoEstudioFormData.provincia }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Población:</span>
+            <span class="value">{{ estudio.data.NuevoEstudioFormData.poblacion }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="spinner" class="spinner">
+    <ion-spinner class="spinner-grande" name="circular"></ion-spinner>
+  </div>
+</ion-content>

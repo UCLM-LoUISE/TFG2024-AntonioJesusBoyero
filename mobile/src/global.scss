@@ -1,0 +1,371 @@
+/*
+ * App Global CSS — TerrApp
+ * ----------------------------------------------------------------------------
+ * Estilos globales del sistema de diseño "Field Research".
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* ===========================================================================
+   BASE
+   =========================================================================== */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body,
+ion-content {
+  font-family: var(--app-font);
+}
+
+ion-content {
+  --background: var(--app-bg);
+}
+
+h1, h2, h3, h4, h5,
+.titulo {
+  font-family: var(--app-font);
+  letter-spacing: -0.01em;
+}
+
+/* Scrollbars discretas (web / escritorio) */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--brand-rgb), 0.25);
+  border-radius: var(--r-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--brand-rgb), 0.45); }
+
+/* ===========================================================================
+   CABECERA UNIFICADA (header "moderno")
+   Compartida por todas las páginas que usan estas clases.
+   =========================================================================== */
+ion-header.header-moderno {
+  &::after { display: none; }            /* fuera la sombra/borde por defecto de iOS */
+
+  ion-toolbar {
+    --background: var(--grad-canopy);
+    --border-color: transparent;
+    --border-width: 0;
+    --color: #ffffff;
+    --min-height: 58px;
+    box-shadow: 0 6px 20px rgba(15, 44, 29, 0.28);
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.toolbar-moderno {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+.menu-btn,
+.btn-info {
+  --color: #ffffff;
+  --padding-start: 6px;
+  --padding-end: 6px;
+}
+
+.menu-btn { font-size: 26px; }
+
+.title-moderno {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 19px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50vw;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.btn-volver {
+  --color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 12px;
+  ion-icon { font-size: 20px; }
+}
+
+/* Cabecera estándar de Ionic (páginas sin la clase "moderno") */
+ion-toolbar {
+  --background: var(--grad-canopy);
+  --color: #ffffff;
+  --border-color: transparent;
+  ion-title { font-weight: 700; letter-spacing: 0.01em; }
+  ion-menu-button,
+  ion-back-button { --color: #ffffff; }
+}
+
+/* ===========================================================================
+   MENÚ LATERAL
+   =========================================================================== */
+ion-menu {
+  --width: 280px;
+
+  .menu-toolbar,
+  ion-toolbar {
+    --background: var(--grad-canopy);
+    ion-title { color: #ffffff; font-weight: 700; }
+  }
+
+  ion-content { --background: var(--surface); }
+
+  ion-list { padding: 14px 10px; background: transparent; }
+
+  ion-item {
+    --background: transparent;
+    --border-radius: var(--r-sm);
+    --padding-start: 14px;
+    --min-height: 52px;
+    --color: var(--ink-soft);
+    margin-bottom: 4px;
+    font-weight: 600;
+
+    ion-icon {
+      color: var(--brand);
+      font-size: 22px;
+    }
+    &:hover { --background: var(--brand-50); }
+  }
+
+  ion-item.logout-item {
+    --color: var(--ion-color-danger);
+    margin-top: 10px;
+    border-top: 1px solid var(--hairline);
+    border-radius: 0;
+    padding-top: 4px;
+
+    ion-icon { color: var(--ion-color-danger); }
+    &:hover { --background: rgba(var(--ion-color-danger-rgb), 0.06); }
+  }
+}
+
+/* ===========================================================================
+   BOTONES
+   =========================================================================== */
+ion-button {
+  --border-radius: var(--r-sm);
+  --box-shadow: none;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  --transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-button:not([fill]):not([color]),
+ion-button[color="primary"]:not([fill]) {
+  --background: var(--grad-brand);
+  --background-activated: var(--brand-700);
+  --background-hover: var(--brand-600);
+  --box-shadow: var(--shadow-brand);
+}
+
+ion-button[expand="block"] {
+  --padding-top: 1.05rem;
+  --padding-bottom: 1.05rem;
+  height: auto;
+}
+
+ion-button.button-solid:active { transform: translateY(1px); }
+
+/* ===========================================================================
+   FAB / spinners
+   =========================================================================== */
+ion-spinner { --color: var(--brand); }
+
+/* ===========================================================================
+   FORMULARIOS · ion-list / ion-item / inputs
+   Tarjetas de campo modernas para los formularios de arbolado y sotobosque.
+   =========================================================================== */
+form ion-list,
+.container form ion-list {
+  background: transparent;
+  padding: 4px 14px 24px;
+}
+
+form ion-item,
+.select-arbol-item {
+  --background: var(--surface);
+  --border-radius: var(--r-sm);
+  --border-color: transparent;
+  --border-width: 0;
+  --padding-start: 16px;
+  --padding-end: 12px;
+  --inner-padding-end: 6px;
+  --highlight-color-focused: var(--brand);
+  margin-bottom: 12px;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &.item-has-focus {
+    border-color: rgba(var(--brand-rgb), 0.55);
+    box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.12), var(--shadow-sm);
+  }
+
+  ion-label[position] {
+    --color: var(--ink-muted);
+    font-weight: 600 !important;
+    letter-spacing: 0.01em;
+  }
+
+  ion-input,
+  ion-textarea,
+  ion-select {
+    --color: var(--ink);
+    font-weight: 600;
+  }
+}
+
+/* Inputs de tipo "pill" usados en login */
+ion-input.modern-input { --color: var(--ink); }
+
+/* ===========================================================================
+   TARJETAS Ionic
+   =========================================================================== */
+ion-card {
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+  margin-inline: 0;
+}
+
+/* ===========================================================================
+   MODALES (toolbars internos)
+   =========================================================================== */
+ion-modal ion-toolbar:not(.species-header-toolbar) {
+  --background: var(--grad-canopy);
+  --color: #ffffff;
+  ion-title { color: #ffffff; }
+  ion-button { --color: #ffffff; }
+}
+
+/* ===========================================================================
+   HELPERS de superficie reutilizables
+   =========================================================================== */
+.app-surface {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--hairline);
+}
+
+/* ===========================================================================
+   ALERTAS
+   =========================================================================== */
+/* Ionic sanitiza el HTML de los ion-alert, así que los mensajes multilínea se
+   componen con \n y aquí se respetan los saltos de línea. */
+ion-alert .alert-message {
+  white-space: pre-line;
+}
+
+/* ===========================================================================
+   MAPA · Controles de Leaflet (conmutador de capas, zoom, atribución)
+   =========================================================================== */
+.leaflet-control-layers {
+  border: 1px solid var(--hairline) !important;
+  border-radius: var(--r-md) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+  background: var(--surface) !important;
+}
+
+/* Botón contraído (icono de capas) */
+.leaflet-control-layers-toggle {
+  width: 42px !important;
+  height: 42px !important;
+  background-size: 22px 22px !important;
+  border-radius: var(--r-md) !important;
+}
+
+/* Panel expandido con la lista de capas */
+.leaflet-control-layers-expanded {
+  padding: 12px 14px !important;
+  color: var(--ink);
+  font-family: var(--app-font);
+  min-width: 168px;
+
+  .leaflet-control-layers-base label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 6px;
+    margin: 0;
+    border-radius: var(--r-xs);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover { background: var(--brand-50); color: var(--brand-strong); }
+
+    span { display: flex; align-items: center; gap: 8px; }
+  }
+
+  .leaflet-control-layers-separator { border-top-color: var(--hairline); }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    accent-color: var(--brand);
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+}
+
+/* Controles de zoom */
+.leaflet-bar {
+  border: 1px solid var(--hairline) !important;
+  border-radius: var(--r-sm) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+
+  a {
+    color: var(--brand-strong) !important;
+    font-weight: 700;
+    &:hover { background: var(--brand-50) !important; }
+  }
+}
+
+/* Atribución */
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-radius: var(--r-xs) 0 0 0;
+  font-size: 10px;
+  color: var(--ink-muted);
+  a { color: var(--brand); }
+}
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * (desactivado: la app usa el tema claro "field research")
+ */
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+// @import "@ionic/angular/css/palettes/dark.system.css";

@@ -1,0 +1,599 @@
+// ===== HEADER MEJORADO =====
+.species-header-toolbar {
+  --background: var(--grad-canopy);
+  --border-width: 0;
+  box-shadow: 0 6px 20px rgba(15, 44, 29, 0.28);
+  padding: 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.header-icon {
+  font-size: 32px;
+  color: #ffffff;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    --color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+}
+
+.header-close-btn {
+  flex-shrink: 0;
+
+  ion-button {
+    --color: #ffffff;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: rotate(90deg);
+    }
+
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+}
+
+// ===== MODAL Y CONTENEDOR PRINCIPAL =====
+.species-modal-content {
+  --background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  padding-top: 8px;
+}
+
+// ===== BARRA DE BÚSQUEDA =====
+.search-container {
+  padding: 20px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #ecf0f1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+// ===== SPINNER DE BÚSQUEDA =====
+.search-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 12px;
+  animation: fadeIn 0.3s ease-out;
+
+  ion-spinner {
+    --color: #2d9f5f;
+    transform: scale(1.5);
+  }
+
+  p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #95a5a6;
+  pointer-events: none;
+  font-size: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px !important;
+  border: 2px solid #ecf0f1 !important;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  color: #2c3e50;
+
+  &::placeholder {
+    color: #bdc3c7;
+  }
+
+  &:focus,
+  &:active {
+    border-color: var(--brand) !important;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.14);
+  }
+}
+
+// Botón de reinicio del recomendador
+.reset-scores-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.reset-scores-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  ion-icon { font-size: 15px; }
+
+  &:hover,
+  &:active {
+    color: var(--brand);
+    background: var(--brand-50);
+  }
+}
+
+.clear-button {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #95a5a6;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+  }
+}
+
+// ===== LISTADO DE ESPECIES =====
+.species-dropdown {
+  position: relative;
+  background: transparent;
+  padding: 12px 16px 0;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.species-list {
+  --padding-start: 0;
+  --padding-end: 0;
+  background: transparent;
+}
+
+.species-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
+  --min-height: auto;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  ion-label {
+    margin: 0;
+  }
+}
+
+// ===== CARD DE ESPECIE =====
+.species-card {
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #ecf0f1;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: stretch;
+
+  &:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+  }
+}
+
+.species-main-content {
+  flex: 1;
+  padding: 14px 16px;
+  cursor: pointer;
+  min-width: 0; // Importante para text-overflow
+}
+
+.species-header {
+  margin-bottom: 12px;
+}
+
+.scientific-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.species-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.detail-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #7f8c8d;
+  font-weight: 600;
+  min-width: 80px;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 14px;
+    color: #95a5a6;
+  }
+}
+
+.detail-value {
+  color: #2c3e50;
+  font-weight: 500;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+// Botón de información
+.info-button {
+  background: linear-gradient(135deg, var(--ion-color-tertiary) 0%, var(--ion-color-tertiary-shade) 100%);
+  border: none;
+  color: white;
+  width: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+
+  ion-icon {
+    font-size: 24px;
+  }
+
+  &:active {
+    background: var(--ion-color-tertiary-shade);
+    transform: scale(0.95);
+  }
+}
+
+// ===== MODAL DE DETALLES =====
+.detail-modal-content {
+  --background: #f5f7fa;
+}
+
+.detail-container {
+  padding: 20px;
+}
+
+.detail-header-section {
+  background: var(--grad-canopy);
+  padding: 24px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 22px rgba(15, 44, 29, 0.28);
+}
+
+.detail-scientific-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.detail-info-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.detail-info-item {
+  padding: 16px;
+  border-bottom: 1px solid #ecf0f1;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detail-info-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+
+  ion-icon {
+    font-size: 18px;
+    color: var(--brand);
+  }
+}
+
+.detail-info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+.detail-actions {
+  ion-button {
+    --background: var(--grad-brand);
+    --background-activated: var(--brand-700);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 16px;
+    height: 48px;
+    border-radius: 12px;
+  }
+}
+
+// ===== ESTADO VACÍO =====
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: #bdc3c7;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: #95a5a6;
+  line-height: 1.5;
+}
+
+// ===== CONTADOR DE RESULTADOS =====
+.results-counter {
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(var(--brand-rgb), 0.08);
+  border-radius: 8px;
+  margin-bottom: 12px;
+
+  ion-icon {
+    font-size: 18px;
+    color: var(--brand);
+  }
+}
+
+// ===== SCROLL PERSONALIZADO =====
+.species-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.species-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.species-dropdown::-webkit-scrollbar-thumb {
+  background: #d5dbdb;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: #95a5a6;
+  }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: 480px) {
+  .search-container {
+    padding: 16px 12px;
+  }
+
+  .species-card {
+    flex-direction: row;
+  }
+
+  .species-main-content {
+    padding: 12px 14px;
+  }
+
+  .scientific-name {
+    font-size: 14px;
+  }
+
+  .detail-row {
+    font-size: 12px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .detail-label {
+    min-width: auto;
+    font-size: 11px;
+  }
+
+  .detail-value {
+    font-size: 12px;
+    padding-left: 18px;
+  }
+
+  .info-button {
+    width: 44px;
+    min-width: 44px;
+
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+
+  .empty-state {
+    padding: 40px 16px;
+  }
+
+  .detail-container {
+    padding: 16px;
+  }
+
+  .detail-header-section {
+    padding: 20px 16px;
+  }
+
+  .detail-scientific-name {
+    font-size: 18px;
+  }
+
+  .detail-info-item {
+    padding: 14px;
+  }
+
+  .results-counter {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .scientific-name {
+    font-size: 13px;
+  }
+
+  .detail-label {
+    font-size: 10px;
+  }
+
+  .detail-value {
+    font-size: 11px;
+  }
+
+  .info-button {
+    width: 40px;
+    min-width: 40px;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}

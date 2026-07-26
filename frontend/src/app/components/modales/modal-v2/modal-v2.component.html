@@ -1,0 +1,26 @@
+<div *ngIf="tipoModal === noHayFiguras">
+  <app-aviso-no-hay-figuras></app-aviso-no-hay-figuras>
+</div>
+
+<div *ngIf="tipoModal === nombre">
+  <app-introduce-nombre></app-introduce-nombre>
+</div>
+
+<div *ngIf="tipoModal === noHasGuardado">
+  <app-aviso-zonas-sin-guardar></app-aviso-zonas-sin-guardar>
+</div>
+
+<div *ngIf="tipoModal === eliminar">
+  <app-eliminar-tareas [title]="'Eliminar tarea'" [message]="'¿Deseas eliminar la tarea?'"
+  [confirmButtonText]="'Eliminar'" [cancelButtonText]="'Cancelar'" [studyId]="idTareaEliminar"
+  (confirm)="eliminarTarea()" (cancel)="closeModalEliminarTarea()"
+  ></app-eliminar-tareas>
+</div>
+
+<div *ngIf="tipoModal === eliminarZona">
+  <app-eliminar-zona></app-eliminar-zona>
+</div>
+
+
+
+

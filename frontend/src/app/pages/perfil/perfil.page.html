@@ -1,0 +1,38 @@
+<!-- Asegúrate de tener Roboto en index.html -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> -->
+
+<div class="profile-card">
+  <!-- Lateral -->
+  <aside class="profile-aside">
+    <div class="avatar">
+      <img src="assets/leaflet/images/cvvvvv.JPG" alt="Foto de perfil" />
+    </div>
+    <p class="role">{{ userData?.rol | capitalizeFirst }}</p>
+  </aside>
+
+  <!-- Principal -->
+  <section class="profile-main">
+    <h2 class="section-title">Datos personales</h2>
+
+    <h1 class="name">
+      {{ userData?.nombre }} {{ userData?.apellidos }}
+    </h1>
+
+    <div class="info-row">
+      <div class="info-item">
+        <span class="label">Email</span>
+        <span class="value">{{ userData?.email }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Teléfono</span>
+        <span class="value">{{ userData?.telefono }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="label">Fecha de creación</span>
+        <span class="value">{{ userData?.fechaCreacion | date:'short' }}</span>
+      </div>
+    </div>
+  </section>
+</div>

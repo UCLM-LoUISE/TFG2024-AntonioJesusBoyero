@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 32px;
+}
+
+main {
+  /* background-color: rgb(240, 242, 242); */
+  flex: 1;
+}
+
+.default-padding {
+  padding: 1rem;
+}
+
+.login-padding {
+  padding: 2rem;
+}
+
+.admin-bg {
+  background-color: wheat;
+}
+

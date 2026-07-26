@@ -1,0 +1,20 @@
+<div class="modal fade" id="eliminarZonasModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-custom">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">{{ '¡Atención!' }}</h5>
+      </div>
+      <div class="modal-body">
+        {{ 'Al eliminar la zona eliminará todas las subzonas y las tareas asociadas' }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-btn" (click)="onCancel()">
+          {{ 'Cancelar' }}
+        </button>
+        <button type="button" class="btn btn-danger modal-btn" (click)="onConfirmarEliminar()">
+          {{ 'Eliminar' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

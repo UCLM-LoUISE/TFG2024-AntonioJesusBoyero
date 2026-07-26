@@ -1,0 +1,139 @@
+<div class="page_container">
+
+  <div class="header-container">
+    <div class="calendar-back-container">
+      <a *ngIf="!modoCalendario" (click)="verCalendario()" class="back-link">
+        <i class="bi bi-arrow-left"></i> Calendario
+      </a>
+
+      <div *ngIf="rolUser == 'investigador' && modoCalendario" class="btn-group border" role="group"
+        aria-label="Selector de opciones">
+        <button type="button" class="btn btn1"
+          [ngClass]="{ 'selected': opcionSeleccionada === 'estudios', 'not-selected': opcionSeleccionada !== 'estudios' }"
+          (click)="seleccionarOpcion('estudios')">
+          Estudios
+        </button>
+        <button type="button" class="btn btn1"
+          [ngClass]="{ 'selected': opcionSeleccionada === 'tareas', 'not-selected': opcionSeleccionada !== 'tareas' }"
+          (click)="seleccionarOpcion('tareas')">
+          Tareas
+        </button>
+      </div>
+
+
+
+    </div>
+
+    <div *ngIf="rolUser == 'investigador' && opcionSeleccionada == 'estudios'" class="new-task-container">
+      <span class="new-task-link" (click)="abrirNuevoEstudio()">Nuevo Estudio</span>
+    </div>
+
+  </div>
+
+  <div *ngIf="rolUser == 'investigador' && opcionSeleccionada == 'estudios'" class="title_page">
+    <h3 class="tittle_content">ESTUDIOS DISPONIBLES</h3>
+    <i [class.bi-search]="!showFilter" [class.bi-x-circle]="showFilter" class="ms-2 text-primary filter-icon"
+      style="cursor: pointer; margin-top: 3px;" (click)="toggleFilter()"
+      [title]="showFilter ? 'Cerrar filtro' : 'Filtrar estudios'">
+    </i>
+  </div>
+
+  <div *ngIf="opcionSeleccionada =='tareas'" class="title_page_tareas">
+    <h3 class="tittle_content">ESTUDIOS CON TAREAS ASIGNADAS</h3>
+    <i [class.bi-search]="!showFilter" [class.bi-x-circle]="showFilter" class="ms-2 text-primary filter-icon"
+      style="cursor: pointer; margin-top: 3px;" (click)="toggleFilter()"
+      [title]="showFilter ? 'Cerrar filtro' : 'Filtrar estudios'">
+    </i>
+  </div>
+
+  <div *ngIf="showFilter" class="filter-container" [ngClass]="{'invalid': isFilterInvalid}">
+    <form [formGroup]="filterForm">
+      <div class="row">
+        <!-- Columna 1: Desde / Hasta -->
+        <div class="col">
+          <label for="fromDate" class="form-label">Desde</label>
+          <input id="fromDate" type="date" formControlName="fromDate" class="form-control" />
+          <label for="toDate" class="form-label mt-2">Hasta</label>
+          <input id="toDate" type="date" formControlName="toDate" class="form-control" />
+        </div>
+
+        <!-- Columna 2: Provincia / Municipio -->
+        <div class="col">
+          <label for="province" class="form-label">Provincia</label>
+          <select id="province" formControlName="province" class="form-select" (change)="onProvinciaChange($event)">
+            <option value="">Seleccione una provincia</option>
+            <option *ngFor="let provincia of provinces" [value]="provincia.label">{{ provincia.label }}</option>
+
+          </select>
+          <label for="municipality" class="form-label mt-2">Municipio</label>
+          <select id="municipality" formControlName="municipality" class="form-select">
+            <option value="">Seleccione un municipio</option>
+            <option *ngFor="let poblacion of municipalities" [value]="poblacion.label">{{ poblacion.label }}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="mt-2">
+        <button type="button" class="btn btn-primary me-2" (click)="applyFilters()">Aplicar filtros</button>
+        <button type="button" class="btn btn-secondary" (click)="resetFilters()">Reiniciar</button>
+      </div>
+      <div *ngIf="isFilterInvalid" class="filter-error-message roboto">
+        Por favor, complete al menos un campo para aplicar el filtro.
+      </div>
+    </form>
+  </div>
+
+
+  <div *ngIf="!modoCalendario && diaSeleccionadoCalendarioFormateado" style="text-align: center;">
+    <h5>Fecha seleccionada: {{diaSeleccionadoCalendarioFormateado}}</h5>
+  </div>
+
+  <div *ngIf="loading" class="spinner_container">
+    <div class="spinner-border text-dark" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="pintoCalendario && !loading && rolUser == 'investigador' && opcionSeleccionada == 'estudios'">
+    <ng-container *ngIf="modoCalendario; else showTable">
+      <app-calendario-estudios [estudios]="estudios"> </app-calendario-estudios>
+    </ng-container>
+  </div>
+
+  <ng-template #showTable>
+    <app-table-main *ngIf="hayEstudios && !loading" [tableHeaders]="taskTableHeaders" [tableData]="taskTableData"
+      [tableType]="tipoTabla" style="text-align: center">
+    </app-table-main>
+  </ng-template>
+
+  <div *ngIf="pintoCalendarioTareas && !loading && opcionSeleccionada == 'tareas'">
+    <ng-container *ngIf="modoCalendario; else showTableTareas">
+      <app-calendario-estudios [estudios]="estudiosPorTareasUsuario"> </app-calendario-estudios>
+    </ng-container>
+  </div>
+
+  <ng-template #showTableTareas>
+    <app-table-main *ngIf="hayEstudios && !loading" [tableHeaders]="taskTableHeadersTareas" [tableData]="taskTableDataTareas"
+      [tableType]="tipoTabla" style="text-align: center">
+    </app-table-main>
+  </ng-template>
+</div>
+
+
+<app-modal-confirmar-borrado-estudio [title]="'Eliminar estudio'" [message]="modalMessage"
+  [confirmButtonText]="'Eliminar'" [cancelButtonText]="'Cancelar'" [studyId]="idEstudioAEliminar"
+  (confirmAction)="eliminarEstudio($event)" (cancelAction)="closeModal()">
+</app-modal-confirmar-borrado-estudio>
+
+
+<div *ngIf="puedoVerModalEstudio">
+  <app-ver-estudio-modal [idEstudio]="idEstudioView" (cerrar)="closeModaEstudio()"></app-ver-estudio-modal>
+</div>
+
+<div *ngIf="puedoVerModalConfiguracionEstudio">
+  <app-configuracion-estudio-modal ></app-configuracion-estudio-modal>
+</div>
+
+
+
+

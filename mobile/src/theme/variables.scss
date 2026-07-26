@@ -1,0 +1,180 @@
+/*
+ * ============================================================================
+ *  TerrApp · Sistema de Diseño "Field Research"
+ *  Paleta forestal moderna para estudios de campo (arbolado / sotobosque).
+ *  Todo el color de la app deriva de estos tokens para garantizar coherencia.
+ * ============================================================================
+ */
+
+:root {
+  /* ----------------------------------------------------------------------- */
+  /*  Marca · Verde bosque                                                    */
+  /* ----------------------------------------------------------------------- */
+  --brand-50:  #eef6f0;
+  --brand-100: #d8ecdf;
+  --brand-200: #aed8bd;
+  --brand-300: #7cbf93;
+  --brand-400: #4ea36e;
+  --brand-500: #2e7d52;   /* primario */
+  --brand-600: #266945;
+  --brand-700: #1f5638;
+  --brand-800: #18432c;
+  --brand-900: #0f2c1d;
+
+  --brand: var(--brand-500);
+  --brand-strong: var(--brand-700);
+  --brand-rgb: 46, 125, 82;
+
+  /* Acento tierra / corteza (acciones secundarias, detalles cálidos) */
+  --bark-400: #d98f43;
+  --bark-500: #c8772e;
+  --bark-600: #a85f1f;
+  --bark-rgb: 200, 119, 46;
+
+  /* Acento hoja (highlights, estados activos vivos) */
+  --leaf: #5dbf7d;
+  --leaf-rgb: 93, 191, 125;
+
+  /* ----------------------------------------------------------------------- */
+  /*  Superficies y texto                                                     */
+  /* ----------------------------------------------------------------------- */
+  --app-bg: #f4f7f1;            /* fondo papel con leve tinte verde */
+  --app-bg-2: #eef2ea;
+  --surface: #ffffff;
+  --surface-2: #f7faf5;
+  --surface-sunken: #eef3ea;
+
+  --ink: #18241d;              /* texto principal (verde carbón) */
+  --ink-soft: #3f4f45;
+  --ink-muted: #6c7d71;
+  --ink-faint: #9aa89f;
+
+  --hairline: rgba(24, 36, 29, 0.08);
+  --hairline-strong: rgba(24, 36, 29, 0.14);
+
+  /* ----------------------------------------------------------------------- */
+  /*  Radios                                                                  */
+  /* ----------------------------------------------------------------------- */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ----------------------------------------------------------------------- */
+  /*  Sombras (suaves, teñidas de verde)                                      */
+  /* ----------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(24, 36, 29, 0.06);
+  --shadow-sm: 0 2px 10px rgba(24, 48, 33, 0.07);
+  --shadow-md: 0 8px 24px rgba(24, 48, 33, 0.10);
+  --shadow-lg: 0 16px 40px rgba(24, 48, 33, 0.16);
+  --shadow-brand: 0 8px 22px rgba(var(--brand-rgb), 0.32);
+  --shadow-bark: 0 8px 22px rgba(var(--bark-rgb), 0.30);
+
+  /* ----------------------------------------------------------------------- */
+  /*  Gradientes                                                              */
+  /* ----------------------------------------------------------------------- */
+  --grad-brand: linear-gradient(135deg, #338a5b 0%, #1f5638 100%);
+  --grad-brand-soft: linear-gradient(135deg, rgba(var(--brand-rgb), 0.12) 0%, rgba(var(--brand-rgb), 0.04) 100%);
+  --grad-bark: linear-gradient(135deg, #d98f43 0%, #a85f1f 100%);
+  --grad-canopy: linear-gradient(160deg, #2e7d52 0%, #1f5638 55%, #163f29 100%);
+  --grad-paper: linear-gradient(180deg, #f7faf5 0%, #f1f5ec 100%);
+
+  /* ----------------------------------------------------------------------- */
+  /*  Tipografía                                                              */
+  /* ----------------------------------------------------------------------- */
+  --app-font: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ion-font-family: var(--app-font);
+  font-family: var(--app-font);
+
+  /* ======================================================================= */
+  /*  Mapeo a la paleta semántica de Ionic                                    */
+  /* ======================================================================= */
+
+  /** primary · verde bosque **/
+  --ion-color-primary: #2e7d52;
+  --ion-color-primary-rgb: 46, 125, 82;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #286e48;
+  --ion-color-primary-tint: #438a65;
+
+  /** secondary · tierra/corteza **/
+  --ion-color-secondary: #c8772e;
+  --ion-color-secondary-rgb: 200, 119, 46;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #b06828;
+  --ion-color-secondary-tint: #ce8443;
+
+  /** tertiary · musgo/teal (info, mapas) **/
+  --ion-color-tertiary: #2c9c8f;
+  --ion-color-tertiary-rgb: 44, 156, 143;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #27897e;
+  --ion-color-tertiary-tint: #41a69a;
+
+  /** success · verde hoja **/
+  --ion-color-success: #2fa866;
+  --ion-color-success-rgb: 47, 168, 102;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #29945a;
+  --ion-color-success-tint: #44b175;
+
+  /** warning · ámbar **/
+  --ion-color-warning: #e0a93b;
+  --ion-color-warning-rgb: 224, 169, 59;
+  --ion-color-warning-contrast: #2c2206;
+  --ion-color-warning-contrast-rgb: 44, 34, 6;
+  --ion-color-warning-shade: #c59534;
+  --ion-color-warning-tint: #e3b24f;
+
+  /** danger · rojo arcilla **/
+  --ion-color-danger: #d24e3a;
+  --ion-color-danger-rgb: 210, 78, 58;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #b94533;
+  --ion-color-danger-tint: #d7604e;
+
+  /** dark / medium / light · grises verdosos **/
+  --ion-color-dark: #18241d;
+  --ion-color-dark-rgb: 24, 36, 29;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #152019;
+  --ion-color-dark-tint: #2f3a33;
+
+  --ion-color-medium: #6c7d71;
+  --ion-color-medium-rgb: 108, 125, 113;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #5f6e63;
+  --ion-color-medium-tint: #7b8a7f;
+
+  --ion-color-light: #edf2e9;
+  --ion-color-light-rgb: 237, 242, 233;
+  --ion-color-light-contrast: #18241d;
+  --ion-color-light-contrast-rgb: 24, 36, 29;
+  --ion-color-light-shade: #d1d5cd;
+  --ion-color-light-tint: #eff3eb;
+
+  /* ----------------------------------------------------------------------- */
+  /*  Variables globales de Ionic                                             */
+  /* ----------------------------------------------------------------------- */
+  --ion-background-color: var(--app-bg);
+  --ion-background-color-rgb: 244, 247, 241;
+  --ion-text-color: var(--ink);
+  --ion-text-color-rgb: 24, 36, 29;
+
+  --ion-toolbar-background: var(--grad-brand);
+  --ion-toolbar-color: #ffffff;
+
+  --ion-item-background: #ffffff;
+
+  --ion-card-radius: var(--r-md);
+}

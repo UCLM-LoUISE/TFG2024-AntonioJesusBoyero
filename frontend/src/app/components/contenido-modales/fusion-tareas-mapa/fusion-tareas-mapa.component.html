@@ -1,0 +1,70 @@
+<div class="modal fade" id="verMapaFusion" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content p-3">
+      <div class="modal-header text-center">
+        <h5 class="modal-title text-uppercase fw-bold w-100">{{ tarea?.nombreTarea || 'Detalle de la tarea' }}</h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+
+      <!-- Contenedor de pestañas centradas -->
+      <div class="tabs-wrapper">
+        <div class="tabs-bar">
+          <div class="tab-button" [class.active]="seccionActiva === 'mapa'" (click)="cambiarSeccion('mapa')">
+            MAPA
+          </div>
+          <div class="tab-button" [class.active]="seccionActiva === 'datos'" (click)="cambiarSeccion('datos')">
+            DATOS
+          </div>
+          <div class="tab-indicator" [ngStyle]="{ left: indicadorPosicion }"></div>
+        </div>
+      </div>
+
+
+
+
+      <div class="modal-body">
+
+        <!-- Sección Mapa -->
+        <div *ngIf="seccionActiva === 'mapa'">
+          <div class="mapa_container">
+            <div id="map" #mapRef class="mapa"></div>
+          </div>
+        </div>
+
+        <!-- Sección Datos -->
+        <div *ngIf="seccionActiva === 'datos'" class="tabla-datos-container">
+          <table class="tabla-datos">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Autor</th>
+                <th *ngFor="let key of columnasDatos">
+                  <!-- {{ key }} -->
+                  {{ NOMBRES_COLUMNAS[key] || key }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of datosTarea">
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.tipo }}</td>
+                <td class="celda-autor">{{ item.nombreUsuario || '-' }}</td>
+                <td *ngFor="let key of columnasDatos">
+                  <!-- 🆕 Mostrar momento directamente si la columna es 'momento' -->
+                  {{ key === 'momento' ? (item.momento ?? '-') : (item.datos[key] ?? '-') }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+      </div>
+    </div>

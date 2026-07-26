@@ -1,0 +1,126 @@
+<div class="modal fade" id="fusionTareas" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content fusion-modal">
+      <div class="modal-header">
+        <div class="fusion-cabecera">
+          <h5 class="modal-title">Fusión de archivos</h5>
+          <span class="fusion-subtitulo">{{ tarea?.nombreTarea }}</span>
+        </div>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Estado final: todas las fusiones completadas -->
+        <div *ngIf="completado" class="fusion-completado">
+          <i class="bi bi-check-circle-fill"></i>
+          <h5>¡Fusiones completadas!</h5>
+          <p>Todos los conflictos de esta tarea están resueltos. Ya puedes visualizarla con el icono del ojo.</p>
+          <button type="button" class="btn btn-success" (click)="cerrarModal()">Cerrar</button>
+        </div>
+
+        <ng-container *ngIf="!completado">
+
+          <!-- 🆕 Progreso por momentos si la tarea tiene fases temporales -->
+          <div *ngIf="tarea.tieneMomentos && momentosConConflictos.length > 0" class="fusion-progreso">
+            <div class="fusion-progreso-header">
+              <span class="fusion-progreso-titulo">Progreso de fusión</span>
+              <span class="fusion-progreso-contador">
+                {{ momentosFusionados.length }} / {{ momentosConConflictos.length }} momentos fusionados
+              </span>
+            </div>
+
+            <div class="fusion-barra">
+              <div class="fusion-barra-relleno" [style.width.%]="porcentajeProgreso"></div>
+            </div>
+
+            <div class="fusion-chips">
+              <span *ngFor="let m of momentosConConflictos" class="fusion-chip"
+                [class.done]="tarea.momentos[m]?.fusionado"
+                [class.activo]="m === momentoSeleccionado && !tarea.momentos[m]?.fusionado"
+                (click)="seleccionarMomento(m)">
+                <i class="bi"
+                  [ngClass]="tarea.momentos[m]?.fusionado ? 'bi-check-circle-fill' : (m === momentoSeleccionado ? 'bi-arrow-right-circle-fill' : 'bi-clock')"></i>
+                {{ m }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Mensaje de éxito tras fusionar un momento -->
+          <div *ngIf="mensajeExito" class="fusion-alert fusion-alert-exito">
+            <i class="bi bi-check-circle-fill"></i> {{ mensajeExito }}
+          </div>
+
+          <!-- 🆕 Selector de momento (solo pendientes) -->
+          <div *ngIf="tarea.tieneMomentos && momentosPendientes.length > 0" class="fusion-bloque">
+            <label for="selectorMomento" class="form-label fw-bold">Momento a fusionar:</label>
+            <select id="selectorMomento" class="form-select" [(ngModel)]="momentoSeleccionado"
+              (ngModelChange)="onMomentoChange()" [disabled]="cargando">
+              <option *ngFor="let momento of momentosPendientes" [value]="momento">
+                {{ momento }}
+              </option>
+            </select>
+            <small class="text-muted">Solo se muestran los momentos pendientes con múltiples archivos JSON</small>
+          </div>
+
+          <div class="fusion-tabla-scroll">
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Subido por</th>
+                  <th>Fecha</th>
+                  <th>Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let archivo of archivosFiltradosJSON">
+                  <td>{{ archivo.nombre }}</td>
+                  <td>{{ archivo.subidoPor }}</td>
+                  <td>{{ archivo.fecha | date: 'yyyy-MM-dd HH:mm' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary" (click)="verArchivo(archivo.url)">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mostrar solo si hay más de un archivo JSON -->
+          <div *ngIf="archivosFiltradosJSON.length > 1" class="fusion-opciones">
+            <div class="fusion-bloque">
+              <label for="archivoGeneral" class="form-label fw-bold">Establecer archivo general</label>
+              <select id="archivoGeneral" class="form-select" [(ngModel)]="archivoPrincipalSeleccionado"
+                [disabled]="cargando">
+                <option *ngFor="let archivo of archivosFiltradosJSON" [ngValue]="archivo">
+                  {{ archivo.nombre }}
+                </option>
+              </select>
+              <small class="text-muted">El mapa del archivo general se usará como base de la fusión</small>
+            </div>
+
+            <!-- Error integrado en el modal (sustituye al alert del navegador) -->
+            <div *ngIf="errorMsg" class="fusion-alert fusion-alert-error">
+              <i class="bi bi-exclamation-triangle-fill"></i> {{ errorMsg }}
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+              <button class="btn btn-success btn-fusionar" (click)="fusionarTareas()" [disabled]="cargando">
+                <span *ngIf="cargando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <i *ngIf="!cargando" class="bi bi-shuffle"></i>
+                {{ cargando ? 'Fusionando...' : 'Fusionar' }}
+              </button>
+            </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

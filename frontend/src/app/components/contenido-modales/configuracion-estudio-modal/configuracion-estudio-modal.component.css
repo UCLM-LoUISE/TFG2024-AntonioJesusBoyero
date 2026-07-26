@@ -1,0 +1,107 @@
+.size{
+  font-size: 22px;
+}
+
+.modal-content {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(246 246 246);
+}
+
+.modal-title {
+  width: 100%;
+  text-align: center;
+}
+
+
+.btn-close {
+  width: 20px; /* Ancho más pequeño */
+  height: 20px; /* Alto más pequeño */
+  padding: 0; /* Sin padding */
+  margin-right: 5px; /* Ajuste del margen derecho */
+}
+
+
+
+.selected-workers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected-worker {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem; /* Reducido el padding */
+  margin: 0.1rem; /* Reducido el margen */
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem; /* Reducido el tamaño de la fuente */
+}
+
+.selected-worker button {
+  background: none;
+  border: none;
+  font-size: 0.8rem; /* Reducido el tamaño de la fuente del botón */
+  margin-left: 0.2rem; /* Reducido el margen izquierdo */
+  cursor: pointer;
+  color: #888;
+}
+
+
+
+.border-error {
+  border: 3px solid red;
+}
+
+
+.info-icon {
+  font-size: 20px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.info-icon:hover {
+  color: #0056b3;
+}
+
+
+/* Reducir el tamaño del input */
+.search-input {
+  width: 300px; /* Ajustar el ancho */
+  margin-right: 10px; /* Espaciado con la lista */
+}
+
+/* Alinear la lista de sugerencias a la derecha del input */
+.search-suggestions {
+  position: absolute;
+  margin-left: 50%; /* Se coloca justo después del input */
+  top: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  max-width: 250px;
+}
+
+/* Ajustar el tamaño de la fuente */
+.small-text {
+  font-size: 0.85rem;
+}
+
+/* Estilo de la lista */
+.list-group {
+  padding: 0;
+  margin: 0;
+}
+
+.list-group-item {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
+

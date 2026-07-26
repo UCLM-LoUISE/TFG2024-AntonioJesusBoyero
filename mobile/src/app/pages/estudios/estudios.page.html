@@ -1,0 +1,28 @@
+<ion-header class="header-moderno">
+  <ion-toolbar class="toolbar-moderno">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="" class="menu-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-moderno">Estudios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" [fullscreen]="true" id="main-content">
+
+  <div class="header">
+    <h1 class="header_h1">¿Que deseas hacer?</h1>
+  </div>
+
+  <div class="content">
+    <a routerLink="/estudios/ver" routerDirection="forward" class="link">
+      <ion-icon name="book-outline" slot="start"></ion-icon>
+      Ver estudios
+    </a>
+
+    <a routerLink="/estudios/cargar" routerDirection="forward" class="link">
+      <ion-icon name="cloud-upload-outline" slot="start"></ion-icon>
+      Cargar estudios
+    </a>
+  </div>
+
+</ion-content>

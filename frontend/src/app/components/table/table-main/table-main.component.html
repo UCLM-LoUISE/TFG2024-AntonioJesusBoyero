@@ -1,0 +1,74 @@
+<div class="tabla size modal-content">
+  <table class="table table-hover table-ellipsis">
+    <thead>
+      <tr class="table-secondary">
+        <th *ngFor="let header of tableHeaders">{{ header.label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="!loading; else loadingTemplate">
+        <ng-container *ngIf="displayedData.length > 0; else noDataTemplate">
+          <tr *ngFor="let row of displayedData">
+            <td *ngFor="let header of tableHeaders" [attr.title]="row[header.key]"
+              [ngClass]="{'text-center': header.isAction}">
+              <ng-container [ngSwitch]="header.key">
+                <span *ngSwitchCase="'view'">
+                  <i class="bi bi-eye clickable-icon" (click)="onView(row['id'])"></i>
+                </span>
+                <span *ngSwitchCase="'edit'">
+                  <i class="bi bi-pencil clickable-icon" (click)="onEdit(row['id'])"></i>
+                </span>
+                <span *ngSwitchCase="'delete'">
+                  <i class="bi bi-trash clickable-icon" (click)="onDelete(row['id'])"></i>
+                </span>
+                <span *ngSwitchCase="'data'">
+                  <i class="bi bi-download clickable-icon"
+                    [ngClass]="{ 'disabled-icon': !puedoDescargarDatosEstudioTabla(row['id']) }"
+                    (click)="puedoDescargarDatosEstudioTabla(row['id']) && onDownloadData(row['id'])"
+                    title="Descargar datos">
+                  </i>
+                </span>
+                <span *ngSwitchCase="'settings'">
+                  <i class="bi bi-gear clickable-icon" [ngClass]="{ 'disabled-icon': !esUsuarioCreador(row['id']) }"
+                    (click)="onSettings(row['id'])" [attr.disabled]="!esUsuarioCreador(row['id']) ? true : null">
+                  </i>
+                </span>
+
+                <span *ngSwitchDefault>{{ row[header.key] || '-' }}</span>
+              </ng-container>
+            </td>
+          </tr>
+        </ng-container>
+        <!-- Caso en que no hay datos -->
+        <ng-template #noDataTemplate>
+          <tr>
+            <td [attr.colspan]="tableHeaders.length" class="text-center text-muted">
+              No hay datos disponibles para mostrar con estos criterios de búsqueda.
+            </td>
+          </tr>
+        </ng-template>
+      </ng-container>
+    </tbody>
+
+  </table>
+
+  <ng-template #loadingTemplate>
+    <tr>
+      <td colspan="7">
+        <div class="spinner-container">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <div class="pagination-controls" *ngIf="tableData.length > 0">
+    <button class="btn btn-outline-primary" (click)="prevPage()" [hidden]="totalPages <= 1"
+      [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button class="btn btn-outline-primary" (click)="nextPage()" [hidden]="totalPages <= 1"
+      [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>

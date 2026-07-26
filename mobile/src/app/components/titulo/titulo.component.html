@@ -1,0 +1,8 @@
+<div class="titulo__container">
+  <ion-text [ngClass]="titleClasses" [style.color]="color || null">
+    <span>{{ text }}</span>
+  </ion-text>
+  <ion-text *ngIf="subtitle" class="titulo__subtitle" [style.color]="color || null">
+    <small>{{ subtitle }}</small>
+  </ion-text>
+</div>

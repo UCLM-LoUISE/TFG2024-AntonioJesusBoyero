@@ -1,0 +1,64 @@
+<div class="page_container">
+
+  <div class="back-button">
+    <a (click)="goBack()" class="back-link">
+      <i class="bi bi-arrow-left"></i>Formulario
+    </a>
+  </div>
+
+  <app-title [titulo]="'AGREGAR ZONAS/PUNTOS DE MUESTREO'" [nombreEstudio]="nombreEstudio"></app-title>
+
+
+  <app-agregar-figura></app-agregar-figura>
+
+
+  <div class="mapa_container" style="margin-top: 30px;">
+    <div id="map" class="mapa"></div>
+  </div>
+
+
+  <div *ngIf="resumenFiguras.length > 0" class="resumen">
+    <div class="resumen-container">
+      <h3 (click)="toggleResumen()" class="titulo-resumen">
+        Resumen de Figuras
+        <i [ngClass]="resumenExpandido ? 'bi-caret-up-fill' : 'bi-caret-down-fill'" class="flecha-icon"></i>
+      </h3>
+      <ul *ngIf="resumenExpandido">
+        <ng-container *ngFor="let figura of resumenFiguras">
+          <li>
+            {{ figura.nombre }}
+            <app-tree-node [figura]="figura"></app-tree-node>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="cambioFigurasEnElMapa" class="aviso">
+    <h5 >¡Importante, guarde zonas al terminar de crearlas!</h5>
+  </div>
+
+  <div *ngIf="!cambioFigurasEnElMapa" class="no_aviso">
+    <h5 >Cambios actualizados</h5>
+  </div>
+
+  <div class="button_container" style="margin-top: 30px; margin-bottom: 30px;">
+    <button class="btn btn-primary" [disabled]="cargando" (click)="guardarZonas()">
+      <span *ngIf="!cargando">Guardar zonas</span>
+      <span *ngIf="cargando">
+        <i class="spinner-border spinner-border-sm"></i> Guardando...
+      </span>
+    </button>
+  </div>
+  <app-gestion-tareas></app-gestion-tareas>
+</div>
+
+<app-modal-v2 [tipoModal]="nombre"></app-modal-v2>
+<app-modal-v2 [tipoModal]="noFiguras"></app-modal-v2>
+<app-modal-v2 [tipoModal]="noHasGuardado"></app-modal-v2>
+<app-modal-v2 [tipoModal]="eliminarZona"></app-modal-v2>
+
+

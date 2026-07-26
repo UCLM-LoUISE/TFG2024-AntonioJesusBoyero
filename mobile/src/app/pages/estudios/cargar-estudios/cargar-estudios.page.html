@@ -1,0 +1,65 @@
+<ion-header class="header-moderno">
+  <ion-toolbar class="toolbar-moderno">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="" class="menu-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-moderno">Cargar Estudios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" [fullscreen]="true" id="main-content">
+  <div class="upload-wrapper">
+    <div class="upload-card">
+      <div class="icon-wrapper">
+        <div class="icon-circle">
+          <ion-icon name="cloud-upload-outline" class="upload-icon"></ion-icon>
+        </div>
+      </div>
+
+      <h2 class="upload-title">Selecciona un archivo de estudio</h2>
+      <p class="upload-subtitle">Importa tu archivo JSON para cargar un nuevo estudio</p>
+
+      <!-- Input oculto -->
+      <input type="file" accept=".json" hidden #fileInput (change)="onFileSelected($event)" />
+
+      <!-- Botón que dispara el input -->
+      <ion-button expand="block" class="select-button" (click)="fileInput.click()">
+        <ion-icon slot="start" name="folder-open-outline"></ion-icon>
+        Seleccionar archivo
+      </ion-button>
+
+      <div *ngIf="fileName" class="file-selected">
+        <div class="file-info">
+          <ion-icon name="document-outline" class="file-icon"></ion-icon>
+          <div class="file-details">
+            <p class="file-label">Archivo seleccionado:</p>
+            <p class="file-name">{{ fileName }}</p>
+          </div>
+          <ion-icon name="checkmark-circle" class="success-icon"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <ion-button *ngIf="estudioCargado" expand="block" class="continue-button" (click)="abrirEstudio()">
+      <ion-icon slot="start" name="arrow-forward-outline"></ion-icon>
+      Continuar
+    </ion-button>
+
+    <!-- Estudio importado que sigue en memoria: se puede volver a entrar sin
+         reimportar y sin perder el trabajo de campo (clave sin conexión) -->
+    <div class="estudios-cargados" *ngIf="estudioImportado && !estudioCargado">
+      <h3 class="cargados-titulo">
+        <ion-icon name="folder-open-outline"></ion-icon>
+        Estudio cargado
+      </h3>
+
+      <div class="cargado-item" (click)="abrirEstudioImportado()">
+        <div class="cargado-info">
+          <p class="cargado-nombre">{{ nombreEstudio(estudioImportado) }}</p>
+          <p class="cargado-sub">Toca para abrir el detalle</p>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="cargado-chevron"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>

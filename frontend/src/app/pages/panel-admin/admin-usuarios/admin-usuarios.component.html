@@ -1,0 +1,133 @@
+<!-- Tarjeta: Añadir usuario -->
+<section class="card-bloc strong-border">
+  <h2>Añadir usuario</h2>
+  <form [formGroup]="form" (ngSubmit)="invitar()" class="grid">
+    <label>Email
+      <input type="email" formControlName="email" class="form-control" placeholder="usuario@correo.com" />
+    </label>
+    <label>Nombre
+      <input type="text" formControlName="nombre" class="form-control" />
+    </label>
+    <label>Apellidos
+      <input type="text" formControlName="apellidos" class="form-control" />
+    </label>
+    <label>Teléfono
+      <input type="text" formControlName="telefono" class="form-control" />
+    </label>
+    <label>Rol
+      <select formControlName="rol" class="form-select">
+        <option value="investigador">Investigador</option>
+        <option value="trabajador">Trabajador</option>
+      </select>
+    </label>
+    <label>Grupo (opcional)
+      <select formControlName="grupo" class="form-control">
+        <option value="">-- Sin grupo --</option>
+        <option *ngFor="let g of gruposDisponibles" [value]="g">{{ g }}</option>
+      </select>
+    </label>
+    <div class="actions">
+      <button type="submit" class="btn btn-primary btn-sm" [disabled]="creating">
+        {{ creating ? 'Enviando...' : 'Invitar' }}
+      </button>
+    </div>
+  </form>
+</section>
+
+<!-- Barra de herramientas -->
+<section class="toolbar card-bloc strong-border">
+  <div class="left">
+    <div class="search">
+      <i class="bi bi-search"></i>
+      <input type="text" class="form-control" placeholder="Buscar por nombre, email, teléfono o grupo"
+        [(ngModel)]="search" (ngModelChange)="aplicarFiltros()" />
+    </div>
+  </div>
+  <div class="right">
+    <select class="form-select form-select-sm" [(ngModel)]="filtroRol" (ngModelChange)="aplicarFiltros()">
+      <option value="">Rol: todos</option>
+      <option value="investigador">Investigador</option>
+      <option value="trabajador">Trabajador</option>
+    </select>
+    <select class="form-control form-control-sm" [(ngModel)]="filtroGrupo" (ngModelChange)="aplicarFiltros()">
+      <option value="">-- Todos los grupos --</option>
+      <option *ngFor="let g of gruposDisponibles" [value]="g">{{ g }}</option>
+    </select>
+  </div>
+</section>
+
+<!-- Tabla usuarios -->
+<section class="card-bloc">
+  <div class="table-responsive" style="border-radius: 10px;">
+    <table class="table table-hover align-middle admin-users">
+      <thead class="table-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Rol</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Grupo</th>
+          <th>Estado</th>
+          <th>Fecha creación</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!loading; else loadingTplUsuarios">
+        <tr *ngFor="let u of pageData">
+          <td>
+            <div class="user-cell">
+              <div class="avatar">{{ (u.nombre || '?').charAt(0) }}</div>
+              <div class="name">{{ u.nombre }} {{ u.apellidos }}</div>
+            </div>
+          </td>
+          <td>{{ u.rol }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.telefono || '—' }}</td>
+          <td>{{ u.grupo || '—' }}</td>
+          <td>
+            <span [class]="badgeClass(u.estado)">{{ u.estado | titlecase }}</span>
+          </td>
+          <td>
+            {{ u.fechaCreacion ? (u.fechaCreacion | date:'dd/MM/yyyy HH:mm') : '—' }}
+          </td>
+          <td class="text-end">
+            <ng-container *ngIf="u.loadingAccion === 'estado'; else toggleIcon">
+              <span class="spinner-border spinner-border-sm text-secondary align-middle"></span>
+            </ng-container>
+            <ng-template #toggleIcon>
+              <i class="bi"
+                [ngClass]="u.estado === 'activo' ? 'bi-toggle-on text-success' : 'bi-toggle-off text-muted'"
+                (click)="toggleEstado(u)" style="font-size: 1.2rem; cursor: pointer;">
+              </i>
+            </ng-template>
+            <ng-container *ngIf="u.loadingAccion === 'borrar'; else deleteIcon">
+              <span class="spinner-border spinner-border-sm text-danger align-middle ms-2"></span>
+            </ng-container>
+            <ng-template #deleteIcon>
+              <i class="bi bi-trash text-danger ms-2" (click)="borrarUsuario(u)"
+                [style.pointer-events]="u.loadingAccion ? 'none' : 'auto'"
+                [style.opacity]="u.loadingAccion ? 0.6 : 1"
+                style="font-size: 1.2rem; cursor: pointer; margin-left: 15px !important;">
+              </i>
+            </ng-template>
+          </td>
+        </tr>
+        <tr *ngIf="pageData.length === 0">
+          <td colspan="8" class="text-center text-muted">No hay usuarios con esos criterios.</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #loadingTplUsuarios>
+      <tr>
+        <td colspan="8" class="text-center">
+          <span class="spinner-border text-primary"></span>
+        </td>
+      </tr>
+    </ng-template>
+  </div>
+  <div class="pagination-controls" *ngIf="filtrados.length > rowsPerPage">
+    <button class="btn btn-outline-primary btn-sm" (click)="anterior()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button class="btn btn-outline-primary btn-sm" (click)="siguiente()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</section>

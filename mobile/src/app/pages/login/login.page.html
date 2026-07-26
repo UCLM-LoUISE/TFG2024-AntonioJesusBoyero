@@ -1,0 +1,82 @@
+<div *ngIf="preLogin" class="splash-container" fullscreen>
+  <div class="splash-content">
+    <div class="logo-wrapper">
+      <img src="assets/icon/logo_terrapp.png" alt="Logo TerrApp" class="app-icon">
+      <ion-spinner name="circular" class="loading-spinner"></ion-spinner>
+    </div>
+    <div class="loading-text">
+      <p>Cargando...</p>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="login" class="login-container">
+  <div class="login-wrapper">
+    <div class="login-header">
+      <div class="logo-small">
+        <img src="assets/icon/logo_terrapp.png" alt="Logo TerrApp">
+      </div>
+      <h1 class="login-title">Inicio de Sesión</h1>
+      <p class="login-subtitle">Accede a tu cuenta</p>
+    </div>
+
+    <!-- Formulario de login reactivo -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-group">
+        <div class="input-wrapper">
+          <ion-icon name="person-outline" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="usuario"
+            type="email"
+            placeholder="Correo electrónico"
+            class="modern-input">
+          </ion-input>
+        </div>
+        <div *ngIf="loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched" class="error-message">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span>Usuario inválido (requiere un email válido)</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="contrasena"
+            type="password"
+            placeholder="Contraseña"
+            class="modern-input">
+          </ion-input>
+        </div>
+        <div *ngIf="loginForm.get('contrasena')?.invalid && loginForm.get('contrasena')?.touched" class="error-message">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span>La contraseña debe tener al menos 6 caracteres</span>
+        </div>
+      </div>
+
+      <ion-button expand="block" class="login-button" type="submit" [disabled]="isLoading">
+        <ng-container *ngIf="!isLoading">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>
+          Acceder
+        </ng-container>
+        <ng-container *ngIf="isLoading">
+          <ion-spinner slot="start" name="crescent" class="boton-spinner"></ion-spinner>
+          Accediendo...
+        </ng-container>
+      </ion-button>
+
+      <!-- Acceso sin conexión (trabajo de campo sin cobertura) -->
+      <div class="dev-buttons">
+        <ion-button expand="block" fill="clear" class="dev-button" (click)="loginSinConexion()">
+          <ion-icon slot="start" name="cloud-offline-outline"></ion-icon>
+          Login sin conexión
+        </ion-button>
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <img src="assets/icon/logo_terrapp.png" alt="Logo TerrApp" class="footer-logo">
+    </div>
+  </div>
+</div>

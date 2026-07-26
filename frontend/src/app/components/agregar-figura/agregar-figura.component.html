@@ -1,0 +1,57 @@
+<div class="container-fluid roboto">
+  <div class="d-flex justify-content-center align-items-center mb-3">
+    <h5 class="fw-bold d-flex align-items-center gap-2 cursor-pointer" (click)="toggleFormulario()">
+      Agregar Elementos Manualmente
+      <i [class]="mostrarFormulario ? 'bi bi-chevron-up' : 'bi bi-chevron-down'"></i>
+    </h5>
+  </div>
+
+  <div *ngIf="mostrarFormulario" class="card p-3" [ngClass]="{ 'invalid': formInvalid }">
+    <form [formGroup]="figuraForm" (ngSubmit)="agregarFiguraManual()" class="row g-2 justify-content-center">
+      <div class="col-md-auto flex-grow-1">
+        <label class="form-label small">Tipo de Figura:</label>
+        <select class="form-select form-select-sm" formControlName="tipoFigura" (change)="cambiarTipoFigura($event)">
+          <option value="marker">Punto</option>
+          <option value="circle">Círculo</option>
+        </select>
+      </div>
+
+      <div class="col-md-auto flex-grow-1">
+        <label class="form-label small">Nombre:</label>
+        <input type="text" class="form-control form-control-sm" formControlName="nombre" placeholder="Ej: Punto 1"
+          [ngClass]="{ 'is-invalid': figuraForm.get('nombre')?.invalid && figuraForm.get('nombre')?.touched }">
+      </div>
+
+      <div class="col-md-auto flex-grow-1">
+        <label class="form-label small">Latitud:</label>
+        <input type="number" class="form-control form-control-sm" formControlName="latitud" placeholder="Ej: 38.994349"
+          [ngClass]="{ 'is-invalid': figuraForm.get('latitud')?.invalid && figuraForm.get('latitud')?.touched }">
+      </div>
+
+      <div class="col-md-auto flex-grow-1">
+        <label class="form-label small">Longitud:</label>
+        <input type="number" class="form-control form-control-sm" formControlName="longitud" placeholder="Ej: -1.858542"
+          [ngClass]="{ 'is-invalid': figuraForm.get('longitud')?.invalid && figuraForm.get('longitud')?.touched }">
+      </div>
+
+      <div class="col-md-auto flex-grow-1" *ngIf="esCirculo">
+        <label class="form-label small">Radio (m):</label>
+        <input type="number" class="form-control form-control-sm" formControlName="radio" placeholder="Ej: 500"
+          [ngClass]="{ 'is-invalid': figuraForm.get('radio')?.invalid && figuraForm.get('radio')?.touched }">
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-primary me-2">Añadir al mapa</button>
+      </div>
+
+      <div *ngIf="mostrarError" class="text-danger text-center mt-3 textsize">
+        ⚠️ Por favor, completa correctamente todos los campos requeridos.
+      </div>
+
+      <div *ngIf="errorNombreDuplicado" class="text-danger text-center mt-3 textsize">
+        ⚠️ Ya existe una figura con ese nombre. Elige otro nombre.
+      </div>
+
+    </form>
+  </div>
+</div>

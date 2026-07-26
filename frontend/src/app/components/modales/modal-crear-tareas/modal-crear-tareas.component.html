@@ -1,0 +1,171 @@
+<div class="modal fade bd-example-modal-lg" id="confirmModal" tabindex="-1" role="dialog"
+  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content tarea-modal" [ngClass]="{'border-error': formularioInvalido }">
+      <div class="modal-header">
+        <div class="tarea-cabecera">
+          <h5 *ngIf="mode == 'crear'" class="modal-title" id="exampleModalLabel">
+            <i class="bi bi-plus-circle"></i> Nuevo muestreo
+          </h5>
+          <h5 *ngIf="mode == 'editar'" class="modal-title" id="exampleModalLabel">
+            <i class="bi bi-pencil-square"></i> Editar muestreo
+          </h5>
+          <h5 *ngIf="mode == 'ver'" class="modal-title" id="exampleModalLabel">
+            <i class="bi bi-eye"></i> Detalle del muestreo
+          </h5>
+          <span class="tarea-subtitulo">Completa los datos de la tarea de muestreo</span>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="tareaForm">
+
+          <div class="tarea-grid">
+            <!-- Nombre de la tarea -->
+            <div class="campo">
+              <label for="task-name">Nombre</label>
+              <input type="text" class="form-control form-control-sm" id="task-name" placeholder="Nombre del muestreo"
+                formControlName="taskName"
+                [ngClass]="{'is-invalid': formularioInvalido && tareaForm.get('taskName')?.invalid}">
+            </div>
+
+            <!-- Tipo de tarea -->
+            <div class="campo">
+              <label for="tipoTarea">Tipo</label>
+              <select id="tipoTarea" formControlName="tipoTarea" class="form-control form-control-sm"
+                [ngClass]="{'is-invalid': formularioInvalido && tareaForm.get('tipoTarea')?.invalid}">
+                <option value="" disabled selected>Seleccione un tipo</option>
+                <option value="medicion_arboles">Medición de árboles (Parcela grande - 15m)</option>
+                <option value="medicion_sotobosque">Medición del sotobosque (Parcela pequeña - 7m)</option>
+                <option value="medicion_herbaceas">Medición de herbáceas (Cuadrante de 1m²)</option>
+                <option value="muestreo_combustibles">Muestreo de combustibles leñosos muertos (Transectos de 7m)
+                </option>
+                <option value="medicion_hojarasca">Medición de hojarasca y suelo (Cuadrantes de 30x30 cm)</option>
+              </select>
+            </div>
+
+            <!-- Fecha -->
+            <div class="campo">
+              <label for="task-date">Fecha</label>
+              <input type="date" class="form-control form-control-sm" id="task-date"
+                placeholder="Seleccione una fecha" formControlName="fecha"
+                [ngClass]="{'is-invalid': formularioInvalido && tareaForm.get('fecha')?.invalid}">
+            </div>
+
+            <!-- Zona -->
+            <div class="campo">
+              <label for="zona">Zona</label>
+              <select id="zona" class="form-control form-control-sm" formControlName="zona"
+                [ngClass]="{'is-invalid': formularioInvalido && tareaForm.get('zona')?.invalid}">
+                <option value="" disabled selected>Selecciona un área</option>
+                <option *ngFor="let area of areas" [value]="area.value">{{ area.label }}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Asignar trabajadores -->
+          <div class="campo campo-completo">
+            <label for="trabajador"><i class="bi bi-person-circle"></i> Asignar trabajadores</label>
+
+            <select id="trabajador" class="form-control form-control-sm" (change)="addTrabajador($event)"
+              *ngIf="mode !== 'ver'"
+              [ngClass]="{'is-invalid': formularioInvalido && tareaForm.get('trabajador')?.invalid}">
+              <option value="" disabled selected>Selecciona un trabajador</option>
+              <option *ngFor="let trabajador of trabajadoresDisponibles" [value]="trabajador.email">
+                {{ trabajador.nombreCompleto }}
+              </option>
+            </select>
+
+            <!-- Lista de trabajadores seleccionados -->
+            <div class="selected-workers" *ngIf="trabajadoresSeleccionados.length > 0">
+              <span *ngFor="let trabajador of trabajadoresSeleccionados" class="selected-worker">
+                <i class="bi bi-person-fill"></i>
+                {{ trabajador.nombreCompleto }}
+                <button *ngIf="mode !== 'ver'" type="button" (click)="removeTrabajador(trabajador.email)"
+                  title="Quitar">×</button>
+              </span>
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <div class="campo campo-completo">
+            <label for="message-text">Notas <span class="opcional">(Opcional)</span></label>
+            <textarea class="form-control" id="message-text" rows="2" formControlName="notas"
+              placeholder="Información adicional sobre el muestreo"></textarea>
+          </div>
+
+          <!-- Sección de Momentos/Fases Temporales -->
+          <div *ngIf="tieneMomentos" class="momentos-box">
+            <label class="momentos-titulo">
+              <i class="bi bi-clock-history"></i> Fases/Momentos del Estudio
+            </label>
+
+            <!-- Checkbox para incluir todos los momentos -->
+            <div class="momento-check">
+              <input
+                type="checkbox"
+                id="todosMomentos"
+                [(ngModel)]="incluyeTodosMomentos"
+                [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onTodosMomentosChange()"
+                [disabled]="momentosDisponibles.length === 1"
+              />
+              <label for="todosMomentos">
+                <span *ngIf="momentosDisponibles.length > 1">Esta tarea está incluida en todos los momentos</span>
+                <span *ngIf="momentosDisponibles.length === 1">Solo existe un momento: {{ momentosDisponibles[0]
+                  }}</span>
+              </label>
+            </div>
+
+            <!-- Lista de momentos para seleccionar individualmente -->
+            <div *ngIf="!incluyeTodosMomentos && momentosDisponibles.length > 1" class="momentos-lista">
+              <label class="momentos-ayuda">Seleccione los momentos para esta tarea:</label>
+              <div *ngFor="let momento of momentosDisponibles" class="momento-check">
+                <input
+                  type="checkbox"
+                  [id]="'momento-' + momento"
+                  [checked]="isMomentoSeleccionado(momento)"
+                  (change)="onMomentoToggle(momento)"
+                />
+                <label [for]="'momento-' + momento">{{ momento }}</label>
+              </div>
+            </div>
+
+            <!-- Mensaje cuando todos están seleccionados -->
+            <div *ngIf="incluyeTodosMomentos && momentosDisponibles.length > 1" class="momentos-info-ok">
+              <i class="bi bi-check-circle"></i>
+              Esta tarea se creará para todos los momentos: {{ momentosDisponibles.join(', ') }}
+            </div>
+
+            <!-- Mensaje de error si no se selecciona ningún momento -->
+            <div *ngIf="!incluyeTodosMomentos && momentosSeleccionados.length === 0 && formularioInvalido"
+              class="tarea-alert tarea-alert-error">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              Debe seleccionar al menos un momento para esta tarea
+            </div>
+          </div>
+
+          <!-- Errores generales -->
+          <div *ngIf="errorNombreDuplicado" class="tarea-alert tarea-alert-error">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Ya existe una tarea con ese nombre. Elige otro nombre.
+          </div>
+
+          <div *ngIf="formularioInvalido && tareaForm.invalid" class="tarea-alert tarea-alert-error">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Por favor, completa los campos obligatorios marcados en rojo.
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button *ngIf="mode !== 'ver'" (click)="onConfirm()" type="button" class="btn btn-primary btn-confirmar">
+          <i class="bi" [ngClass]="mode == 'editar' ? 'bi-check-lg' : 'bi-plus-lg'"></i>
+          {{ mode == 'editar' ? 'Guardar cambios' : 'Añadir' }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

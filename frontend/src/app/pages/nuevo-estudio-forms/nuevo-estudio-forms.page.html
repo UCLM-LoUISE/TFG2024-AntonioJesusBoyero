@@ -1,0 +1,206 @@
+<div class="page_container">
+
+  <div class="back-button">
+    <a (click)="goBack()" class="back-link">
+      <i class="bi bi-arrow-left"></i> Calendario
+    </a>
+  </div>
+
+  <div class="title_page">
+    <h3 class="tittle_content">NUEVO ESTUDIO</h3>
+  </div>
+
+  <div class="form_container" [ngClass]="{'form-invalid': hasSubmitted && nuevoEstudioForm.invalid}">
+    <form [formGroup]="nuevoEstudioForm" (ngSubmit)="onSubmit()">
+
+      <!-- Datos del estudio -->
+      <div class="form-section">
+        <h4 class="form-section-title"><i class="bi bi-clipboard-data"></i> Datos del estudio</h4>
+        <div class="form-grid form-grid-3">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" formControlName="nombre" placeholder="Ingresa el nombre" />
+          </div>
+
+          <div class="form-group">
+            <label for="fechaInicio">Fecha de Inicio</label>
+            <input id="fechaInicio" type="date" formControlName="fechaInicio" />
+          </div>
+
+          <div class="form-group">
+            <label for="fechaFin">Fecha de Fin <span class="label-optional">(Opcional)</span></label>
+            <input id="fechaFin" type="date" formControlName="fechaFin" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="form-section">
+        <h4 class="form-section-title"><i class="bi bi-geo-alt"></i> Ubicación</h4>
+        <div class="form-grid form-grid-2">
+          <div class="form-group">
+            <label for="provincia">Provincia</label>
+            <select id="provincia" formControlName="provincia" (change)="onProvinciaChange($event)">
+              <option value="">Selecciona la provincia</option>
+              <option *ngFor="let provincia of provincias" [value]="provincia.label">{{ provincia.label }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="poblacion">Municipio</label>
+            <select id="poblacion" formControlName="poblacion">
+              <option value="">Selecciona la población</option>
+              <option *ngFor="let poblacion of poblaciones" [value]="poblacion.label">{{ poblacion.label }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notas -->
+      <div class="form-section">
+        <h4 class="form-section-title"><i class="bi bi-journal-text"></i> Notas <span class="label-optional">(Opcional)</span></h4>
+        <div class="form-group form-group-full">
+          <textarea id="notes" formControlName="notes"
+            placeholder="Ingresa cualquier información adicional relevante"></textarea>
+        </div>
+      </div>
+
+      <!-- Fases temporales / Momentos -->
+      <div class="form-section">
+        <h4 class="form-section-title"><i class="bi bi-clock-history"></i> Fases temporales</h4>
+
+        <div class="checkbox-row">
+          <input
+            type="checkbox"
+            id="tieneMomentos"
+            [(ngModel)]="tieneMomentos"
+            [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="onTieneMomentosChange()"
+          />
+          <label for="tieneMomentos">
+            ¿Este estudio incluye fases temporales/momentos?
+          </label>
+        </div>
+
+        <div *ngIf="tieneMomentos" class="momentos-container">
+          <label>Fases/Momentos del Estudio</label>
+
+          <div class="momentos-add-row">
+            <input
+              type="text"
+              placeholder="Nombre de la fase"
+              [(ngModel)]="nuevoMomento"
+              [ngModelOptions]="{standalone: true}"
+              (keydown.enter)="agregarMomento(); $event.preventDefault()"
+            />
+            <button
+              type="button"
+              class="btn btn-primary btn-agregar-momento"
+              (click)="agregarMomento()"
+            >
+              <i class="bi bi-plus-lg"></i> Agregar
+            </button>
+          </div>
+
+          <div *ngIf="momentos.length > 0" class="momentos-list">
+            <div *ngFor="let momento of momentos; let i = index" class="momento-item">
+              <span class="momento-text"><i class="bi bi-flag"></i> {{ momento }}</span>
+              <button
+                type="button"
+                class="btn-eliminar-momento"
+                (click)="eliminarMomento(i)"
+              >
+                <i class="bi bi-trash"></i> Eliminar
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="momentos.length === 0" class="momentos-empty"
+               [ngStyle]="{'color': hasSubmitted ? '#dc3545' : '#6c757d', 'font-weight': hasSubmitted ? 'bold' : 'normal'}">
+            No se han agregado fases/momentos aún. Agregue al menos una fase para continuar.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensajes de error -->
+      <div *ngIf="hasSubmitted && nuevoEstudioForm.invalid" class="filter-error-message">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Por favor, complete todos los campos obligatorios antes de continuar.
+      </div>
+      <div *ngIf="nuevoEstudioForm.hasError('invalidDateRange') && hasSubmitted" class="filter-error-message">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        La fecha de fin no puede ser anterior a la fecha de inicio.
+      </div>
+      <div *ngIf="hasSubmitted && tieneMomentos && momentos.length === 0" class="filter-error-message">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        Debe agregar al menos un momento/fase temporal o desmarcar la opción.
+      </div>
+    </form>
+  </div>
+
+
+  <div class="button_container" style="margin-top: 30px; margin-bottom: 30px;">
+    <button class="btn btn-primary" (click)="onSubmit()">
+      Continuar
+    </button>
+  </div>
+
+  <!-- [disabled]="!nuevoEstudioForm.valid" -->
+
+
+
+</div>
+
+
+<app-modal-confirmar-estudio-anterior [title]="'Estudio en progreso'"
+  [message]="'¿Deseas continuar con el estudio o comenzar uno nuevo?'" [confirmButtonText]="'Nuevo estudio'"
+  [cancelButtonText]="'Continuar'" (confirmAction)="startNewStudy()"
+  (cancelAction)="continuePreviousStudy()"></app-modal-confirmar-estudio-anterior>
+
+<!-- Modal de Confirmación para Momentos -->
+<div class="modal fade" id="confirmModalMomentos" tabindex="-1" aria-labelledby="confirmModalMomentosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-custom">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalMomentosLabel">{{ modalMomentosTitulo }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCancelModalMomentos()"></button>
+      </div>
+      <div class="modal-body" style="white-space: pre-line;">
+        {{ modalMomentosMensaje }}
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="modalMomentosShowCancel" type="button" class="btn btn-secondary modal-btn" (click)="onCancelModalMomentos()">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger modal-btn" (click)="onConfirmModalMomentos()">
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Notificaciones -->
+<div class="modal fade" id="notificacionModal" tabindex="-1" aria-labelledby="notificacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-custom">
+      <div class="modal-header" [ngClass]="modalNotificacionTipo === 'success' ? 'bg-success-header' : 'bg-error-header'">
+        <h5 class="modal-title" id="notificacionModalLabel">
+          <i [ngClass]="modalNotificacionTipo === 'success' ? 'bi bi-check-circle-fill' : 'bi bi-exclamation-circle-fill'"></i>
+          {{ modalNotificacionTitulo }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModalNotificacion()"></button>
+      </div>
+      <div class="modal-body" style="white-space: pre-line;">
+        {{ modalNotificacionMensaje }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn modal-btn"
+                [ngClass]="modalNotificacionTipo === 'success' ? 'btn-success' : 'btn-danger'"
+                (click)="closeModalNotificacion()">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

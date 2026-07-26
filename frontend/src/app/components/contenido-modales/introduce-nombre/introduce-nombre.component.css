@@ -1,0 +1,54 @@
+.size{
+  font-size: 22px;
+}
+
+.modal-content {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.btn-close {
+  width: 20px; /* Ancho más pequeño */
+  height: 20px; /* Alto más pequeño */
+  padding: 0; /* Sin padding */
+  margin-right: 5px; /* Ajuste del margen derecho */
+}
+
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-footer {
+  justify-content: space-between;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.is-invalid {
+  border-color: #dc3545; /* Rojo */
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Sombra roja */
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875em;
+}

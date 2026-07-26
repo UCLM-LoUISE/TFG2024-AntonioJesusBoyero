@@ -1,0 +1,47 @@
+<canvas id="canvas-granim"></canvas>
+
+<div class="content">
+  <!-- Contenedor animable para el logo -->
+  <div class="logo-container">
+    <div #logo class="titulo logo-lockup">
+      <img class="logo-img" src="assets/logo_terrapp.png" alt="Logo de TerrApp" />
+      <span class="logo-nombre">TerrApp</span>
+    </div>
+  </div>
+
+  <!-- FORMULARIO DE LOGIN -->
+  <form class="formulario-login" [formGroup]="loginForm" [class.mostrar]="mostrarFormulario"
+    [class.ocultar-formulario]="formularioOcultando" *ngIf="mostrarFormulario" (ngSubmit)="onSubmit()">
+    <input id="inputEmail" type="email" formControlName="email" placeholder="Correo electrónico"
+      [ngClass]="{ 'is-invalid': errorLogin }" required />
+    <input id="inputPassword" type="password" formControlName="password" placeholder="Contraseña"
+      [ngClass]="{ 'is-invalid': errorLogin }" required />
+
+    <div class="mensaje-error" *ngIf="errorLogin">
+      Usuario o contraseña incorrectos.
+    </div>
+
+
+    <button id="buttonSubmit" class="btn btn-primary d-flex justify-content-center align-items-center gap-2 mx-auto"
+      type="submit" [disabled]="cargando || loginForm.invalid">
+      <span *ngIf="cargando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span *ngIf="!cargando">Iniciar Sesión</span>
+      <span *ngIf="cargando">Cargando...</span>
+    </button>
+    <a (click)="onResetPasswordClick()" class="olvide">¿Olvidaste tu contraseña?</a>
+  </form>
+
+
+
+  <!-- RESET PASSWORD -->
+  <div *ngIf="resetPassword" [class.ocultar-reset]="resetOcultando">
+    <app-reset-password (resetPasswordEvent)="mostrarInicio()"></app-reset-password>
+  </div>
+
+
+  <!-- Botones -->
+  <div class="botones" [class.ocultar-botones]="moverLogo" *ngIf="mostrarBotones">
+    <button id="botonIniciarSesion" class="boton" (click)="onLoginClick()">🔐 Iniciar sesión</button>
+    <button class="boton" (click)="onResetPasswordClick()">🔑 Resetear contraseña</button>
+  </div>
+</div>

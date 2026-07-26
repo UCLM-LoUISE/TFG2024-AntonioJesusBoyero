@@ -1,0 +1,147 @@
+/* ============================== INICIO ============================== */
+
+.container {
+  --background: var(--app-bg);
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(var(--brand-rgb), 0.10) 0%, rgba(var(--brand-rgb), 0) 60%),
+    var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- Hero de bienvenida ---- */
+.welcome-section {
+  width: 100%;
+  padding: 2.5rem 1.5rem 1.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.welcome-section::before {
+  /* línea-horizonte sutil bajo el hero */
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline-strong), transparent);
+}
+
+.welcome-title {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--brand-strong);
+  line-height: 1.05;
+}
+
+.welcome-subtitle {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* ---- Tarjetas de acceso ---- */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1.75rem 1.25rem 2.5rem;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.25rem 1.35rem;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  width: 100%;
+  max-width: 420px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  /* chevron decorativo a la derecha */
+  content: "›";
+  position: absolute;
+  right: 1.25rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.card:active {
+  transform: translateY(-3px) scale(0.995);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(var(--brand-rgb), 0.35);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  &::after { transform: translateX(4px); color: var(--brand); }
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: var(--grad-brand);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-brand);
+}
+
+.card-icon ion-icon {
+  font-size: 28px;
+  color: #fff;
+}
+
+.card-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 1.25rem;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: left;
+}
+
+.card-subtitle {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+  text-align: left;
+  font-weight: 500;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .welcome-title { font-size: 2.05rem; }
+  .card { max-width: 100%; }
+}

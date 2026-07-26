@@ -1,0 +1,64 @@
+<div class="modal fade" id="archivosTarea" tabindex="-1" aria-labelledby="archivosTareaLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content archivos-modal">
+      <div class="modal-header">
+        <div class="archivos-cabecera">
+          <h5 class="modal-title" id="archivosTareaLabel">Archivos de la tarea</h5>
+          <span class="archivos-subtitulo">{{ tarea?.nombreTarea }} · {{ totalArchivos }} archivo{{ totalArchivos === 1
+            ? '' : 's' }}</span>
+        </div>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div *ngIf="totalArchivos === 0" class="archivos-vacio">
+          <i class="bi bi-folder-x"></i>
+          <p>Esta tarea todavía no tiene archivos subidos.</p>
+        </div>
+
+        <div *ngFor="let grupo of grupos" class="archivos-grupo">
+
+          <div *ngIf="grupo.momento" class="archivos-grupo-titulo">
+            <i class="bi bi-clock-history"></i>
+            <span>{{ grupo.momento }}</span>
+            <span class="archivos-grupo-contador">{{ grupo.archivos.length }} archivo{{ grupo.archivos.length === 1 ?
+              '' : 's' }}</span>
+          </div>
+
+          <div *ngIf="grupo.archivos.length === 0 && grupo.momento" class="archivos-grupo-vacio">
+            Sin archivos en este momento.
+          </div>
+
+          <ul class="archivos-lista" *ngIf="grupo.archivos.length > 0">
+            <li *ngFor="let archivo of grupo.archivos" class="archivo-item">
+              <i class="bi archivo-icono" [ngClass]="iconoArchivo(archivo)"></i>
+
+              <div class="archivo-info">
+                <span class="archivo-nombre" [title]="archivo.nombre">{{ archivo.nombre }}</span>
+                <span class="archivo-meta">
+                  {{ archivo.subidoPor }}<ng-container *ngIf="archivo.fecha"> · {{ archivo.fecha | date: 'yyyy-MM-dd
+                    HH:mm' }}</ng-container>
+                </span>
+              </div>
+
+              <span class="archivo-badge" [ngClass]="{
+                  'badge-json': esJson(archivo),
+                  'badge-imagen': esImagen(archivo),
+                  'badge-audio': esAudio(archivo)
+                }">{{ categoriaArchivo(archivo) }}</span>
+
+              <button class="btn btn-sm btn-outline-primary archivo-ver" title="Abrir archivo"
+                (click)="verArchivo(archivo.url)">
+                <i class="bi bi-box-arrow-up-right"></i>
+              </button>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

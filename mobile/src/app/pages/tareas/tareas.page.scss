@@ -1,0 +1,265 @@
+/* ============================== TAREAS (campo) ============================== */
+
+.titulo-centrado {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.container {
+  --background: var(--app-bg);
+  background: var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 94vh;
+  overflow: hidden;
+}
+
+/* ---- Barra de herramientas (cámara / audio / archivos) ---- */
+.barraIconos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  min-width: 76px;
+}
+
+.action-btn ion-icon { font-size: 23px; display: block; }
+.action-btn:active { transform: scale(0.94); }
+
+.action-camera { color: var(--brand); }
+.action-camera:active { background: var(--brand-50); }
+
+.action-mic { color: var(--ion-color-danger); }
+.action-mic:active { background: rgba(var(--ion-color-danger-rgb), 0.1); }
+.action-mic.recording {
+  background: var(--ion-color-danger);
+  color: #fff;
+  border-color: transparent;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.action-folder { color: var(--ion-color-tertiary); }
+.action-folder:active:not(.disabled) { background: rgba(var(--ion-color-tertiary-rgb), 0.1); }
+.action-folder.disabled { opacity: 0.45; cursor: not-allowed; color: var(--ink-faint); }
+
+.btn-label { display: block; white-space: nowrap; }
+
+/* ---- Mapa ---- */
+.map-wrapper {
+  width: 95%;
+  height: 70vh;
+  margin: 0.5rem auto 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--hairline);
+  position: relative;
+  background: var(--surface);
+}
+
+.map-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: var(--surface-sunken);
+}
+
+/* ---- Brújula ---- */
+.compass {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 96px;
+  height: 96px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.compass-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(var(--brand-rgb), 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.cardinal {
+  position: absolute;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--brand);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.cardinal-n { top: 3px; left: 50%; transform: translateX(-50%); }
+.cardinal-s { bottom: 3px; left: 50%; transform: translateX(-50%); }
+.cardinal-e { right: 5px; top: 50%; transform: translateY(-50%); }
+.cardinal-o { left: 5px; top: 50%; transform: translateY(-50%); }
+
+.compass-needle {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  transition: transform 0.1s ease-out;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+
+.compass-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  bottom: 4px;
+}
+
+/* ---- Botón transectos ---- */
+.transect-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s ease;
+  z-index: 999;
+  font-size: 24px;
+  pointer-events: auto;
+}
+
+.transect-btn:active { transform: scale(0.9); }
+.transect-btn:hover { background: var(--brand-50); }
+
+/* ---- Botones de acción inferiores ---- */
+.action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.6rem;
+  background: linear-gradient(to top, var(--surface), rgba(255, 255, 255, 0.6));
+  flex-wrap: wrap;
+}
+
+.btn-save {
+  --background: var(--grad-brand);
+  --background-activated: var(--brand-700);
+  --color: #fff;
+  --border-radius: var(--r-sm);
+  --box-shadow: var(--shadow-brand);
+  font-weight: 700;
+  flex: 1;
+  min-width: 140px;
+  max-width: 300px;
+}
+
+.btn-forms {
+  --background: var(--grad-bark);
+  --background-activated: var(--bark-600);
+  --color: #fff;
+  --border-radius: var(--r-sm);
+  --box-shadow: var(--shadow-bark);
+  font-weight: 700;
+  flex: 1;
+  min-width: 140px;
+  max-width: 300px;
+}
+
+/* ---- Pantallas / overlay de formulario ---- */
+.pantalla-base {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.pantalla-base.oculto {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.pantalla-formulario {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: var(--surface);
+}
+
+/* ---- Momento actual ---- */
+.momento-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  strong { color: var(--brand); }
+}
+
+.momento-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--grad-brand);
+  color: #fff;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 13px;
+  margin-left: 8px;
+  box-shadow: var(--shadow-brand);
+}

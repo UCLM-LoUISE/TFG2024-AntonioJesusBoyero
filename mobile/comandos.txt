@@ -1,0 +1,12 @@
+ionic build
+
+npx cap copy android
+(si no hay nuevas dependencias)
+
+npx cap sync android
+(si hay dependencias)
+
+npx cap open android
+(si necesitas volver a abrir Android Studio)
+
+

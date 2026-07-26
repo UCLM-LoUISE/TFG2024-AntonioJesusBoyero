@@ -1,0 +1,395 @@
+:host {
+  font-family: 'Roboto', sans-serif;
+}
+
+.admin-wrapper {
+  min-height: 100vh;
+  padding: 16px;
+  /* antes 24px */
+  display: grid;
+  gap: 16px;
+  /* antes 20px */
+}
+
+/* Título centrado */
+.page-title {
+  text-align: center;
+  margin: 0;
+}
+
+.page-title h1 {
+  font-size: 20px;
+  /* antes 28px */
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Toggle compacto */
+.segment {
+  display: inline-flex;
+  /* ya lo tienes */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  width: auto;
+  /* para que se ajuste al contenido */
+}
+
+.segment-wrapper {
+  display: flex;
+  justify-content: center;
+  /* centrado horizontal */
+}
+
+.segment.compact {
+  width: auto;
+  align-self: flex-start;
+}
+
+.seg-btn {
+  padding: 4px 10px;
+  /* antes 8px 14px */
+  font-size: 13px;
+  /* antes 14-15px */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.seg-btn.active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.seg-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Card base */
+.card-bloc {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  /* antes 12px */
+  padding: 12px;
+  /* antes 20px */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+  margin-bottom: 15px;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    /* antes 24px */
+  }
+}
+
+/* Borde más marcado */
+.strong-border {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Grid del formulario */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  /* antes 260px */
+  gap: 10px;
+  /* antes 16px */
+
+  label {
+    display: grid;
+    gap: 4px;
+    font-size: 12px;
+    /* antes 13px */
+    color: #6b7280;
+  }
+
+  input,
+  select {
+    font-size: 13px;
+    padding: 4px 8px;
+    /* más compacto */
+  }
+
+  .actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  /* antes 12px */
+
+  .left,
+  .right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .search {
+    position: relative;
+    width: min(400px, 100%);
+    /* antes 520px */
+  }
+
+  .search i {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .search input {
+    padding-left: 28px;
+    font-size: 13px;
+    height: 28px;
+  }
+
+  .right .form-select,
+  .right .form-control {
+    width: 140px;
+    /* antes 180px */
+    font-size: 13px;
+    height: 28px;
+    padding: 2px 6px;
+  }
+}
+
+/* Tabla */
+.table th,
+.table td {
+  font-size: 13px;
+  padding: 6px 8px;
+  /* antes más grande */
+}
+
+/* Opcional: si no lo tienes ya */
+td.text-end i {
+  vertical-align: middle;
+}
+
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  /* antes 36px */
+  font-size: 13px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e9ecef;
+  font-weight: 600;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.stacked .email {
+  font-weight: 500;
+}
+
+.stacked .muted {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  align-items: center;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.btn-sm {
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+/* Responsive ajustes */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .right .form-select,
+  .right .form-control {
+    width: 120px;
+  }
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .right .form-select,
+  .right .form-control {
+    width: 100%;
+  }
+}
+
+/* La tabla ocupa todo el ancho */
+.admin-users {
+  width: 100%;
+  table-layout: auto;
+}
+
+/* Alineaciones: 1ª columna a la izquierda, el resto centradas */
+.admin-users th:first-child,
+.admin-users td:first-child {
+  text-align: left;
+}
+
+.admin-users th:not(:first-child),
+.admin-users td:not(:first-child) {
+  text-align: center;
+}
+
+/* Centrado vertical compacto */
+.admin-users th,
+.admin-users td {
+  vertical-align: middle !important;
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
+.admin-users td i {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.admin-users td i:hover {
+  opacity: 0.7;
+}
+
+
+/* ===== Distribución de ancho ===== */
+.admin-users th:nth-child(1),
+.admin-users td:nth-child(1) {
+  width: 20%;
+}
+
+/* Nombre */
+
+.admin-users th:nth-child(2),
+.admin-users td:nth-child(2) {
+  width: 10%;
+}
+
+/* Rol */
+
+.admin-users th:nth-child(3),
+.admin-users td:nth-child(3) {
+  width: 18%;
+}
+
+/* Email */
+
+.admin-users th:nth-child(4),
+.admin-users td:nth-child(4) {
+  width: 12%;
+}
+
+/* Teléfono */
+
+.admin-users th:nth-child(5),
+.admin-users td:nth-child(5) {
+  width: 12%;
+}
+
+/* Grupo */
+
+.admin-users th:nth-child(6),
+.admin-users td:nth-child(6) {
+  width: 8%;
+}
+
+.admin-users th:nth-child(7),
+.admin-users td:nth-child(7) {
+  width: 15%;
+}
+
+.admin-users th:nth-child(8),
+.admin-users td:nth-child(8) {
+  width: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+
+/* Estado */
+
+/* ===== Colapsa la última columna (Acciones) =====
+   width:0 + white-space:nowrap hace que solo ocupe lo de los botones */
+.admin-users th:nth-child(6),
+.admin-users td:nth-child(6) {
+  width: 0;
+  /* clave: deja que encoja al mínimo */
+  white-space: nowrap;
+  /* que los botones no salten de línea */
+  text-align: right;
+  /* alinea los botones a la derecha */
+}
+
+/* (Opcional) Un poco menos de separación entre botones */
+.admin-users td:nth-child(6) .btn {
+  margin-left: 6px;
+}
+
+.admin-users td:nth-child(6) .btn:first-child {
+  margin-left: 0;
+}
+
+/* Responsive (ajusta si lo necesitas) */
+@media (max-width: 992px) {
+
+  .admin-users th:nth-child(1),
+  .admin-users td:nth-child(1) {
+    width: 30%;
+  }
+
+  .admin-users th:nth-child(3),
+  .admin-users td:nth-child(3) {
+    width: 34%;
+  }
+}
+
+/* opcional: versión compacta para formularios cortos */
+.grid-compact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+}

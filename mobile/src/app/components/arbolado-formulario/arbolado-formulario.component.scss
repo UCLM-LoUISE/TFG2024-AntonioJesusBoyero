@@ -1,0 +1,57 @@
+/* ========================= FORMULARIO ARBOLADO ========================= */
+
+.container {
+  --background: var(--app-bg);
+  background: var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 94vh;
+}
+
+/* Selector de árbol (cabecera del formulario) */
+.select-arbol-item {
+  margin: 14px 14px 0.75rem;
+  --background: var(--surface);
+
+  ion-label {
+    margin-right: 1rem;
+    font-weight: 700;
+    --color: var(--ink-muted);
+  }
+
+  ion-select { max-width: 220px; }
+}
+
+/* Acciones sobre la entidad (eliminar árbol) */
+.acciones-entidad {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 14px 4px;
+
+  ion-button {
+    --border-radius: var(--r-sm);
+    font-weight: 700;
+    text-transform: none;
+  }
+}
+
+/* Aviso cuando no hay árboles */
+ion-text[color="warning"] {
+  display: block;
+  padding: 2.5rem 1.5rem;
+  h2 { font-weight: 800; margin-bottom: 0.5rem; }
+}
+
+.pantalla-base {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.pantalla-base.oculto {
+  opacity: 0.2;
+  pointer-events: none;
+}

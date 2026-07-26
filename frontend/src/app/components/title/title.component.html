@@ -1,0 +1,8 @@
+<div class="title_page">
+  <h3 class="tittle_content" [title]="nombreEstudio">
+    {{ titulo }}
+    <span class="nombre_estudio">
+      {{ nombreEstudio | slice:0:20 }}{{ nombreEstudio.length > 20 ? '...' : '' }}
+    </span>
+  </h3>
+</div>

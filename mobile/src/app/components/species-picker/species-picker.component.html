@@ -1,0 +1,212 @@
+<ion-item>
+  <ion-label position="stacked">Especie</ion-label>
+  <ion-input [value]="value" readonly (ionFocus)="abrirBuscadorEspecies()"
+    (click)="abrirBuscadorEspecies()"></ion-input>
+</ion-item>
+
+<ion-modal [isOpen]="buscadorEspeciesAbierto" (didDismiss)="buscadorEspeciesAbierto = false">
+  <ng-template>
+
+    <ion-header>
+      <ion-toolbar class="species-header-toolbar">
+        <div class="header-content">
+          <div class="header-left">
+            <ion-icon name="leaf" class="header-icon"></ion-icon>
+            <div class="header-text">
+              <ion-title class="header-title">Buscador de especies</ion-title>
+              <p class="header-subtitle">Descubre la flora de tu zona</p>
+            </div>
+          </div>
+          <ion-buttons slot="end" class="header-close-btn">
+            <ion-button (click)="buscadorEspeciesAbierto = false" fill="clear">
+              <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="species-modal-content">
+
+      <!-- Barra de búsqueda mejorada -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <ion-input class="search-input" [(ngModel)]="searchText" (ionInput)="onEspecieInput($event)"
+            placeholder="Buscar por nombre científico o común..." clearInput="false" debounce="300"></ion-input>
+          <button class="clear-button" *ngIf="searchText" (click)="limpiarBusqueda()" type="button">
+            ✕
+          </button>
+        </div>
+
+        <!-- Reinicio manual del recomendador (solo si hay puntuaciones) -->
+        <div class="reset-scores-row" *ngIf="hayPuntuaciones">
+          <button class="reset-scores-btn" (click)="reiniciarPuntuaciones()" type="button"
+            title="Borrar las puntuaciones de este estudio">
+            <ion-icon name="refresh-outline"></ion-icon>
+            Reiniciar recomendaciones
+          </button>
+        </div>
+      </div>
+
+      <!-- Spinner de búsqueda -->
+      <div class="search-loading" *ngIf="isSearching">
+        <ion-spinner name="crescent" color="primary"></ion-spinner>
+        <p>Buscando especies...</p>
+      </div>
+
+      <!-- Listado de especies con animación -->
+      <div class="species-dropdown" *ngIf="displayedSpecies.length">
+        <!-- Contador de resultados -->
+        <div class="results-counter">
+          <ion-icon name="list-outline"></ion-icon>
+          Mostrando {{ displayedSpecies.length }} de {{ filteredSpecies.length }} especie{{ filteredSpecies.length !== 1
+          ? 's' : '' }}
+        </div>
+
+        <ion-list class="species-list">
+          <ion-item class="species-item" *ngFor="let sp of displayedSpecies; trackBy: trackByTaxonKey" detail="false"
+            lines="none">
+            <!-- Card completa de la especie -->
+            <div class="species-card">
+              <div class="species-main-content" (click)="selectSpecies(sp)">
+                <div class="species-header">
+                  <h3 class="scientific-name">{{ sp.scientificName }}</h3>
+                </div>
+
+                <div class="species-details">
+
+                  <div class="detail-row">
+                    <span class="detail-label">
+                      <ion-icon name="leaf-outline"></ion-icon>
+                      Familia:
+                    </span>
+                    <span class="detail-value">{{ sp.family }}</span>
+                  </div>
+
+                  <!-- <div class="detail-row">
+                    <span class="detail-label">
+                      <ion-icon name="flask-outline"></ion-icon>
+                      Familia:
+                    </span>
+                    <span class="detail-value">{{ sp.family }}</span>
+                  </div> -->
+
+                  <!-- <div class="detail-row">
+                    <span class="detail-label">
+                      <ion-icon name="git-branch-outline"></ion-icon>
+                      Género:
+                    </span>
+                    <span class="detail-value">{{ sp.genus }}</span>
+                  </div> -->
+
+                  <!-- <div class="detail-row">
+                    <span class="detail-label">
+                      <ion-icon name="leaf-outline"></ion-icon>
+                      Especie:
+                    </span>
+                    <span class="detail-value">{{ sp.species }}</span>
+                  </div> -->
+                </div>
+              </div>
+
+              <!-- Botón de información adicional -->
+              <button class="info-button" (click)="showSpecieDetail(sp); $event.stopPropagation()" type="button">
+                <ion-icon name="information-circle-outline"></ion-icon>
+              </button>
+            </div>
+          </ion-item>
+        </ion-list>
+
+        <!-- Infinite Scroll para cargar más especies -->
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreSpecies($event)"
+          *ngIf="displayedSpecies.length < filteredSpecies.length">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando 20 especies más...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+
+      <!-- Estado vacío -->
+      <div class="empty-state" *ngIf="!displayedSpecies.length && searchText">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-title">No encontramos especies</div>
+        <div class="empty-text">Intenta con otro término de búsqueda</div>
+      </div>
+
+      <!-- Mensaje inicial -->
+      <div class="empty-state" *ngIf="!displayedSpecies.length && !searchText && !isSearching && allSpecies.length > 0">
+        <div class="empty-icon">🌿</div>
+        <div class="empty-title">Busca una especie</div>
+        <div class="empty-text">Usa el buscador para encontrar entre {{ allSpecies.length }} especies</div>
+      </div>
+
+    </ion-content>
+
+  </ng-template>
+</ion-modal>
+
+<!-- Modal de detalles completos de la especie -->
+<ion-modal [isOpen]="showDetailModal" (didDismiss)="closeDetailModal()" [breakpoints]="[0, 0.5, 0.75, 1]"
+  [initialBreakpoint]="0.75">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Detalles de la especie</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeDetailModal()">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="detail-modal-content" *ngIf="selectedSpecieDetail">
+      <div class="detail-container">
+        <div class="detail-header-section">
+          <h2 class="detail-scientific-name">{{ selectedSpecieDetail.scientificName }}</h2>
+        </div>
+
+        <div class="detail-info-section">
+          <div class="detail-info-item">
+            <div class="detail-info-label">
+              <ion-icon name="key-outline"></ion-icon>
+              Taxon Key
+            </div>
+            <div class="detail-info-value">{{ selectedSpecieDetail.taxonKey }}</div>
+          </div>
+
+          <div class="detail-info-item">
+            <div class="detail-info-label">
+              <ion-icon name="flask-outline"></ion-icon>
+              Familia
+            </div>
+            <div class="detail-info-value">{{ selectedSpecieDetail.family }}</div>
+          </div>
+
+          <div class="detail-info-item">
+            <div class="detail-info-label">
+              <ion-icon name="git-branch-outline"></ion-icon>
+              Género
+            </div>
+            <div class="detail-info-value">{{ selectedSpecieDetail.genus }}</div>
+          </div>
+
+          <div class="detail-info-item">
+            <div class="detail-info-label">
+              <ion-icon name="leaf-outline"></ion-icon>
+              Especie
+            </div>
+            <div class="detail-info-value">{{ selectedSpecieDetail.species }}</div>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <ion-button expand="block" (click)="selectSpecies(selectedSpecieDetail); closeDetailModal()">
+            <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+            Seleccionar esta especie
+          </ion-button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

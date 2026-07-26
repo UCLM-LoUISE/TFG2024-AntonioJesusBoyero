@@ -1,0 +1,46 @@
+<div class="modal fade" id="muestreosModal" tabindex="-1" aria-labelledby="muestreosModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Encabezado del modal -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="muestreosModalLabel">Introduce nombre</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetearError()"></button>
+      </div>
+
+      <!-- Cuerpo del modal -->
+      <div class="modal-body">
+        <p>Por favor, introduce un nombre para identificar la zona en el mapa:</p>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="nombreFigura"
+            [(ngModel)]="inputNombre"
+            [ngClass]="{ 'is-invalid': showError }"
+            placeholder="Ejemplo: Polígono 1"
+            (ngModelChange)="resetearError()"
+          />
+          <div *ngIf="showError && errorMsg" class="text-danger mt-2" style="font-size: 13px; font-weight: 600;">
+            <i class="bi bi-exclamation-triangle-fill"></i> {{ errorMsg }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie del modal -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal" (click)="resetearError()">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="guardarNombre()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

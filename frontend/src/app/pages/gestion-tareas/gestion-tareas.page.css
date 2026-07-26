@@ -1,0 +1,171 @@
+.page_container {
+  width: 100%;
+}
+
+.back-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  /* margin-left: 4%; */
+}
+
+.back-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-weight: bold;
+}
+
+.back-link i {
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  transform: scale(1.1);
+  color: #007bff;
+}
+
+.title_page {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.tittle_content {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase; /* Forzar mayúsculas */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 80%; /* Ajusta según tu diseño */
+  display: inline-block; /* Necesario para que funcione text-overflow */
+}
+
+.nombre_estudio {
+  color: #007bff; /* Azul similar al de Bootstrap */
+  font-weight: bold; /* Opcional: para darle más peso */
+}
+
+
+
+
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+
+button:enabled:hover {
+  transform: scale(1.1); /* Aumenta el tamaño cuando se pasa el ratón */
+  background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón */
+  color: #fff; /* Cambia el color del texto */
+  border-color: #004085; /* Cambia el color del borde */
+}
+
+button {
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Suave transición */
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Agrupación de las propiedades comunes */
+label,
+input,
+select,
+textarea,
+button,
+h3,
+a {
+  font-family: 'Roboto', sans-serif;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+input,
+select,
+textarea {
+  width: 80%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  /* Combina las transiciones aquí */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+h3,
+a {
+  font-weight: 700;
+}
+
+
+/* estilos de la tabla */
+
+
+.no-tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Ajusta según la altura que quieras */
+}
+
+.tasks_container {
+  margin-top: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4%;
+}
+.new-task-container {
+  text-align: right;
+}
+
+.new-task-link {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.new-task-link:hover {
+  color: #007bff;
+}
+
+.separacion {
+  width: 90%; /* Ocupa el 90% del ancho */
+  height: 5px; /* Grosor de la línea */
+  background-color: black; /* Color negro */
+  margin: 50px auto; /* 50px de margen arriba y abajo, centrada horizontalmente */
+  border-radius: 5px; /* Opcional: redondear ligeramente los bordes */
+}

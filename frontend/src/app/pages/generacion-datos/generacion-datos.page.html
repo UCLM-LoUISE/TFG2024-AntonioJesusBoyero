@@ -1,0 +1,127 @@
+<div class="page_container">
+
+  <div class="header-container">
+    <div class="calendar-back-container">
+      <a class="back-link" (click)="goBack()">
+        <i class="bi bi-arrow-left"></i> Estudios
+      </a>
+    </div>
+  </div>
+
+  <div class="title_page">
+    <h3 class="tittle_content">GENERACIÓN DE DATOS</h3>
+  </div>
+
+
+  <!-- Información del estudio -->
+  <div class="resumen-container">
+    <div class="resumen-header" (click)="mostrarInfo = !mostrarInfo">
+      <h5 class="tabla-titulo"><i class="bi bi-info-circle"></i> Información del estudio</h5>
+      <i class="bi chevron" [ngClass]="mostrarInfo ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+    </div>
+
+    <div *ngIf="mostrarInfo" class="resumen-grid">
+      <div class="info-tile">
+        <span class="info-label">Nombre</span>
+        <span class="info-valor">{{ estudio?.data?.NuevoEstudioFormData?.nombre }}</span>
+      </div>
+      <div class="info-tile">
+        <span class="info-label">Fecha inicio</span>
+        <span class="info-valor">{{ estudio?.data?.NuevoEstudioFormData?.fechaInicio }}</span>
+      </div>
+      <div class="info-tile">
+        <span class="info-label">Provincia</span>
+        <span class="info-valor">{{ estudio?.data?.NuevoEstudioFormData?.provincia }}</span>
+      </div>
+      <div class="info-tile">
+        <span class="info-label">Población</span>
+        <span class="info-valor">{{ estudio?.data?.NuevoEstudioFormData?.poblacion }}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Tareas -->
+  <div class="tabla-tareas-container">
+    <h5 class="tabla-titulo"><i class="bi bi-list-task"></i> Tareas</h5>
+
+    <div class="tabla-scroll">
+      <table class="tabla-tareas">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarea of tareas">
+            <td class="celda-nombre">{{ tarea.nombreTarea }}</td>
+            <td>
+              <span class="chip chip-tipo">{{ formatoTipo(tarea.tipoTarea) }}</span>
+            </td>
+            <td>
+              <span class="chip" [ngClass]="{
+                  'chip-ok': estadoTarea(tarea) === 'lista',
+                  'chip-warn': estadoTarea(tarea) === 'pendiente',
+                  'chip-muted': estadoTarea(tarea) === 'sin-datos'
+                }">
+                <i class="bi" [ngClass]="{
+                    'bi-check-circle-fill': estadoTarea(tarea) === 'lista',
+                    'bi-exclamation-triangle-fill': estadoTarea(tarea) === 'pendiente',
+                    'bi-dash-circle': estadoTarea(tarea) === 'sin-datos'
+                  }"></i>
+                <ng-container [ngSwitch]="estadoTarea(tarea)">
+                  <ng-container *ngSwitchCase="'lista'">Lista</ng-container>
+                  <ng-container *ngSwitchCase="'pendiente'">
+                    Requiere fusión<ng-container *ngIf="tarea.tieneMomentos"> ({{ conflictosPendientes(tarea)
+                      }})</ng-container>
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>Sin datos</ng-container>
+                </ng-container>
+              </span>
+            </td>
+            <td class="icono-celda">
+              <i class="bi bi-shuffle icono-accion" [class.disabled]="!esFusionable(tarea)" title="Fusionar archivos"
+                (click)="esFusionable(tarea) && fusionarArchivos(tarea)"></i>
+              <i class="bi bi-eye icono-accion" [class.disabled]="!puedeVerTarea(tarea)" title="Ver tarea"
+                (click)="puedeVerTarea(tarea) && verTarea(tarea)"></i>
+              <i class="bi bi-folder2-open icono-accion" [class.disabled]="!tieneArchivos(tarea)"
+                title="Ver archivos subidos" (click)="tieneArchivos(tarea) && verArchivosTarea(tarea)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Generar Excel -->
+  <div class="btn-generar-excel">
+    <button class="btn btn-success btn-excel" (click)="generarExcel()" [disabled]="!puedeGenerarExcel()">
+      <i class="bi bi-file-earmark-spreadsheet"></i> Generar Excel
+    </button>
+    <p *ngIf="!puedeGenerarExcel()" class="aviso-excel">
+      <i class="bi bi-info-circle"></i>
+      Resuelve las fusiones pendientes para poder generar el Excel.
+    </p>
+  </div>
+
+</div>
+
+
+
+<div *ngIf="puedoVerModalFusion">
+  <app-fusion-tareas-modal [tarea]="tareaSeleccionadaFusion" [idEstudio]="idEstudio" (cerrar)="closeModalFusion()"
+    (fusionTerminada)="guardarFusionTarea($event)"></app-fusion-tareas-modal>
+</div>
+
+<div *ngIf="puedoVerModalMapa">
+  <app-fusion-tareas-mapa [tarea]="tareaSeleccionadaMapa" [idEstudio]="idEstudio"
+    (cerrar)="closeModalMapa()"></app-fusion-tareas-mapa>
+</div>
+
+<div *ngIf="puedoVerModalArchivos">
+  <app-archivos-tarea-modal [tarea]="tareaSeleccionadaArchivos"
+    (cerrar)="closeModalArchivos()"></app-archivos-tarea-modal>
+</div>

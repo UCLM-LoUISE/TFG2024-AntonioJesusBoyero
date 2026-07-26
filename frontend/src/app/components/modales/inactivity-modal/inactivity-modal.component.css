@@ -1,0 +1,28 @@
+/* Estilos específicos para el modal de inactividad */
+.inactivity-modal {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Título */
+.inactivity-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Mensaje */
+.inactivity-message {
+  font-size: 16px;
+  color: #333; /* Color de texto neutro */
+}
+
+
+
+/* Espaciado entre los botones */
+.modal-footer {
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.inactivity-buttons {
+  font-size: 14px;
+}

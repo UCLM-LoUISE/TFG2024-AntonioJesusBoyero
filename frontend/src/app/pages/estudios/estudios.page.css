@@ -1,0 +1,352 @@
+.page_container {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.back-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  /* margin-left: 4%; */
+}
+
+.back-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-weight: bold;
+}
+
+.back-link i {
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  transform: scale(1.1);
+  color: #007bff;
+}
+
+.title_page {
+  display: flex;
+  /* Usamos flexbox para alinear el título e icono horizontalmente */
+  align-items: center;
+  /* Alineación vertical */
+  justify-content: center;
+  /* Centra tanto el título como el icono */
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 50px;
+}
+
+.title_page_tareas {
+  display: flex;
+  /* Usamos flexbox para alinear el título e icono horizontalmente */
+  align-items: center;
+  /* Alineación vertical */
+  justify-content: center;
+  /* Centra tanto el título como el icono */
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+
+.tittle_content {
+  margin: 0;
+  padding: 0;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+
+/* button:enabled:hover {
+  transform: scale(1.1);
+  background-color: #0056b3;
+  color: #fff;
+  border-color: #004085;
+} */
+
+
+
+button {
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  /* Suave transición */
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Agrupación de las propiedades comunes */
+label,
+input,
+select,
+textarea,
+button,
+h3,
+h5,
+a {
+  font-family: 'Roboto', sans-serif;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+input,
+select,
+textarea {
+  width: 80%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  /* Combina las transiciones aquí */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+h3,
+a {
+  font-weight: 700;
+}
+
+
+/* estilos de la tabla */
+
+
+.no-tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  /* Ajusta según la altura que quieras */
+}
+
+.tasks_container {
+  margin-top: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: end;
+  /* Coloca elementos a izquierda y derecha */
+  align-items: center;
+  padding: 10px 4%;
+  position: relative;
+  /* Para alinear elementos internos */
+}
+
+.calendar-back-container {
+  position: absolute;
+  /* Posiciona el botón en la esquina superior izquierda */
+  left: 4%;
+  /* Separación de la izquierda */
+  top: 10px;
+  /* Ajusta la posición vertical */
+}
+
+
+.back-link {
+  display: flex;
+  flex-direction: row;
+  /* Coloca ícono y texto en una fila (horizontal) */
+  align-items: center;
+  /* Alinea verticalmente ícono y texto */
+  font-size: 25px;
+  /* Tamaño del texto e ícono */
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-weight: bold;
+
+}
+
+.back-link i {
+  margin-right: 8px;
+}
+
+.back-link:hover {
+  transform: scale(1.1);
+  color: #007bff;
+}
+
+
+
+
+.new-task-container {
+  text-align: right;
+  /* Mantén el botón "Nuevo Estudio" a la derecha */
+}
+
+.new-task-link {
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.new-task-link:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+
+
+/* Spinner */
+
+
+.spinner_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+/* filtro  */
+
+.filter-icon {
+  font-size: 20px;
+  /* Tamaño del icono */
+  transition: transform 0.3s ease;
+  /* Transición suave para el hover */
+}
+
+.filter-icon:hover {
+  transform: scale(1.2);
+  /* Agranda el icono al pasar el ratón */
+  color: #f50808;
+  /* Cambia el color del icono al pasar el ratón */
+}
+
+
+.filter-container {
+  width: 80%;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #e6e5e5;
+  align-items: center;
+  text-align: center;
+}
+
+.filter-container.invalid {
+  border-color: #dc3545;
+  /* Rojo */
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+  /* Sombra roja */
+}
+
+.filter-error-message {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.filter-container .form-control,
+.filter-container .form-select {
+  width: 100%;
+  margin: auto;
+}
+
+
+.filter-container .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-container .col {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-control,
+.form-select {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+
+.filter-container .col .form-label {
+  margin-bottom: 5px;
+  /* Margen inferior para las etiquetas */
+}
+
+.filter-container .col .form-control,
+.filter-container .col .form-select {
+  margin-bottom: 15px;
+  /* Margen inferior para los inputs y selects */
+}
+
+
+.btn1 {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 20px;
+  border: 1px solid black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.selected {
+  background-color: #007bff;
+  /* Azul Bootstrap */
+  color: white;
+}
+
+.not-selected {
+  color: #000;
+}
+
+.not-selected:hover {
+  color: rgb(29, 29, 29);
+  background-color: #a9a8a8;
+}

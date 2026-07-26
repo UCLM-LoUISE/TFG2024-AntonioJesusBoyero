@@ -1,0 +1,288 @@
+/* ============================ LOGIN / SPLASH ============================ */
+
+/* ---------- Pantalla de carga ---------- */
+.splash-container {
+  background: var(--grad-canopy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.splash-container::before,
+.splash-container::after {
+  /* halos orgánicos de fondo */
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.5;
+}
+.splash-container::before {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(93, 191, 125, 0.35), transparent 70%);
+  top: -80px; right: -90px;
+}
+.splash-container::after {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 70%);
+  bottom: -70px; left: -80px;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInScale 0.8s ease;
+  z-index: 1;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.app-icon {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.25));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.loading-spinner {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  --color: rgba(255, 255, 255, 0.65);
+}
+
+.loading-text p {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0;
+  opacity: 0.9;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+/* ---------- Pantalla de login ---------- */
+.login-container {
+  background:
+    radial-gradient(110% 50% at 50% 0%, rgba(var(--brand-rgb), 0.10), transparent 60%),
+    var(--grad-paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.5rem 1.1rem;
+  overflow-y: auto;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: auto 0;
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 12px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--hairline);
+  margin-bottom: 1rem;
+
+  img { width: 100%; height: 100%; object-fit: contain; }
+}
+
+.login-title {
+  color: var(--ink);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.3rem 0;
+}
+
+.login-subtitle {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ---------- Formulario ---------- */
+.login-form {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  padding: 1.6rem 1.4rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--hairline);
+}
+
+.form-group { margin-bottom: 1.15rem; }
+
+.input-wrapper {
+  position: relative;
+  background: var(--surface-sunken);
+  border-radius: var(--r-sm);
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+
+  &:focus-within {
+    background: var(--surface);
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px rgba(var(--brand-rgb), 0.12);
+  }
+}
+
+.input-icon {
+  color: var(--ink-faint);
+  font-size: 1.35rem;
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+  transition: color 0.25s ease;
+
+  .input-wrapper:focus-within & { color: var(--brand); }
+}
+
+.modern-input {
+  --background: transparent;
+  --color: var(--ink);
+  --placeholder-color: var(--ink-faint);
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 1rem;
+  font-weight: 600;
+
+  &::part(native) { padding: 1rem 0 !important; }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ion-color-danger);
+  font-size: 0.8rem;
+  margin-top: 0.45rem;
+  padding-left: 0.8rem;
+  animation: shakeError 0.4s ease;
+
+  ion-icon { font-size: 1rem; flex-shrink: 0; }
+  span { line-height: 1.3; }
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ---------- Botón principal ---------- */
+.login-button {
+  --background: var(--grad-brand);
+  --background-hover: var(--brand-600);
+  --background-activated: var(--brand-700);
+  --border-radius: var(--r-sm);
+  --box-shadow: var(--shadow-brand);
+  height: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  margin-top: 0.8rem;
+  transition: transform 0.25s ease;
+
+  &:hover { transform: translateY(-2px); }
+
+  &[disabled] {
+    opacity: 0.85;
+  }
+
+  .boton-spinner {
+    --color: #ffffff;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.6rem;
+  }
+}
+
+/* ---------- Botones de desarrollo ---------- */
+.dev-buttons {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.dev-button {
+  --color: var(--ink-faint);
+  --background-hover: rgba(var(--brand-rgb), 0.05);
+  height: 38px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: none;
+
+  ion-icon { font-size: 1rem; }
+  &:hover { --color: var(--brand); }
+}
+
+/* ---------- Footer ---------- */
+.login-footer {
+  text-align: center;
+  margin-top: 1.2rem;
+  flex-shrink: 0;
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+    &:hover { opacity: 0.7; }
+  }
+}

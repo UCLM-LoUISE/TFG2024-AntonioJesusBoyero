@@ -1,0 +1,137 @@
+<div class="pantalla-base">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Formulario Sotobosque</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrar()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="haySotobosque" class="container" [fullscreen]="true" id="main-content">
+
+  <!-- Selector de transecto -->
+  <ion-item lines="none" class="select-arbol-item">
+    <ion-label position="floating">Transecto</ion-label>
+    <ion-select [(ngModel)]="sotobosqueSeleccionado" placeholder="Seleccionar" interface="popover" (ngModelChange)="cargarDatosSegmentoSeleccionado()">
+      <ion-select-option *ngFor="let seg of sotobosque" [value]="seg">
+        {{ seg.nombre }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div class="acciones-entidad" *ngIf="sotobosqueSeleccionado">
+    <ion-button fill="outline" color="danger" size="small" (click)="eliminarTransecto()">
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      Eliminar transecto
+    </ion-button>
+  </div>
+
+  <!-- Lista de ocurrencias (especies) -->
+  <div *ngIf="sotobosqueSeleccionado" style="margin: 16px 0;">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title style="font-size: 16px;">
+          Especies registradas ({{ ocurrencias.length }})
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="padding: 0;">
+
+        <!-- Lista de ocurrencias -->
+        <ion-list *ngIf="ocurrencias.length > 0">
+          <ion-item
+            *ngFor="let ocurrencia of ocurrencias; let i = index"
+            [color]="ocurrenciaSeleccionada === ocurrencia ? 'light' : ''"
+            button
+            (click)="seleccionarOcurrencia(ocurrencia)">
+            <ion-label>
+              <h3><strong>#{{ i + 1 }}</strong> - {{ ocurrencia.especie || 'Sin nombre' }}</h3>
+              <p *ngIf="ocurrencia.longitud || ocurrencia.altura">
+                Longitud: {{ ocurrencia.longitud || '-' }} cm | Altura: {{ ocurrencia.altura || '-' }} cm
+              </p>
+            </ion-label>
+            <ion-button
+              slot="end"
+              fill="clear"
+              color="danger"
+              (click)="eliminarOcurrencia(ocurrencia); $event.stopPropagation()">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+
+        <!-- Mensaje si no hay ocurrencias -->
+        <ion-text *ngIf="ocurrencias.length === 0" color="medium" style="display: block; padding: 16px; text-align: center;">
+          <p>No hay especies registradas en este transecto</p>
+        </ion-text>
+
+        <!-- Botón para añadir nueva ocurrencia -->
+        <ion-button expand="block" (click)="agregarOcurrencia()" style="margin: 8px;">
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          Añadir especie
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Formulario de edición de la ocurrencia seleccionada -->
+  <form [formGroup]="form" *ngIf="ocurrenciaSeleccionada">
+    <ion-list>
+
+      <ion-list-header>
+        <ion-label>Datos de la especie</ion-label>
+      </ion-list-header>
+
+      <app-species-picker formControlName="especie"></app-species-picker>
+
+      <ion-item>
+        <ion-label position="stacked">Longitud interceptada (cm)</ion-label>
+        <ion-input type="number" formControlName="longitud"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Altura (cm)</ion-label>
+        <ion-input type="number" formControlName="altura"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Porción verde (cm)</ion-label>
+        <ion-input type="number" formControlName="porcionVerde"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Porción seca (cm)</ion-label>
+        <ion-input type="number" formControlName="porcionSeca"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Total (cm)</ion-label>
+        <ion-input type="number" formControlName="total"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Notas / observaciones</ion-label>
+        <ion-textarea formControlName="notas"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+  </form>
+
+  <!-- Mensaje si no hay ocurrencia seleccionada -->
+  <ion-text *ngIf="!ocurrenciaSeleccionada && sotobosqueSeleccionado" color="medium" style="display: block; padding: 16px; text-align: center;">
+    <p>Selecciona una especie o añade una nueva</p>
+  </ion-text>
+
+  </ion-content>
+
+  <ion-content *ngIf="!haySotobosque" class="container" [fullscreen]="true" id="main-content">
+  <ion-text color="warning">
+    <h2 class="ion-text-center">Atención</h2>
+    <p class="ion-text-center">Añade segmentos de sotobosque a la tarea para rellenar formularios.</p>
+  </ion-text>
+</ion-content>
+
+
+</div>
