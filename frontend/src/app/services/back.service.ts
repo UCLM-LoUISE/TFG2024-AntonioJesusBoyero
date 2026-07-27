@@ -11,8 +11,8 @@ import { Estado, Rol, Usuario } from '../interfaces/usuario.model';
 })
 export class BackService {
 
-  // private productionUrl = 'http://localhost:3000';
-  private productionUrl = 'https://tfg-terr-app-back.vercel.app';
+  private productionUrl = 'http://localhost:3000';
+  // private productionUrl = 'https://tfg-terr-app-back.vercel.app';
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
 
